@@ -17,14 +17,14 @@
     <link rel="stylesheet" type="text/css" href=@Url.Content("/Html/revolution/css/navigation.css")>
     <link href=@Url.Content("/Html/css/shop-style.css") rel="stylesheet">
 
-</head>
-<body>
     <!-- Default JS FILES -->
     @Styles.Render("~/Content/css")
-        @Scripts.Render("~/bundles/modernizr")
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
-        @RenderSection("scripts", required: false)
+    @Scripts.Render("~/bundles/modernizr")
+
+
+</head>
+<body>
+
     <div id="preloader">
         <div id="preloader-inner"></div>
     </div><!--/preloader-->
@@ -622,14 +622,17 @@
     </div>
     <!--back to top-->
     <a href="#" class="back-to-top hidden-xs-down" id="back-to-top"><i class="ti-angle-up"></i></a>
+
+    @Scripts.Render("~/bundles/jquery")
+
     <!-- jQuery first, then Tether, then Bootstrap JS. -->
     <script src=@Url.Content("/Html/js/plugins/plugins.js")></script>
-    <script src=@Url.Content("/Html/js/assan.custom.js")></script>
+    <script src=@Url.Content("/Html/js/assan.custom.js")></script> C:\WebLandingTemplate\WebLandingTemplate\Html\js\plugins\plugins.js
     <!-- REVOLUTION JS FILES -->
     <script type="text/javascript" src=@Url.Content("/Html/revolution/js/jquery.themepunch.tools.min.js")></script>
     <script type="text/javascript" src=@Url.Content("/Html/revolution/js/jquery.themepunch.revolution.min.js")></script>
     <!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
-    <script type="text/javascript" src=@Url.Content("/Html//Html/revolution/js/extensions/revolution.extension.actions.min.js")></script>
+    <script type="text/javascript" src=@Url.Content("/Html/revolution/js/extensions/revolution.extension.actions.min.js")></script>
     <script type="text/javascript" src=@Url.Content("/Html/revolution/js/extensions/revolution.extension.carousel.min.js")></script>
     <script type="text/javascript" src=@Url.Content("/Html/revolution/js/extensions/revolution.extension.kenburn.min.js")></script>
     <script type="text/javascript" src=@Url.Content("/Html/revolution/js/extensions/revolution.extension.layeranimation.min.js")></script>
@@ -720,7 +723,11 @@
         });	/*ready*/
 
     </script>
-  
+
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
 </body>
 </html>
 
