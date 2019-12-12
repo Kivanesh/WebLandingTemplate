@@ -1,4 +1,3 @@
-C:\WebLandingTemplate\WebLandingTemplateBusinessLogic\obj\Debug\WebLandingTemplateBusinessLogic.csprojResolveAssemblyReference.cache
 C:\WebLandingTemplate\WebLandingTemplateBusinessLogic\bin\Debug\WebLandingTemplateBusinessLogic.dll
 C:\WebLandingTemplate\WebLandingTemplateBusinessLogic\bin\Debug\WebLandingTemplateBusinessLogic.pdb
 C:\WebLandingTemplate\WebLandingTemplateBusinessLogic\bin\Debug\WebLandingTemplateDomainModel.dll
@@ -6,11 +5,12 @@ C:\WebLandingTemplate\WebLandingTemplateBusinessLogic\bin\Debug\WebLandingTempla
 C:\WebLandingTemplate\WebLandingTemplateBusinessLogic\obj\Debug\WebLandingTemplateBusinessLogic.dll
 C:\WebLandingTemplate\WebLandingTemplateBusinessLogic\obj\Debug\WebLandingTemplateBusinessLogic.pdb
 C:\WebLandingTemplate\WebLandingTemplateBusinessLogic\bin\Debug\WebLandingTemplateRepository.dll
-C:\WebLandingTemplate\WebLandingTemplateBusinessLogic\bin\Debug\EntityFramework.dll
 C:\WebLandingTemplate\WebLandingTemplateBusinessLogic\bin\Debug\WebLandingTemplateRepository.pdb
 C:\WebLandingTemplate\WebLandingTemplateBusinessLogic\bin\Debug\WebLandingTemplateRepository.dll.config
 C:\WebLandingTemplate\WebLandingTemplateBusinessLogic\bin\Debug\EntityFramework.xml
 C:\WebLandingTemplate\WebLandingTemplateBusinessLogic\bin\Debug\es\EntityFramework.resources.dll
-C:\WebLandingTemplate\WebLandingTemplateBusinessLogic\bin\Debug\EntityFramework.SqlServer.dll
 C:\WebLandingTemplate\WebLandingTemplateBusinessLogic\bin\Debug\EntityFramework.SqlServer.xml
 C:\WebLandingTemplate\WebLandingTemplateBusinessLogic\bin\Debug\es\EntityFramework.SqlServer.resources.dll
+C:\WebLandingTemplate\WebLandingTemplateBusinessLogic\obj\Debug\WebLandingTemplateBusinessLogic.csprojAssemblyReference.cache
+C:\WebLandingTemplate\WebLandingTemplateBusinessLogic\obj\Debug\WebLandingTemplateBusinessLogic.csproj.CoreCompileInputs.cache
+C:\WebLandingTemplate\WebLandingTemplateBusinessLogic\obj\Debug\WebLandingTemplateBusinessLogic.csproj.CopyComplete

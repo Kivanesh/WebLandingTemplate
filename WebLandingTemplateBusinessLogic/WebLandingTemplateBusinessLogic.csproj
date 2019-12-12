@@ -48,7 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interface\IEnterpriseInfoBusiness.cs" />
+    <Compile Include="Interface\ISupplierBusiness.cs" />
     <Compile Include="Logic\EnterpriseInfoBusiness.cs" />
+    <Compile Include="Logic\SupplierBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -110,7 +110,6 @@ C:\WebLandingTemplate\WebLandingTemplate\bin\es\Microsoft.Owin.Security.Facebook
 C:\WebLandingTemplate\WebLandingTemplate\bin\es\Microsoft.Owin.Security.Google.resources.dll
 C:\WebLandingTemplate\WebLandingTemplate\bin\es\Microsoft.Owin.Security.Twitter.resources.dll
 C:\WebLandingTemplate\WebLandingTemplate\bin\es\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
-C:\WebLandingTemplate\WebLandingTemplate\obj\Debug\WebLandingTemplate.csprojResolveAssemblyReference.cache
 C:\WebLandingTemplate\WebLandingTemplate\obj\Debug\WebLandingTemplate.dll
 C:\WebLandingTemplate\WebLandingTemplate\obj\Debug\WebLandingTemplate.pdb
 C:\WebLandingTemplate\WebLandingTemplate\bin\WebLandingTemplateBusinessLogic.dll
@@ -127,3 +126,6 @@ C:\WebLandingTemplate\WebLandingTemplate\bin\Unity.Container.pdb
 C:\WebLandingTemplate\WebLandingTemplate\bin\WebLandingTemplateRepository.dll
 C:\WebLandingTemplate\WebLandingTemplate\bin\WebLandingTemplateRepository.pdb
 C:\WebLandingTemplate\WebLandingTemplate\bin\WebLandingTemplateRepository.dll.config
+C:\WebLandingTemplate\WebLandingTemplate\obj\Debug\WebLandingTemplate.csprojAssemblyReference.cache
+C:\WebLandingTemplate\WebLandingTemplate\obj\Debug\WebLandingTemplate.csproj.CoreCompileInputs.cache
+C:\WebLandingTemplate\WebLandingTemplate\obj\Debug\WebLandingTemplate.csproj.CopyComplete
