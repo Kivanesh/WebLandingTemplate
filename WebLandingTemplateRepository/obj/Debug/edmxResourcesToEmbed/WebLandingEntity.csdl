@@ -160,7 +160,7 @@
     </Key>
     <Property Name="ProveedorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="Logo" Type="Binary" MaxLength="8000" FixedLength="false" />
+    <Property Name="Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="Descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Products" Relationship="Self.FK__Products__Provee__45F365D3" FromRole="suppliers" ToRole="Products" />
   </EntityType>

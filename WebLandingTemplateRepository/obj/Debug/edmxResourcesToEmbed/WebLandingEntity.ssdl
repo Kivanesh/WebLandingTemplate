@@ -151,7 +151,7 @@
     </Key>
     <Property Name="ProveedorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="255" />
-    <Property Name="Logo" Type="varbinary" MaxLength="8000" />
+    <Property Name="Logo" Type="varbinary(max)" />
     <Property Name="Descripcion" Type="nvarchar" MaxLength="255" />
   </EntityType>
   <Association Name="FK__ImageSour__ItemI__48CFD27E">

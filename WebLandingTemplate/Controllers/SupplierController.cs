@@ -1,7 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using WebLandingTemplateBusinessLogic.Interface;
 using WebLandingTemplateBusinessLogic.Logic;
@@ -40,16 +45,31 @@ namespace WebLandingTemplate.Controllers
         [HttpPost]
         public ActionResult Create(SupplierDto supplier)
         {
+            
+            HttpFileCollectionBase collectionBase = Request.Files;
+            WebImage image = new WebImage(collectionBase.Get(0).InputStream);
+            supplier.Logo = image.GetBytes();
             try
             {
                 // TODO: Add insert logic here
                 var sup = _supplierBusiness.InsertSupplier(supplier);
                 return RedirectToAction("Index");
             }
-            catch
+            catch (DbEntityValidationException ex)
             {
+                foreach (var entityValidationErrors in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in entityValidationErrors.ValidationErrors)
+                    {
+                        Response.Write("Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage);
+                    }
+                }
                 return View();
             }
+            /*catch
+            {
+                return View();
+            }*/
         }
 
         // GET: Supplier/Edit/5
@@ -65,6 +85,9 @@ namespace WebLandingTemplate.Controllers
         {
             try
             {
+                HttpFileCollectionBase collectionBase = Request.Files;
+                WebImage image = new WebImage(collectionBase.Get(0).InputStream);
+                supplier.Logo = image.GetBytes();
                 // TODO: Add update logic here
                 _supplierBusiness.UpdateSupplier(supplier);
                 return RedirectToAction("Index");
@@ -97,6 +120,20 @@ namespace WebLandingTemplate.Controllers
             {
                 return View();
             }
+        }
+
+
+        public ActionResult getImage(int id)
+        {
+            SupplierDto supplier = _supplierBusiness.GetSupplier(id);
+            byte[] byteImage = supplier.Logo;
+
+            MemoryStream memoryStream = new MemoryStream(byteImage);
+            Image image = Image.FromStream(memoryStream);
+            memoryStream = new MemoryStream();
+            image.Save(memoryStream, ImageFormat.Jpeg);
+            memoryStream.Position = 0;
+            return File(memoryStream,"image/jpg");
         }
     }
 }

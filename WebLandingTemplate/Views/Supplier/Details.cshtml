@@ -25,6 +25,20 @@
         <dd>
             @Html.DisplayFor(model => model.Descripcion)
         </dd>
+        @{
+            if (Model.Logo != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Logo)
+                </dt>
+
+                <dd>
+                    <img src="@Url.Action("getImage","Supplier", new { id=Model.ProveedorId})" />
+                </dd>
+
+            }
+        }
+
 
     </dl>
 </div>

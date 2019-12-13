@@ -29,6 +29,7 @@ namespace WebLandingTemplate
 
             //Business Logic.
             container.RegisterType<IEnterpriseInfoBusiness, EnterpriseInfoBusiness>();
+            container.RegisterType<ISupplierBusiness, SupplierBusiness>();
 
             //Repository Layer IUnitOfWork
             container.RegisterType<IUnitOfWork, UnitOfWork>();
