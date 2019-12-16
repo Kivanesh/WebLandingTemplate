@@ -18,6 +18,9 @@ namespace WebLandingTemplate.Infrastructure
             CreateMap<CategoryDto, CategoryVM>();
             CreateMap<CategoryVM, CategoryDto>();
 
+            CreateMap<ServiceCorpDto, ServiceCorpVM>();
+            CreateMap<ServiceCorpVM, ServiceCorpDto>();
+
         }
 
         public static void Run()

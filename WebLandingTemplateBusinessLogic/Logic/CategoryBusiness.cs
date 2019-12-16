@@ -13,7 +13,6 @@ namespace WebLandingTemplateBusinessLogic.Logic
 {
     public class CategoryBusiness : ICategoryBusiness
     {
-
         private readonly IUnitOfWork unitOfwork;
         private readonly CategoryRepository categoryRepository;
 
@@ -46,7 +45,7 @@ namespace WebLandingTemplateBusinessLogic.Logic
                 result = "Error: " + ex.Message;
             }
             return result;
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         // ---------------------------------------------------- Retrive/Get Method
