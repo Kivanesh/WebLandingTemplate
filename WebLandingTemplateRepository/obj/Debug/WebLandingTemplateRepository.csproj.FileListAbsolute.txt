@@ -9,6 +9,4 @@ C:\WebLandingTemplate\WebLandingTemplateRepository\bin\Debug\es\EntityFramework.
 C:\WebLandingTemplate\WebLandingTemplateRepository\bin\Debug\es\EntityFramework.SqlServer.resources.dll
 C:\WebLandingTemplate\WebLandingTemplateRepository\obj\Debug\WebLandingTemplateRepository.dll
 C:\WebLandingTemplate\WebLandingTemplateRepository\obj\Debug\WebLandingTemplateRepository.pdb
-C:\WebLandingTemplate\WebLandingTemplateRepository\obj\Debug\WebLandingTemplateRepository.csprojAssemblyReference.cache
-C:\WebLandingTemplate\WebLandingTemplateRepository\obj\Debug\WebLandingTemplateRepository.csproj.CoreCompileInputs.cache
-C:\WebLandingTemplate\WebLandingTemplateRepository\obj\Debug\WebLandingTemplateRepository.csproj.CopyComplete
+C:\WebLandingTemplate\WebLandingTemplateRepository\obj\Debug\WebLandingTemplateRepository.csprojResolveAssemblyReference.cache

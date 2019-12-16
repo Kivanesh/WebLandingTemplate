@@ -90,7 +90,10 @@
       <DependentUpon>WebLandingEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\CategoryRepository.cs" />
     <Compile Include="Repository\EnterpriseInfoRepository.cs" />
+    <Compile Include="Repository\ProductRepository.cs" />
+    <Compile Include="Repository\ServiceCorpRepository.cs" />
     <Compile Include="Repository\SupplierRepository.cs" />
     <Compile Include="ServiceCorp.cs">
       <DependentUpon>WebLandingEntity.tt</DependentUpon>

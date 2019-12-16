@@ -2,5 +2,4 @@ C:\WebLandingTemplate\WebLandingTemplateDomainModel\bin\Debug\WebLandingTemplate
 C:\WebLandingTemplate\WebLandingTemplateDomainModel\bin\Debug\WebLandingTemplateDomainModel.pdb
 C:\WebLandingTemplate\WebLandingTemplateDomainModel\obj\Debug\WebLandingTemplateDomainModel.dll
 C:\WebLandingTemplate\WebLandingTemplateDomainModel\obj\Debug\WebLandingTemplateDomainModel.pdb
-C:\WebLandingTemplate\WebLandingTemplateDomainModel\obj\Debug\WebLandingTemplateDomainModel.csprojAssemblyReference.cache
-C:\WebLandingTemplate\WebLandingTemplateDomainModel\obj\Debug\WebLandingTemplateDomainModel.csproj.CoreCompileInputs.cache
+C:\WebLandingTemplate\WebLandingTemplateDomainModel\obj\Debug\WebLandingTemplateDomainModel.csprojResolveAssemblyReference.cache

@@ -1,0 +1,34 @@
+﻿@model WebLandingTemplate.Models.CategoryVM
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CategoryVM</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ItemCodeType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ItemCodeType)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CategoryId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
