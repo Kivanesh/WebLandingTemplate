@@ -45,7 +45,7 @@ namespace WebLandingTemplate.Controllers
         [HttpPost]
         public ActionResult Create(SupplierDto supplier)
         {
-            
+
             HttpFileCollectionBase collectionBase = Request.Files;
             WebImage image = new WebImage(collectionBase.Get(0).InputStream);
             supplier.Logo = image.GetBytes();
