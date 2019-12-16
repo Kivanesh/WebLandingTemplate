@@ -126,6 +126,9 @@ C:\WebLandingTemplate\WebLandingTemplate\bin\Unity.Container.pdb
 C:\WebLandingTemplate\WebLandingTemplate\bin\WebLandingTemplateRepository.dll
 C:\WebLandingTemplate\WebLandingTemplate\bin\WebLandingTemplateRepository.pdb
 C:\WebLandingTemplate\WebLandingTemplate\bin\WebLandingTemplateRepository.dll.config
-C:\WebLandingTemplate\WebLandingTemplate\obj\Debug\WebLandingTemplate.csprojAssemblyReference.cache
-C:\WebLandingTemplate\WebLandingTemplate\obj\Debug\WebLandingTemplate.csproj.CoreCompileInputs.cache
-C:\WebLandingTemplate\WebLandingTemplate\obj\Debug\WebLandingTemplate.csproj.CopyComplete
+C:\WebLandingTemplate\WebLandingTemplate\obj\Debug\WebLandingTemplate.csprojResolveAssemblyReference.cache
+C:\WebLandingTemplate\WebLandingTemplate\bin\AutoMapper.dll
+C:\WebLandingTemplate\WebLandingTemplate\bin\System.ValueTuple.dll
+C:\WebLandingTemplate\WebLandingTemplate\bin\AutoMapper.pdb
+C:\WebLandingTemplate\WebLandingTemplate\bin\AutoMapper.xml
+C:\WebLandingTemplate\WebLandingTemplate\bin\System.ValueTuple.xml

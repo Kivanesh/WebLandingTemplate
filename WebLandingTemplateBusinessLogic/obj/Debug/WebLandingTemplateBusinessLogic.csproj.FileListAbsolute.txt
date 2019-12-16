@@ -11,6 +11,4 @@ C:\WebLandingTemplate\WebLandingTemplateBusinessLogic\bin\Debug\EntityFramework.
 C:\WebLandingTemplate\WebLandingTemplateBusinessLogic\bin\Debug\es\EntityFramework.resources.dll
 C:\WebLandingTemplate\WebLandingTemplateBusinessLogic\bin\Debug\EntityFramework.SqlServer.xml
 C:\WebLandingTemplate\WebLandingTemplateBusinessLogic\bin\Debug\es\EntityFramework.SqlServer.resources.dll
-C:\WebLandingTemplate\WebLandingTemplateBusinessLogic\obj\Debug\WebLandingTemplateBusinessLogic.csprojAssemblyReference.cache
-C:\WebLandingTemplate\WebLandingTemplateBusinessLogic\obj\Debug\WebLandingTemplateBusinessLogic.csproj.CoreCompileInputs.cache
-C:\WebLandingTemplate\WebLandingTemplateBusinessLogic\obj\Debug\WebLandingTemplateBusinessLogic.csproj.CopyComplete
+C:\WebLandingTemplate\WebLandingTemplateBusinessLogic\obj\Debug\WebLandingTemplateBusinessLogic.csprojResolveAssemblyReference.cache
