@@ -1,4 +1,4 @@
-﻿@model WebLandingTemplateDomainModel.Models.SupplierDto
+﻿@model WebLandingTemplate.Models.SupplierVM
 
 @{
     ViewBag.Title = "Delete";
@@ -30,7 +30,8 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">

@@ -21,6 +21,9 @@ namespace WebLandingTemplate.Infrastructure
             CreateMap<ServiceCorpDto, ServiceCorpVM>();
             CreateMap<ServiceCorpVM, ServiceCorpDto>();
 
+            CreateMap<SupplierDto,SupplierVM>();
+            CreateMap<SupplierVM, SupplierDto>();
+
         }
 
         public static void Run()

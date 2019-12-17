@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
     @RenderSection("head", required: false)
+
+    <!--@Styles.Render("~/Content/css")
+     Default JS FILES@Scripts.Render("~/bundles/modernizr")-->
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,7 +25,8 @@
     <link href="~/Html-adminDashboard/css/style.css" rel="stylesheet">
 </head>
 <body class="bg-white">
-  
+
+    @Scripts.Render("~/bundles/jquery")
     <div class="page-wrapper" id="page-wrapper">
         <aside id="page-aside" class=" page-aside">
             @Html.Partial("_Admin_leftNavMenu")
@@ -34,8 +38,7 @@
             </div>
         </main><!-- page content end-->
     </div><!-- app's main wrapper end -->
-    <!-- Common plugins -->
-    <script type="text/javascript" src="~/Html-adminDashboard/js/plugins/plugins.js"></script>
+    <!-- Common plugins-->
     <script type="text/javascript" src="~/Html-adminDashboard/js/appUi-custom.js"></script>
     <script type="text/javascript" src="~/Html-adminDashboard/js/plugins/plugins.js"></script>
     <script src="~/Html-adminDashboard/lib/chartist/chartist.min.js"></script>
@@ -44,5 +47,9 @@
     <script type="text/javascript" src="~/Html-adminDashboard/lib/dt-picker/jquery.datetimepicker.full.min.js"></script>
     <script src="~/Html-adminDashboard/lib/select2/dist/js/select2.min.js"></script>
     <script type="text/javascript" src="~/Html-adminDashboard/js/dashboard02-custom.js"></script>
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
 </body>
 </html>

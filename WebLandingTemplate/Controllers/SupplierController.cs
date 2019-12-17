@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
+using WebLandingTemplate.Models;
 using WebLandingTemplateBusinessLogic.Interface;
 using WebLandingTemplateBusinessLogic.Logic;
 using WebLandingTemplateDomainModel.Models;
@@ -24,15 +25,19 @@ namespace WebLandingTemplate.Controllers
         // GET: Supplier
         public ActionResult Index()
         {
-            var lista = _supplierBusiness.GetAllSupplier();
-            return View(lista);
+            var listaDto = _supplierBusiness.GetAllSupplier();
+            var listaVM = new List<SupplierVM>();
+            AutoMapper.Mapper.Map(listaDto,listaVM);
+            return View(listaVM);
         }
 
         // GET: Supplier/Details/5
         public ActionResult Details(int id)
         {
-            var supp = _supplierBusiness.GetSupplier(id);
-            return View(supp);
+            var supDto= _supplierBusiness.GetSupplier(id);
+            var suppVM = new SupplierVM();
+            AutoMapper.Mapper.Map(supDto,suppVM);
+            return View(suppVM);
         }
 
         // GET: Supplier/Create
@@ -43,16 +48,18 @@ namespace WebLandingTemplate.Controllers
 
         // POST: Supplier/Create
         [HttpPost]
-        public ActionResult Create(SupplierDto supplier)
+        public ActionResult Create(SupplierVM supplierVM)
         {
 
             HttpFileCollectionBase collectionBase = Request.Files;
             WebImage image = new WebImage(collectionBase.Get(0).InputStream);
-            supplier.Logo = image.GetBytes();
+            supplierVM.Logo = image.GetBytes();
             try
             {
                 // TODO: Add insert logic here
-                var sup = _supplierBusiness.InsertSupplier(supplier);
+                var suppDto = new SupplierDto();
+                AutoMapper.Mapper.Map(supplierVM, suppDto);
+                var result = _supplierBusiness.InsertSupplier(suppDto);
                 return RedirectToAction("Index");
             }
             catch (DbEntityValidationException ex)
@@ -75,21 +82,25 @@ namespace WebLandingTemplate.Controllers
         // GET: Supplier/Edit/5
         public ActionResult Edit(int id)
         {
-            var supp = _supplierBusiness.GetSupplier(id);
-            return View(supp);
+            var suppDto = _supplierBusiness.GetSupplier(id);
+            var suppVM = new SupplierVM();
+            AutoMapper.Mapper.Map(suppDto,suppVM);
+            return View(suppVM);
         }
 
         // POST: Supplier/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, SupplierDto supplier)
+        public ActionResult Edit(int id, SupplierVM supplierVM)
         {
             try
             {
                 HttpFileCollectionBase collectionBase = Request.Files;
                 WebImage image = new WebImage(collectionBase.Get(0).InputStream);
-                supplier.Logo = image.GetBytes();
+                supplierVM.Logo = image.GetBytes();
+                var supplierDto = new SupplierDto();
                 // TODO: Add update logic here
-                _supplierBusiness.UpdateSupplier(supplier);
+                AutoMapper.Mapper.Map(supplierVM,supplierDto);
+                _supplierBusiness.UpdateSupplier(supplierDto);
                 return RedirectToAction("Index");
             }
             catch
@@ -101,19 +112,23 @@ namespace WebLandingTemplate.Controllers
         // GET: Supplier/Delete/5
         public ActionResult Delete(int id)
         {
-            var supp = _supplierBusiness.GetSupplier(id);
+            var suppDto = _supplierBusiness.GetSupplier(id);
+            var suppVM = new SupplierVM();
+            AutoMapper.Mapper.Map(suppDto,suppVM);
 
-            return View(supp);
+            return View(suppVM);
         }
 
         // POST: Supplier/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, SupplierDto supplier)
+        public ActionResult Delete(int id, SupplierVM supplierVM)
         {
             try
             {
                 // TODO: Add delete logic here
-                _supplierBusiness.DeleteSupplier(id);
+                var suppDto = new SupplierDto();
+                AutoMapper.Mapper.Map(supplierVM, suppDto);
+                var result = _supplierBusiness.DeleteSupplier(id);
                 return RedirectToAction("Index");
             }
             catch

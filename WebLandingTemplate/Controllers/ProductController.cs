@@ -112,13 +112,4 @@ namespace WebLandingTemplate.Controllers
                 return View();
             }
         }
-
-
-
-
-
-
-
-
-    }
 }
