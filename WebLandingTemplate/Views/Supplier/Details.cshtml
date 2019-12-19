@@ -4,14 +4,17 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Details</h2>
+<div class="portlet-box portlet-gutter ui-buttons-col mb-30">
+    <div class="portlet-header flex-row flex d-flex align-items-center b-b">
+    <div class="flex d-flex flex-column">
+        <h3>Detalles</h3>
+        <span class="portlet-subtitle">Proveedores</span>
 
-<div>
-    <h4>SupplierDto</h4>
-    <hr />
+    </div>
+</div>
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            Nombre
         </dt>
 
         <dd>
@@ -19,7 +22,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Descripcion)
+            Descripción
         </dt>
 
         <dd>
@@ -29,11 +32,11 @@
             if (Model.Logo != null)
             {
                 <dt>
-                    @Html.DisplayNameFor(model => model.Logo)
+                    Logo
                 </dt>
 
                 <dd>
-                    <img src="@Url.Action("getImage","Supplier", new { id=Model.ProveedorId})" />
+                    <img width="400" src="@Url.Action("getImage","Supplier", new { id=Model.ProveedorId})" />
                 </dd>
 
             }
@@ -43,6 +46,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ProveedorId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ProveedorId }) |
+    @Html.ActionLink("Volver a lista", "Index")
 </p>

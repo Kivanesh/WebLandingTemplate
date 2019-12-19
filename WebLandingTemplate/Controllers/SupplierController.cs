@@ -52,8 +52,10 @@ namespace WebLandingTemplate.Controllers
         {
 
             HttpFileCollectionBase collectionBase = Request.Files;
-            WebImage image = new WebImage(collectionBase.Get(0).InputStream);
-            supplierVM.Logo = image.GetBytes();
+            if (collectionBase.Get(0).ContentLength>0 && collectionBase.Get(0).ContentType == "image/jpeg") {
+                WebImage image = new WebImage(collectionBase.Get(0).InputStream);
+                supplierVM.Logo = image.GetBytes();
+            }
             try
             {
                 // TODO: Add insert logic here
@@ -95,8 +97,12 @@ namespace WebLandingTemplate.Controllers
             try
             {
                 HttpFileCollectionBase collectionBase = Request.Files;
-                WebImage image = new WebImage(collectionBase.Get(0).InputStream);
-                supplierVM.Logo = image.GetBytes();
+                string typeFile=collectionBase.Get(0).ContentType;
+                if (collectionBase.Get(0).ContentLength > 0 && collectionBase.Get(0).ContentType== "image/jpeg")
+                {
+                    WebImage image = new WebImage(collectionBase.Get(0).InputStream);
+                    supplierVM.Logo = image.GetBytes();
+                }
                 var supplierDto = new SupplierDto();
                 // TODO: Add update logic here
                 AutoMapper.Mapper.Map(supplierVM,supplierDto);
@@ -141,14 +147,31 @@ namespace WebLandingTemplate.Controllers
         public ActionResult getImage(int id)
         {
             SupplierDto supplier = _supplierBusiness.GetSupplier(id);
-            byte[] byteImage = supplier.Logo;
 
-            MemoryStream memoryStream = new MemoryStream(byteImage);
-            Image image = Image.FromStream(memoryStream);
-            memoryStream = new MemoryStream();
-            image.Save(memoryStream, ImageFormat.Jpeg);
-            memoryStream.Position = 0;
-            return File(memoryStream,"image/jpg");
+            if (supplier.Logo != null) {
+
+                if (supplier.Logo.Length > 0)
+                {
+                    byte[] byteImage = supplier.Logo;
+
+                    MemoryStream memoryStream = new MemoryStream(byteImage);
+                    Image image = Image.FromStream(memoryStream);
+                    memoryStream = new MemoryStream();
+                    image.Save(memoryStream, ImageFormat.Jpeg);
+                    memoryStream.Position = 0;
+                    return File(memoryStream, "image/jpg");
+                }
+
+                else
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
+            }
+
         }
     }
 }

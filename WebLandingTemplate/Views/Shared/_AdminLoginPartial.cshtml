@@ -11,7 +11,8 @@
     message1 += userName;
 
 }
-<header class="navbar page-header darkHeader navbar-expand-lg">
+<header class="navbar page-header darkHeader navbar-expand-lg mb-20">
+
     <ul class="nav flex-row mr-auto">
         <li class="nav-item">
             <a href="javascript:void(0)" class="nav-link sidenav-btn h-lg-down">
@@ -265,6 +266,7 @@
                 </div>
             </div>
         </li>
+
         <li class="nav-item dropdown user-dropdown align-items-center">
             <a class="nav-link" href="#" id="dropdown-user" role="button" data-toggle="dropdown">
                 <span class="user-states states-online">
@@ -288,46 +290,20 @@
                 <a class="dropdown-item" href="page-login.html"><i class="icon-Power"></i> logout</a>
             </div>
         </li>
-        <li class="h-lg-up nav-item">
-            <a href="#" class=" nav-link collapsed" data-toggle="collapse" data-target="#navbarToggler" aria-expanded="false">
-                <i class="icon-Magnifi-Glass2"></i>
-            </a>
-        </li>
     </ul>
+    <div class="nav-link" id="navbarToggler">
+        <ol class="breadcrumb no-padding bg-trans mb-0">
+            <li class="breadcrumb-item"><a href="/Admin/Index"><i class="icon-Home mr-2 fs14"></i>Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="/Home/Index">Default</a></li>
+
+        </ol>
+    </div>
     <div class="collapse navbar-collapse search-collapse" id="navbarToggler">
         <form class="form-inline ml-1">
             <button class="no-padding bg-trans border0" type="button"><i class="icon-Magnifi-Glass2"></i></button>
-            <input class="form-control border0" type="search" placeholder="Search..." aria-label="Search">
+            <input class="form-control border0" type="search" placeholder="Búscar..." aria-label="Search">
         </form>
     </div>
+
 </header>
-<div class="page-subheader mb-30">
-    <div class="container-fluid">
-        <div class="row align-items-center">
-            <div class="col-md-7">
-                <div class="list">
-                    <div class="list-item pl-0">
-                        <div class="list-thumb ml-0 mr-3 pr-3  b-r text-muted">
-                            <i class="icon-Home"></i>
-                        </div>
-                        <div class="list-body">
-                            <div class="list-title fs-2x">
-                                <h3>@message2 <strong>@userName</strong></h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-5 d-flex justify-content-end h-md-down">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb no-padding bg-trans mb-0">
-                        <li class="breadcrumb-item"><a href="index.html"><i class="icon-Home mr-2 fs14"></i></a></li>
-                        <li class="breadcrumb-item"><a href="/Admin/Index">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="/Home/Index">Default</a></li>
-                        
-                    </ol>
-                </nav>
-            </div>
-        </div>
-    </div>
-</div>
+
