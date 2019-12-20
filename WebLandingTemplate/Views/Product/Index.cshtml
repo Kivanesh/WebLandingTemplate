@@ -1,75 +1,112 @@
 ﻿@model IEnumerable<WebLandingTemplate.Models.ProductVM>
 
 @{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
     ViewBag.Title = "Index";
 }
 
 <!--<h2>Index</h2></-->
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProveedorId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Size)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Color)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductType)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProveedorId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Size)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Color)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductType)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
+<div class="bg-white table-responsive rounded shadow-sm pt-3 pb-3 mb-30">
+    <h6 class="pl-3 pr-3 text-capitalize font400 mb-20">Productos</h6>
+    <div id="data-table_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="button">
+                    @Html.ActionLink("Nuevo Producto", "Create", new { id = "" }, new { @class = "btn btn-primary mr-1 mb-2" })
 
-</table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <div class="dataTables_length" id="data-table_length">
+                    <label>Mostrar <select name="data-table_length" aria-controls="data-table" class="form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label>
+
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <div id="data-table_filter" class="dataTables_filter"><label>Buscar:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="data-table"></label></div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <table id="data-table" class="table mb-0 table-striped dataTable no-footer dtr-inline" cellspacing="0" width="100%" role="grid" aria-describedby="data-table_info" style="width: 100%;">
+                    <thead>
+                        <tr role="row">
+                            <th class="sorting_asc" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" style="width: 147px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">
+                                @Html.DisplayNameFor(model => model.ProductId)
+                            </th>
+                            <th class="sorting_asc" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" style="width: 147px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">
+                                @Html.DisplayNameFor(model => model.ProductName)
+                            </th>
+                            <th class="sorting_asc" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" style="width: 147px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">
+                              @Html.DisplayNameFor(model => model.ProveedorId)
+                            </th>
+                            <th class="sorting_asc" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" style="width: 147px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">
+                                @Html.DisplayNameFor(model => model.Price)
+                            </th>
+                            <th class="sorting_asc" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" style="width: 147px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">
+                                @Html.DisplayNameFor(model => model.Description)
+                            </th>
+                            <th class="sorting_asc" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" style="width: 147px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">
+                                @Html.DisplayNameFor(model => model.Size)
+                            </th>
+                            <th class="sorting_asc" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" style="width: 147px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">
+                                @Html.DisplayNameFor(model => model.Color)
+                            </th>
+                            <th class="sorting_asc" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" style="width: 147px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">
+                                @Html.DisplayNameFor(model => model.ProductType)
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr role="row" class="odd">
+                                <td tabindex="0" class="sorting_1">
+                                    @Html.DisplayFor(modelItem => item.ProductId)
+                                </td>
+                                <td tabindex="0" class="sorting_1">
+                                    @Html.DisplayFor(modelItem => item.ProductName)
+                                </td>
+                                <td tabindex="0" class="sorting_1">
+                                    <a  href="/Supplier/Details/@item.ProveedorId">
+                                        @Html.DisplayFor(modelItem => item.ProveedorId)
+                                    </a>
+                                    
+                                </td>
+                                <td tabindex="0" class="sorting_1">
+                                    @Html.DisplayFor(modelItem => item.Price)
+                                </td>
+                                <td tabindex="0" class="sorting_1">
+                                    @Html.DisplayFor(modelItem => item.Description)
+                                </td>
+                                <td tabindex="0" class="sorting_1">
+                                    @Html.DisplayFor(modelItem => item.Size)
+                                </td>
+                                <td tabindex="0" class="sorting_1">
+                                    @Html.DisplayFor(modelItem => item.Color)
+                                </td>
+                                <td tabindex="0" class="sorting_1" >
+                                    <a href="/Category/Details/@item.ProductType">
+                                        @Html.DisplayFor(modelItem => item.ProductType)
+                                    </a>
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Editar", "Edit", new { id = item.ProductId }) |
+                                    @Html.ActionLink("Detalles", "Details", new { id = item.ProductId }) |
+                                    @Html.ActionLink("Eliminar", "Delete", new { id = item.ProductId })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div><div class="row"><div class="col-sm-12 col-md-5"><div class="dataTables_info" id="data-table_info" role="status" aria-live="polite">Showing 1 to 10 of 10 entries</div></div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="data-table_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="data-table_previous"><a href="#" aria-controls="data-table" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li><li class="paginate_button page-item active"><a href="#" aria-controls="data-table" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item next disabled" id="data-table_next"><a href="#" aria-controls="data-table" data-dt-idx="2" tabindex="0" class="page-link">Next</a></li></ul></div></div></div>
+    </div>
+</div>
+

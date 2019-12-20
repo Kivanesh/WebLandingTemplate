@@ -117,6 +117,7 @@
           <Property Name="Valores" Type="nvarchar" MaxLength="255" />
           <Property Name="EmailOptional1" Type="nvarchar" MaxLength="255" />
           <Property Name="EmailOptional2" Type="nvarchar" MaxLength="255" />
+          <Property Name="Logo" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="ImageSources">
           <Key>
@@ -461,6 +462,7 @@
           <Property Name="Valores" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="EmailOptional1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="EmailOptional2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="ImageSources">
           <Key>
@@ -773,6 +775,7 @@
           <EntitySetMapping Name="EnterpriseInformation">
             <EntityTypeMapping TypeName="LandingEntities.EnterpriseInformation">
               <MappingFragment StoreEntitySet="EnterpriseInformation">
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />

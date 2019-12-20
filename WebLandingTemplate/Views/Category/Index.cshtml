@@ -2,38 +2,68 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Index</h2>
+<!---<h2>Consultar</h2>-->
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ItemCodeType)
-        </th>
-        <th></th>
-    </tr>
+<div class="bg-white table-responsive rounded shadow-sm pt-3 pb-3 mb-30">
+    <h6 class="pl-3 pr-3 text-capitalize font400 mb-20">Categorias</h6>
+    <div id="data-table_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="button">
+                    @Html.ActionLink("Nueva Categoria", "Create", new { id = "" }, new { @class = "btn btn-primary mr-1 mb-2" })
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ItemCodeType)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CategoryId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CategoryId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CategoryId })
-        </td>
-    </tr>
-}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <div class="dataTables_length" id="data-table_length">
+                    <label>Mostrar <select name="data-table_length" aria-controls="data-table" class="form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label>
 
-</table>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <div id="data-table_filter" class="dataTables_filter"><label>Buscar:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="data-table"></label></div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <table id="data-table" class="table mb-0 table-striped dataTable no-footer dtr-inline" cellspacing="0" width="100%" role="grid" aria-describedby="data-table_info" style="width: 100%;">
+                    <thead>
+                        <tr role="row">
+                            <th class="sorting_asc" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" style="width: 147px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">Nombre</th>
+                            <th class="sorting" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" style="width: 143px;" aria-label="Last name: activate to sort column ascending">Item Code Type</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr role="row" class="odd">
+                                <td tabindex="0" class="sorting_1">
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td tabindex="0" class="sorting_1">
+                                    @Html.DisplayFor(modelItem => item.ItemCodeType)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Editar", "Edit", new { id = item.CategoryId }) |
+                                    @Html.ActionLink("Detalles", "Details", new { id = item.CategoryId }) |
+                                    @Html.ActionLink("Eliminar", "Delete", new { id = item.CategoryId })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div><div class="row"><div class="col-sm-12 col-md-5"><div class="dataTables_info" id="data-table_info" role="status" aria-live="polite">Showing 1 to 10 of 10 entries</div></div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="data-table_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="data-table_previous"><a href="#" aria-controls="data-table" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li><li class="paginate_button page-item active"><a href="#" aria-controls="data-table" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item next disabled" id="data-table_next"><a href="#" aria-controls="data-table" data-dt-idx="2" tabindex="0" class="page-link">Next</a></li></ul></div></div></div>
+    </div>
+</div>
+
+
+
