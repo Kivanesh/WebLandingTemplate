@@ -10,5 +10,6 @@ namespace WebLandingTemplateBusinessLogic.Interface
     public interface IEnterpriseInfoBusiness
     {
         EnterpriseInfoDto GetEnterpriseInfo();
+        string UpdateItem(EnterpriseInfoDto ObjModel);
     }
 }

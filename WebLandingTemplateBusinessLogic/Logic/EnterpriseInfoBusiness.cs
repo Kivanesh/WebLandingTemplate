@@ -23,40 +23,31 @@ namespace WebLandingTemplateBusinessLogic.Logic
 
         }
 
-        
-        //Get Enterprise Information From ADO Entity Context
-        //public EnterpriseInfoDto GetEnterpriseInfo()
+        #region Enterprise Information CRUD
+
+        // ---------------------------------------------------- Create Method
+        //public string InsertItem(FrontDashboardDto ObjModel)
         //{
-        //    EntitiesDB dbContext = new EntitiesDB();
-        //    EnterpriseInfoDto EnterpriseInfo = dbContext.EnterpriseInformation.Select(r => new EnterpriseInfoDto()
+        //    string result = string.Empty;
+        //    try
         //    {
-        //        //Address = "TEXTO TEST",//r.Address,
-        //        //Email = "TEXTO TEST",//r.Email,
-        //        //Phone = "TEXTO TEST",//r.Phone,
-        //        //BusinessHours = "TEXTO TEST",//r.BusinessHours,
-        //        //SocialMedia = "TEXTO TEST",//r.SocialMedia,
-        //        //Mision = "TEXTO TEST",//r.Mision,
-        //        //Valores = "TEXTO TEST",//r.Valores,
-        //        //EmailOptional1 = "TEXTO TEST",//r.EmailOptional1,
-        //        //EmailOptional2 = "TEXTO TEST",//r.EmailOptional2
-
-        //        Address = r.Address,
-        //        Email = r.Email,
-        //        Phone = r.Phone,
-        //        BusinessHours = r.BusinessHours,
-        //        SocialMedia = r.SocialMedia,
-        //        Mision = r.Mision,
-        //        Vision = r.Vision,
-        //        Valores = r.Valores,
-        //        EmailOptional1 = r.EmailOptional1,
-        //        EmailOptional2 = r.EmailOptional2
-        //    }).FirstOrDefault();
-
-        //    return EnterpriseInfo;
-        //    //throw new NotImplementedException();
+        //        Dashboard NewItem = new Dashboard()
+        //        {
+        //            //ItemImageId = ObjModel.ItemImageId, -> key
+        //            ElementName = ObjModel.ElementName,
+        //            ElementId = ObjModel.ElementId
+        //        };
+        //        var record = frontRepository.Insert(NewItem);
+        //        result = (record == null) ? "Failed" : "Succes";
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        result = "Error: " + ex.Message;
+        //    }
+        //    return result;
         //}
 
-        //Get Enterprise Information From Repository Context
+        // ---------------------------------------------------- Retrive/Get Method
         public EnterpriseInfoDto GetEnterpriseInfo()
         {
             EnterpriseInfoDto EnterpriseInfo = enterpriseInfoRepository.GetAll().Select(r => new EnterpriseInfoDto()
@@ -75,6 +66,62 @@ namespace WebLandingTemplateBusinessLogic.Logic
             return EnterpriseInfo;
             //throw new NotImplementedException();
         }
+
+        // ---------------------------------------------------- Update Method
+        public string UpdateItem(EnterpriseInfoDto ObjModel)
+        {
+            string result = string.Empty;
+            try
+            {
+                EnterpriseInformation item = enterpriseInfoRepository.SingleOrDefault(x => x.Address == ObjModel.Address);
+                if (item != null)
+                {
+                    item.Address = ObjModel.Address;
+                    item.Email = ObjModel.Email;
+                    item.Phone = ObjModel.Phone;
+                    item.BusinessHours = ObjModel.BusinessHours;
+                    item.SocialMedia = ObjModel.SocialMedia;
+                    item.Mision = ObjModel.Mision;
+                    item.Vision = ObjModel.Vision;
+                    item.Valores = ObjModel.Valores;
+                    item.EmailOptional1 = ObjModel.EmailOptional1;
+                    item.EmailOptional2 = ObjModel.EmailOptional2;
+                    enterpriseInfoRepository.Update(item);
+                    result = "Succes";
+                }
+                else
+                {
+                    result = "Failed";
+                }
+            }
+            catch (Exception ex)
+            {
+                result = "Error: " + ex.Message;
+            }
+            return result;
+        }
+
+        // ---------------------------------------------------- Delete Method
+        //public string DeleteItem(int id)
+        //{
+        //    string result = string.Empty;
+        //    try
+        //    {
+        //        frontRepository.Delete(x => x.ItemImageId == id);
+        //        result = "Succes";
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        result = "Error: " + ex.Message;
+        //    }
+        //    return result;
+        //}
+
+        #endregion
+
+
+        
+        
 
 
     }

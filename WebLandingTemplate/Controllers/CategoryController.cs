@@ -72,7 +72,7 @@ namespace WebLandingTemplate.Controllers
 
         // POST: Category/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, ProductVM itemVM)
+        public ActionResult Edit(int id, CategoryVM itemVM)
         {
             try
             {
@@ -98,7 +98,7 @@ namespace WebLandingTemplate.Controllers
 
         // POST: Category/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, ProductVM itemVM)
+        public ActionResult Delete(int id, CategoryVM itemVM)
         {
             try
             {

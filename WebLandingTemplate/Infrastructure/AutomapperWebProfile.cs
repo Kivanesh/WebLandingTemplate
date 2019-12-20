@@ -12,17 +12,29 @@ namespace WebLandingTemplate.Infrastructure
         public AutomapperWebProfile()
         {
 
-            CreateMap<ProductDto, ProductVM>();
-            CreateMap<ProductVM, ProductDto>();
+            CreateMap<SupplierDto, SupplierVM>();
+            CreateMap<SupplierVM, SupplierDto>();
 
             CreateMap<CategoryDto, CategoryVM>();
             CreateMap<CategoryVM, CategoryDto>();
 
+            CreateMap<FrontDashboardDto, FrontDashboardVM>();
+            CreateMap<FrontDashboardVM, FrontDashboardDto>();
+
+            CreateMap<ProductDto, ProductVM>();
+            CreateMap<ProductVM, ProductDto>();
+
             CreateMap<ServiceCorpDto, ServiceCorpVM>();
             CreateMap<ServiceCorpVM, ServiceCorpDto>();
 
-            CreateMap<SupplierDto,SupplierVM>();
-            CreateMap<SupplierVM, SupplierDto>();
+            CreateMap<MessageDto, ContactMessageVM>();
+            CreateMap<ContactMessageVM, MessageDto>();
+
+            CreateMap<ImageSrcDto, ImageSrcVM>();
+            CreateMap<ImageSrcVM, ImageSrcDto>();
+
+            CreateMap<EnterpriseInfoDto, EnterpriseInfoVM>();
+            CreateMap<EnterpriseInfoVM, EnterpriseInfoDto>();
 
         }
 

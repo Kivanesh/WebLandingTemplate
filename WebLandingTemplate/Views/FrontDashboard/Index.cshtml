@@ -1,0 +1,39 @@
+﻿ @model IEnumerable<WebLandingTemplate.Models.FrontDashboardVM>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ElementName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ElementId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ElementName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ElementId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ItemImageId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ItemImageId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ItemImageId })
+        </td>
+    </tr>
+}
+
+</table>

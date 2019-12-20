@@ -49,11 +49,17 @@
   <ItemGroup>
     <Compile Include="Interface\ICategoryBusiness.cs" />
     <Compile Include="Interface\IEnterpriseInfoBusiness.cs" />
+    <Compile Include="Interface\IFrontDashboardBusiness.cs" />
+    <Compile Include="Interface\IImageSrcBusiness.cs" />
+    <Compile Include="Interface\IMessageInboxBusiness.cs" />
     <Compile Include="Interface\IProductBusiness.cs" />
     <Compile Include="Interface\IServiceCorpBusiness.cs" />
     <Compile Include="Interface\ISupplierBusiness.cs" />
     <Compile Include="Logic\CategoryBusiness.cs" />
     <Compile Include="Logic\EnterpriseInfoBusiness.cs" />
+    <Compile Include="Logic\FrontDashboardBusiness.cs" />
+    <Compile Include="Logic\ImageSrcBusiness.cs" />
+    <Compile Include="Logic\MessageInboxBusiness.cs" />
     <Compile Include="Logic\ProductBusiness.cs" />
     <Compile Include="Logic\ServiceCorpBusiness.cs" />
     <Compile Include="Logic\SupplierBusiness.cs" />

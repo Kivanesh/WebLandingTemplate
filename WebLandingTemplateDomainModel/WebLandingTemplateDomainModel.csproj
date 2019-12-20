@@ -43,6 +43,9 @@
   <ItemGroup>
     <Compile Include="Models\CategoryDto.cs" />
     <Compile Include="Models\EnterpriseInfoDto.cs" />
+    <Compile Include="Models\FrontDashboardDto.cs" />
+    <Compile Include="Models\ImageSrcDto.cs" />
+    <Compile Include="Models\MessageDto.cs" />
     <Compile Include="Models\ProductDto.cs" />
     <Compile Include="Models\ServiceCorpDto.cs" />
     <Compile Include="Models\SupplierDto.cs" />

@@ -7,8 +7,4 @@ C:\WebLandingTemplate\WebLandingTemplateBusinessLogic\obj\Debug\WebLandingTempla
 C:\WebLandingTemplate\WebLandingTemplateBusinessLogic\bin\Debug\WebLandingTemplateRepository.dll
 C:\WebLandingTemplate\WebLandingTemplateBusinessLogic\bin\Debug\WebLandingTemplateRepository.pdb
 C:\WebLandingTemplate\WebLandingTemplateBusinessLogic\bin\Debug\WebLandingTemplateRepository.dll.config
-C:\WebLandingTemplate\WebLandingTemplateBusinessLogic\bin\Debug\EntityFramework.xml
-C:\WebLandingTemplate\WebLandingTemplateBusinessLogic\bin\Debug\es\EntityFramework.resources.dll
-C:\WebLandingTemplate\WebLandingTemplateBusinessLogic\bin\Debug\EntityFramework.SqlServer.xml
-C:\WebLandingTemplate\WebLandingTemplateBusinessLogic\bin\Debug\es\EntityFramework.SqlServer.resources.dll
 C:\WebLandingTemplate\WebLandingTemplateBusinessLogic\obj\Debug\WebLandingTemplateBusinessLogic.csprojResolveAssemblyReference.cache
