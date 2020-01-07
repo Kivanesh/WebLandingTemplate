@@ -23,10 +23,20 @@
             </li>
         </ul>
         <ul class="nav flex-row order-lg-2 ml-auto nav-icons">
+            @*------------------------------------------------------------------------------------------    Lista de Mensajes     ------------------------------------------------------------------------------------------     *@
+            
             <li class="nav-item dropdown">
                 <a class="nav-link" href="#" id="dropdown-notify" data-toggle="dropdown">
                     <i class="icon-Envelope"></i>
-                    <span class="badge badge-primary d-block text-white">1</span>
+                    @if (ViewBag.Inbox != null)
+                    {
+                        <span class="badge badge-primary d-block text-white">@ViewBag.Inbox.Count</span>
+
+                    }
+                    else
+                    {
+                        <span class="badge badge-primary d-block text-white">0</span>
+                    }
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right no-padding" aria-labelledby="dropdown-notify">
                     <div class="dropdown-header-top flex d-flex align-items-center">
@@ -36,10 +46,11 @@
                             Mark all as read
                         </a>
                     </div>
-                    <div style="height: 320px">
+                    <div style="height: auto">
                         <div class="slim-scroll">
                             <ul class="list">
-                                <li class="list-item align-items-center unread">
+                                
+                                @*<li class="list-item align-items-center unread">
                                     <a href="#" class="list-link"></a>
                                     <div class="list-thumb avatar avatar50 bg-info text-white rounded-circle">
                                         <i class="icon-Twitter"></i>
@@ -106,13 +117,43 @@
                                             Yesterday
                                         </span>
                                     </div>
-                                </li><!--item-->
+                                </li><!--item-->*@
+
+                                <!------------------------- THE NEW MESSAGES ---------------------------->
+                                @if (ViewBag.Inbox != null)
+                                {
+                                    foreach (var neomsj in ViewBag.Inbox)
+                                    {
+                                        if (neomsj.IsRead == false)
+                                        {
+                                            <li class="list-item align-items-center">
+                                                <a href="#" class="list-link"></a>
+                                                <div class="list-thumb avatar avatar50 bg-danger text-white rounded-circle">
+                                                    <i class="icon-Envelope"></i>
+                                                </div>
+                                                <div class="list-body">
+                                                    <span class="list-title">
+                                                        @neomsj.Subject
+                                                    </span>
+                                                    <span class="list-content">
+                                                        @neomsj.Message
+                                                    </span>
+                                                    <span class="list-meta">
+                                                        @neomsj.ContactDate
+                                                    </span>
+                                                </div>
+                                            </li><!--item-->
+                                        }
+                                    }
+                                }
                             </ul>
                         </div>
                     </div>
-                    <a class="dropdown-footer">View All Notifications</a>
+                    <a  href="/ContactMessage/Index" class="dropdown-footer">View All Messages</a>
+                    
                 </div>
             </li>
+            @*------------------------------------------------------------------------------------------   End Lista de Mensajes     ------------------------------------------------------------------------------------------     *@
             <li class="nav-item dropdown">
                 <a class="nav-link" href="#" id="dropdownChat" data-toggle="dropdown">
                     <i class="icon-Speach-Bubbles"></i>
@@ -220,6 +261,7 @@
                     <a class="dropdown-footer">View All Messages</a>
                 </div>
             </li>
+
             <li class="nav-item dropdown tools-dropdown h-lg-down">
                 <a href="#" data-toggle="dropdown" class=" nav-link">
                     <i class="icon-Filter-2"></i>

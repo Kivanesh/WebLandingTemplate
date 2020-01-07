@@ -90,10 +90,11 @@
           <Property Name="Subject" Type="nvarchar" MaxLength="255" />
           <Property Name="Email" Type="nvarchar" MaxLength="255" />
           <Property Name="ContactName" Type="nvarchar" MaxLength="255" />
-          <Property Name="Message" Type="nvarchar" MaxLength="255" />
+          <Property Name="Message" Type="nvarchar(max)" />
           <Property Name="Phone" Type="nvarchar" MaxLength="255" />
           <Property Name="ContactDate" Type="datetime" />
           <Property Name="ComeFrom" Type="nvarchar" MaxLength="255" />
+          <Property Name="IsRead" Type="bit" />
         </EntityType>
         <EntityType Name="Dashboard">
           <Key>
@@ -434,10 +435,11 @@
           <Property Name="Subject" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="ContactName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Message" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="ContactDate" Type="DateTime" Precision="3" />
           <Property Name="ComeFrom" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IsRead" Type="Boolean" />
         </EntityType>
         <EntityType Name="Dashboard">
           <Key>
@@ -752,6 +754,7 @@
           <EntitySetMapping Name="ContactMessageInbox">
             <EntityTypeMapping TypeName="LandingEntities.ContactMessageInbox">
               <MappingFragment StoreEntitySet="ContactMessageInbox">
+                <ScalarProperty Name="IsRead" ColumnName="IsRead" />
                 <ScalarProperty Name="MessageId" ColumnName="MessageId" />
                 <ScalarProperty Name="Subject" ColumnName="Subject" />
                 <ScalarProperty Name="Email" ColumnName="Email" />

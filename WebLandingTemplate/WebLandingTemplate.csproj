@@ -224,6 +224,7 @@
     <Compile Include="Models\ContactMessageVM.cs" />
     <Compile Include="Models\EnterpriseInfoVM.cs" />
     <Compile Include="Models\FrontDashboardVM.cs" />
+    <Compile Include="Models\FrontVIewModels\ContactPageVM.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ImageSrcVM.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -244,6 +245,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Html-adminDashboard\app-inbox-detail.html" />
+    <Content Include="Html-adminDashboard\app-inbox.html" />
     <Content Include="Html-adminDashboard\css\animate.css" />
     <Content Include="Html-adminDashboard\css\chartist-custom.css" />
     <Content Include="Html-adminDashboard\css\ion-range-custom.css" />
@@ -254,6 +257,7 @@
     <Content Include="Html-adminDashboard\css\style.css" />
     <Content Include="Html-adminDashboard\css\sweet-alert-custom.css" />
     <Content Include="Html-adminDashboard\css\wizard-custom.css" />
+    <Content Include="Html-adminDashboard\images\avatar.jpg" />
     <Content Include="Html-adminDashboard\images\avatar1.jpg" />
     <Content Include="Html-adminDashboard\images\avatar2.jpg" />
     <Content Include="Html-adminDashboard\images\avatar3.jpg" />
@@ -281,6 +285,7 @@
     <Content Include="Html-adminDashboard\images\lightout.jpg" />
     <Content Include="Html-adminDashboard\images\mini.jpg" />
     <Content Include="Html-adminDashboard\images\pattern-1.png" />
+    <Content Include="Html-adminDashboard\inbox-reply.html" />
     <Content Include="Html-adminDashboard\js\appUi-custom.js" />
     <Content Include="Html-adminDashboard\js\dashboard.custom.js" />
     <Content Include="Html-adminDashboard\js\dashboard02-custom.js" />
@@ -487,6 +492,7 @@
     <Content Include="Html-adminDashboard\lib\vector-map\jquery-jvectormap-us-aea-en.js" />
     <Content Include="Html-adminDashboard\lib\vector-map\jquery-jvectormap-us-il-chicago-mill-en.js" />
     <Content Include="Html-adminDashboard\lib\vector-map\jquery-jvectormap-world-mill-en.js" />
+    <Content Include="Html-adminDashboard\sweet-alerts.html" />
     <Content Include="Html\ajax-juicy-projects\loadMore.html" />
     <Content Include="Html\ajax-juicy-projects\project1.html" />
     <Content Include="Html\ajax-juicy-projects\project10.html" />
@@ -2826,9 +2832,13 @@
     <Content Include="Views\ImageSrc\Details.cshtml" />
     <Content Include="Views\ImageSrc\Edit.cshtml" />
     <Content Include="Views\ImageSrc\Index.cshtml" />
+    <Content Include="Views\Home\EmailResponse.cshtml" />
+    <Content Include="Views\ContactMessage\Inbox.cshtml" />
+    <Content Include="Views\ContactMessage\MessageDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Controllers\FrontEnd\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

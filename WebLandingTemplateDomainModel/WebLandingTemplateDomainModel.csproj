@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\ItemCodeTypeEnum.cs" />
     <Compile Include="Models\CategoryDto.cs" />
     <Compile Include="Models\EnterpriseInfoDto.cs" />
     <Compile Include="Models\FrontDashboardDto.cs" />

@@ -18,5 +18,6 @@ namespace WebLandingTemplateDomainModel.Models
         public string Valores { get; set; }
         public string EmailOptional1 { get; set; }
         public string EmailOptional2 { get; set; }
+        public byte[] Logo { get; set; }
     }
 }

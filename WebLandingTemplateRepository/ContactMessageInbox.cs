@@ -22,5 +22,6 @@ namespace WebLandingTemplateRepository
         public string Phone { get; set; }
         public Nullable<System.DateTime> ContactDate { get; set; }
         public string ComeFrom { get; set; }
+        public Nullable<bool> IsRead { get; set; }
     }
 }

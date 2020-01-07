@@ -14,5 +14,6 @@ namespace WebLandingTemplateBusinessLogic.Interface
         string UpdateMessage(MessageDto ObjModel);
         MessageDto GetMessage(int id);
         string DeleteMessage(int id);
+        List<MessageDto> GetAllMessageNews();
     }
 }

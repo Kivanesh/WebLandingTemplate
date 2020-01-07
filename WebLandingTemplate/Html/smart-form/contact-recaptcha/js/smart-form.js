@@ -38,7 +38,11 @@
 								sendermessage: {
 										required: true,
 										minlength: 10
-								},
+                                },
+                                senderphone: {
+                                    required: true,
+                                    minlength: 10
+                                },
 								"g-recaptcha-response":{
 									required:true,
 									remote:'./smart-form/contact-recaptcha/php/process_reCaptcha.php'
@@ -60,7 +64,11 @@
 								sendermessage: {
 										required: 'Oops you forgot your message',
 										minlength: 'Message must be at least 10 characters'
-								},															
+                                },			
+                                senderphone: {
+                                    required: 'Enter valid Phone Number',
+                                    minlength: 'Please, at least {0} characters are necessary'
+                                },
 								"g-recaptcha-response":{
 										required: 'Check reCaptcha for verification',
 										remote:'Invalid reCaptcha verification'
@@ -78,8 +86,10 @@
 						   } else {
 									error.insertAfter(element.parent());
 						   }
-						},				
-						submitHandler:function(form) {
+                        },			
+                       
+                        submitHandler: function (form) {
+                            console.log('HeRe are You 2.0 u.u');
 							$(form).ajaxSubmit({
 								    target:'.result',	
 									beforeSubmit:function(){ 

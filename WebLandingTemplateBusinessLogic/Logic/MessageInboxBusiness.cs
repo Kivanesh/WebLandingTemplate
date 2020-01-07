@@ -40,7 +40,8 @@ namespace WebLandingTemplateBusinessLogic.Logic
                     Message = ObjModel.Message,
                     Phone = ObjModel.Phone,
                     ContactDate = ObjModel.ContactDate,
-                    ComeFrom = ObjModel.ComeFrom
+                    ComeFrom = ObjModel.ComeFrom,
+                    IsRead = ObjModel.IsRead
                 };
                 var record = messageRepository.Insert(NewItem);
                 result = (record == null) ? "Failed" : "Succes";
@@ -64,7 +65,9 @@ namespace WebLandingTemplateBusinessLogic.Logic
                 Message     = x.Message,
                 Phone       = x.Phone,
                 ContactDate = x.ContactDate,
-                ComeFrom    = x.ComeFrom
+                ComeFrom    = x.ComeFrom,
+                IsRead      = x.IsRead
+                
 
             }).ToList();
 
@@ -83,7 +86,8 @@ namespace WebLandingTemplateBusinessLogic.Logic
                 Message     = ItemDb.Message,
                 Phone       = ItemDb.Phone,
                 ContactDate = ItemDb.ContactDate,
-                ComeFrom    = ItemDb.ComeFrom
+                ComeFrom    = ItemDb.ComeFrom,
+                IsRead      = ItemDb.IsRead
             };
 
             return Item;
@@ -105,6 +109,7 @@ namespace WebLandingTemplateBusinessLogic.Logic
                     message.Phone = ObjModel.Phone;
                     message.ContactDate = ObjModel.ContactDate;
                     message.ComeFrom = ObjModel.ComeFrom;
+                    message.IsRead = ObjModel.IsRead;
                     messageRepository.Update(message);
                     result = "Succes";
                 }
@@ -137,6 +142,24 @@ namespace WebLandingTemplateBusinessLogic.Logic
         }
 
         #endregion
+
+        public List<MessageDto> GetAllMessageNews()
+        {
+            var ItemList = messageRepository.GetAll().Where(x => x.IsRead == false).Select(x => new MessageDto()
+            {
+                MessageId = x.MessageId,
+                Subject = x.Subject,
+                Email = x.Email,
+                ContactName = x.ContactName,
+                Message = x.Message,
+                Phone = x.Phone,
+                ContactDate = x.ContactDate,
+                ComeFrom = x.ComeFrom,
+                IsRead = x.IsRead
+            }).ToList();
+
+            return ItemList;
+        }
 
     }
 }

@@ -2,15 +2,20 @@
 
 @{
     ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>ContactMessageVM</h4>
-    <hr />
+<div class="portlet-box portlet-gutter ui-buttons-col mb-30">
+    <div class="portlet-header flex-row flex d-flex align-items-center b-b">
+        <div class="flex d-flex flex-column">
+            <h3> Detalles de Mensaje </h3>
+            <span class="portlet-subtitle">Inbox Messages</span>
+
+        </div>
+    </div>
     <dl class="dl-horizontal">
-        <dt>
+        <dt class="form-header">
             @Html.DisplayNameFor(model => model.Subject)
         </dt>
 
@@ -72,3 +77,5 @@
     @Html.ActionLink("Edit", "Edit", new { id = Model.MessageId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+

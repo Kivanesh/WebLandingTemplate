@@ -25,17 +25,27 @@ namespace WebLandingTemplate.Controllers
             var listaVM = new List<ContactMessageVM>();
             AutoMapper.Mapper.Map(listaDto, listaVM);
 
-            return View(listaVM);
+            return View("Inbox",listaVM);
         }
 
         // GET: ContactMessage/Details/5
         public ActionResult Details(int id)
         {
             var itemDto = _contacMsgBusiness.GetMessage(id);
-            var itemVM = new ContactMessageVM();
-            AutoMapper.Mapper.Map(itemDto, itemVM);
-
-            return View(itemVM);
+            //--------- Change status Isread
+            itemDto.IsRead = true;
+            var result = _contacMsgBusiness.UpdateMessage(itemDto);
+            if (result == "Succes")
+            {
+                var itemVM = new ContactMessageVM();
+                AutoMapper.Mapper.Map(itemDto, itemVM);
+                return View("MessageDetail",itemVM);
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+           
         }
 
         // GET: ContactMessage/Create
@@ -112,6 +122,30 @@ namespace WebLandingTemplate.Controllers
                 return View();
             }
         }
+
+        // POST: ContactMessage/Eliminar/5
+        [HttpPost]
+        public bool Eliminar(int id)
+        {
+            try
+            {
+                return true;
+                var result = _contacMsgBusiness.DeleteMessage(id);
+                if (result == "Succes")
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
 
     }
 }

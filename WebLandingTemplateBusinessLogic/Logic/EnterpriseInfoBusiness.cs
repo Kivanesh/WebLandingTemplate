@@ -61,7 +61,8 @@ namespace WebLandingTemplateBusinessLogic.Logic
                 Vision = r.Vision,
                 Valores = r.Valores,
                 EmailOptional1 = r.EmailOptional1,
-                EmailOptional2 = r.EmailOptional2
+                EmailOptional2 = r.EmailOptional2,
+                Logo = r.Logo
             }).FirstOrDefault();
             return EnterpriseInfo;
             //throw new NotImplementedException();

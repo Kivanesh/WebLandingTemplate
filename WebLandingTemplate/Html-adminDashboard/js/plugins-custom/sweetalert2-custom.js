@@ -69,34 +69,65 @@
         //Parameter
         $('#sa-params').click(function () {
             swal({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
+                title: 'Estas Seguro?',
+                text: "No Es Posible Revertir",
                 type: 'warning',
                 showCancelButton: true,
-                confirmButtonText: 'Yes, delete it!',
-                cancelButtonText: 'No, cancel!',
+                confirmButtonText: 'Si, Borrar',
+                cancelButtonText: 'No, Cancel!',
                 confirmButtonClass: 'btn btn-success mt-2',
                 cancelButtonClass: 'btn btn-danger ml-2 mt-2',
                 buttonsStyling: false
             }).then(function () {
-                swal({
-                    title: 'Deleted !',
-                    text: "Your file has been deleted",
-                    type: 'success',
-                    confirmButtonClass: 'btn btn-confirm mt-2'
-                }
-                )
+                $.ajax({
+                    async: false,
+                    type: 'POST',
+                    url: '/ContactMessage/Eliminar/',
+                    data: { id: $('#MessageId').val() },
+                    //dataType: "json",
+                    //contentType: 'application/json; charset=utf-8',
+                    success: function (data) {
+                        if (data === 'True') {
+                            swal({
+                                title: 'Eliminado!',
+                                text: "El Elemento ha sido Eliminado",
+                                type: 'success',
+                                confirmButtonClass: 'btn btn-confirm mt-2'
+                            }).then(function () {
+                                window.location = "/ContactMessage/Index";
+                            });
+                        }
+                    },
+                    error: function (xhr, type, exception) {
+                        swal({
+                            title: 'Error',
+                            text: "ajax error response type " + type + ' \nException: ' + exception + ' \nXhr: ' + xhr,
+                            type: 'error',
+                            confirmButtonClass: 'btn btn-confirm mt-2'
+                        })
+                        // if ajax fails display error alert
+                        console.log('Mierda no jalo X.X ' + exception + xhr);
+                    }
+                });
+                //.then(function () {
+                   
+                //    //------------------------------------------ Same Logic as Ajax Call without POST Type
+                //    //var url = '/ContactMessage/Eliminar/' + $('#MessageId').val();
+                //    //window.location.href = url;
+                //    //------------------------------------------ Same Logic as Ajax Call without POST Type
+                //    //var url = $("#RedirectTo").val();
+                //    //location.href = url;
+                //});  
             }, function (dismiss) {
                 // dismiss can be 'cancel', 'overlay',
                 // 'close', and 'timer'
                 if (dismiss === 'cancel') {
                     swal({
-                        title: 'Cancelled',
-                        text: "Your imaginary file is safe :)",
+                        title: 'Cancelado',
+                        text: "El Elemento Queda Intacto",
                         type: 'error',
                         confirmButtonClass: 'btn btn-confirm mt-2'
-                    }
-                    )
+                    })
                 }
             })
         });

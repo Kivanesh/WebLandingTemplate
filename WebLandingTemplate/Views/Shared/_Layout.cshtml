@@ -9,6 +9,10 @@
     @*<title>Assan 3</title>*@
     <!-- Plugins CSS -->
     <link href=@Url.Content("/Html/css/plugins/plugins.css") rel="stylesheet">
+
+    <link type="text/css" rel="stylesheet" href=@Url.Content("/Html/smart-form/contact/css/smart-forms.css")>
+    <link href=@Url.Content("/Html/css/style.css") rel="stylesheet">
+
     <!-- REVOLUTION STYLE SHEETS -->
     <link rel="stylesheet" type="text/css" href=@Url.Content("/Html/revolution/css/settings.css")>
     <!-- REVOLUTION LAYERS STYLES -->
@@ -443,177 +447,46 @@
                         </div><!--right nav icons-->
 
                     </div>
-                </nav><!--end nav-->
+                </nav>
+                <!--end nav-->
 
                 <div>
                     @RenderBody();
                 </div>
-                <footer class="footer footer-standard pt50 pb10">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-2 col-md-2 mb40">
-                                <ul class="list-unstyled footer-list-item">
-                                    <li>
-                                        <a href="#">
-                                            Jeans
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            Wrangler
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            Peter England
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            T-shirts
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            Party Wear
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            Shoes
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-2 col-md-2 mb40">
-                                <ul class="list-unstyled footer-list-item">
-                                    <li>
-                                        <a href="#">
-                                            Offer & Discounts
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            Skirts
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            Kids Store
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            Home Decor
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            Sunglasses
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            Begs
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-2 col-md-2 mb40">
-                                <ul class="list-unstyled footer-list-item">
-                                    <li>
-                                        <a href="#">
-                                            About
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            News
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            FAQS
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            Contact
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            Term &amp; conditions
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            Privacy &amp; policy
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-6 col-md-6 mb40">
-                                <h3>Subscribe to our newsletter</h3>
-                                <form id="widget-subscribe-form" action="index.html" role="form" method="post" class="mb0">
-                                    <div class="input-group input-group-lg">
-                                        <input type="email" name="widget-subscribe-form-email" class="form-control required" placeholder="Enter your Email">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-primary" type="submit">Subscribe</button>
-                                        </span>
-                                    </div>
-                                </form>
-                                <div class="row pt30">
-                                    <div class="col-sm-6">
-                                        <p class="contact-lead">
-                                            <small>Call us</small>
-                                            <br>+01 123-493-2949
-                                        </p>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <p class="contact-lead">
-                                            <small>Mail us</small>
-                                            <br>support@domain.com
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-                <div class="footer-bottomAlt">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-7">
-                                <div class="clearfix">
-                                    <a href="#" class="social-icon-sm si-dark si-facebook si-dark-round">
-                                        <i class="fa fa-facebook"></i>
-                                        <i class="fa fa-facebook"></i>
+                <footer class="footer footer-dark pt50 pb30">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6  ml-auto mr-auto text-center">
+                            <ul class="social-icons list-inline">
+                                <li class="list-inline-item">
+                                    <a href="#">
+                                        <i class="fa fa-facebook"></i>Facebook
                                     </a>
-                                    <a href="#" class="social-icon-sm si-dark si-twitter si-dark-round">
-                                        <i class="fa fa-twitter"></i>
-                                        <i class="fa fa-twitter"></i>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">
+                                        <i class="fa fa-twitter"></i>twitter
                                     </a>
-                                    <a href="#" class="social-icon-sm si-dark si-g-plus si-dark-round">
-                                        <i class="fa fa-google-plus"></i>
-                                        <i class="fa fa-google-plus"></i>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">
+                                        <i class="fa fa-instagram"></i>instagram
                                     </a>
-                                    <a href="#" class="social-icon-sm si-dark si-skype si-dark-round">
-                                        <i class="fa fa-skype"></i>
-                                        <i class="fa fa-skype"></i>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">
+                                        <i class="fa fa-behance"></i>Behance
                                     </a>
-                                    <a href="#" class="social-icon-sm si-dark si-linkedin si-dark-round">
-                                        <i class="fa fa-linkedin"></i>
-                                        <i class="fa fa-linkedin"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-5">
-                                <span>© Copyright 2017. All Right Reserved</span>
-                            </div>
+                                </li>
+                            </ul>
+                            <h4><i class="fa fa-phone"></i> 1800-355-4322</h4>
+                            <h4><i class="fa fa-envelope"></i> support@assan.com</h4>
+                            <p>&copy; Copyright 2018. Assan 3.0</p>
                         </div>
                     </div>
                 </div>
+            </footer>
+
                 <!--back to top-->
                 <a href="#" class="back-to-top hidden-xs-down" id="back-to-top"><i class="ti-angle-up"></i></a>
 
@@ -622,6 +495,14 @@
                 <!-- jQuery first, then Tether, then Bootstrap JS. -->
                 <script src=@Url.Content("/Html/js/plugins/plugins.js")></script>
                 <script src=@Url.Content("/Html/js/assan.custom.js")></script> 
+
+                <!--smart-form script-->
+                <script src=@Url.Content("/Html/smart-form/contact/js/jquery.form.min.js") type="text/javascript"></script>
+                <script src=@Url.Content("/Html/smart-form/contact/js/jquery.validate.min.js") type="text/javascript"></script>
+                <script src=@Url.Content("/Html/smart-form/contact/js/additional-methods.min.js") type="text/javascript"></script>
+                <script type="text/javascript" src=@Url.Content("/Html/smart-form/contact/js/smart-form.js")></script>
+
+
                 <!-- REVOLUTION JS FILES -->
                 <script type="text/javascript" src=@Url.Content("/Html/revolution/js/jquery.themepunch.tools.min.js")></script>
                 <script type="text/javascript" src=@Url.Content("/Html/revolution/js/jquery.themepunch.revolution.min.js")></script>
@@ -718,7 +599,7 @@
 
                 </script>
 
-
+               
                 @Scripts.Render("~/bundles/bootstrap")
                 @RenderSection("scripts", required: false)
 

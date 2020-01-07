@@ -44,11 +44,15 @@
 								sendermessage: {
 										required: true,
 										minlength: 10
-								},
-								captcha:{
-									required:true,
-									remote:'./smart-form/contact/php/captcha/process.php'
-								}
+                                },
+                                senderphone: {
+                                        required: true,
+                                        minlength: 10
+                                }
+								//captcha:{
+								//	required:true,
+								//	remote:'./smart-form/contact/php/captcha/process.php'
+								//}
 						},
 						messages:{
 								sendername: {
@@ -66,7 +70,11 @@
 								sendermessage: {
 										required: 'Oops you forgot your message',
 										minlength: 'Message must be at least 10 characters'
-								},															
+                                },
+                                senderphone: {
+                                    required: 'Enter valid Phone Number',
+                                    minlength: 'Please, at least {0} characters are necessary'
+                                },
 								captcha:{
 										required: 'You must enter the captcha code',
 										remote:'Captcha code is incorrect'
@@ -88,11 +96,29 @@
 									error.insertAfter(element.parent());
 						   }
 						},
-						
+                        
 						/* @ajax form submition 
 						---------------------------------------------------- */						
-						submitHandler:function(form) {
-							$(form).ajaxSubmit({
+                        submitHandler: function (form) {
+                          /*---------------------------------------------------- Build Model from InputForm Template ADD by Kvnsh */
+                            var messageVM = {
+                                Subject : sendersubject.value,
+                                Email : emailaddress.value,
+                                ContactName : sendername.value,
+                                Message : sendermessage.value,
+                                Phone: senderphone.value,
+                                ContactDate: document.getElementById("messageVM_ContactDate").value,
+                                ComeFrom: document.getElementById("messageVM_ComeFrom").value
+                            }
+                            var PageVM = {
+                                "messageVM" : messageVM
+                            }
+                            console.log(PageVM);
+                            console.log('HeRe are You u.u');
+                            console.log(form);
+                             /*---------------------------------------------------- */
+                            $(form).ajaxSubmit({
+                                    data: PageVM,
 								    target:'.result',			   
 									beforeSubmit:function(){ 
 											swapButton();

@@ -19,6 +19,7 @@ namespace WebLandingTemplate.Controllers
         }
 
         // GET: Product
+        [Authorize]
         public ActionResult Index()
         {
             var listaDto = _productBusiness.GetAllProducts();
