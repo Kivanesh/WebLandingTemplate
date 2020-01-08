@@ -3773,7 +3773,7 @@ Assan Demos landing page style
     position: relative;
     top: -4px; }
   .page-demos .butttons-demo {
-    padding-top: 50px;
+    /*padding-top: 50px;*/
     position: relative; }
     .page-demos .butttons-demo:before {
       content: "";
