@@ -1,4 +1,5 @@
 ﻿using System;
+using PagedList;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Drawing;
@@ -23,20 +24,33 @@ namespace WebLandingTemplate.Controllers
             _supplierBusiness = supplierBusiness;
         }
         // GET: Supplier
-        public ActionResult Index()
+        public ActionResult Index(int? page, string searchString, int pageSize = 5)
         {
-            var listaDto = _supplierBusiness.GetAllSupplier();
+            // searchString = "vende"; 
+            int pageNumber = (page ?? 1);
+
             var listaVM = new List<SupplierVM>();
-            AutoMapper.Mapper.Map(listaDto,listaVM);
-            return View(listaVM);
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                var listaDto = _supplierBusiness.GetAllSupplier().Where(c => c.Name.Contains(searchString) || c.Descripcion.Contains(searchString));
+                AutoMapper.Mapper.Map(listaDto, listaVM);
+            }
+            else
+            {
+                var listaDto = _supplierBusiness.GetAllSupplier();
+                AutoMapper.Mapper.Map(listaDto, listaVM);
+            }
+
+            return View(listaVM.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Supplier/Details/5
         public ActionResult Details(int id)
         {
-            var supDto= _supplierBusiness.GetSupplier(id);
+            var supDto = _supplierBusiness.GetSupplier(id);
             var suppVM = new SupplierVM();
-            AutoMapper.Mapper.Map(supDto,suppVM);
+            AutoMapper.Mapper.Map(supDto, suppVM);
             return View(suppVM);
         }
 
@@ -52,7 +66,8 @@ namespace WebLandingTemplate.Controllers
         {
 
             HttpFileCollectionBase collectionBase = Request.Files;
-            if (collectionBase.Get(0).ContentLength>0 && collectionBase.Get(0).ContentType == "image/jpeg") {
+            if (collectionBase.Get(0).ContentLength > 0 && collectionBase.Get(0).ContentType == "image/jpeg")
+            {
                 WebImage image = new WebImage(collectionBase.Get(0).InputStream);
                 supplierVM.Logo = image.GetBytes();
             }
@@ -86,7 +101,7 @@ namespace WebLandingTemplate.Controllers
         {
             var suppDto = _supplierBusiness.GetSupplier(id);
             var suppVM = new SupplierVM();
-            AutoMapper.Mapper.Map(suppDto,suppVM);
+            AutoMapper.Mapper.Map(suppDto, suppVM);
             return View(suppVM);
         }
 
@@ -97,15 +112,15 @@ namespace WebLandingTemplate.Controllers
             try
             {
                 HttpFileCollectionBase collectionBase = Request.Files;
-                string typeFile=collectionBase.Get(0).ContentType;
-                if (collectionBase.Get(0).ContentLength > 0 && collectionBase.Get(0).ContentType== "image/jpeg")
+                string typeFile = collectionBase.Get(0).ContentType;
+                if (collectionBase.Get(0).ContentLength > 0 && collectionBase.Get(0).ContentType == "image/jpeg")
                 {
                     WebImage image = new WebImage(collectionBase.Get(0).InputStream);
                     supplierVM.Logo = image.GetBytes();
                 }
                 var supplierDto = new SupplierDto();
                 // TODO: Add update logic here
-                AutoMapper.Mapper.Map(supplierVM,supplierDto);
+                AutoMapper.Mapper.Map(supplierVM, supplierDto);
                 _supplierBusiness.UpdateSupplier(supplierDto);
                 return RedirectToAction("Index");
             }
@@ -120,7 +135,7 @@ namespace WebLandingTemplate.Controllers
         {
             var suppDto = _supplierBusiness.GetSupplier(id);
             var suppVM = new SupplierVM();
-            AutoMapper.Mapper.Map(suppDto,suppVM);
+            AutoMapper.Mapper.Map(suppDto, suppVM);
 
             return View(suppVM);
         }
@@ -148,7 +163,8 @@ namespace WebLandingTemplate.Controllers
         {
             SupplierDto supplier = _supplierBusiness.GetSupplier(id);
 
-            if (supplier.Logo != null) {
+            if (supplier.Logo != null)
+            {
 
                 if (supplier.Logo.Length > 0)
                 {
