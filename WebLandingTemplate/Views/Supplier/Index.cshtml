@@ -1,8 +1,11 @@
-﻿@model IEnumerable<WebLandingTemplate.Models.SupplierVM>
-
+﻿@model PagedList.IPagedList<WebLandingTemplate.Models.SupplierVM>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
     ViewBag.Title = "Index";
+    ViewBag.table_length ="";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
 }
 
 <!---<h2>Consultar</h2>-->
@@ -21,13 +24,31 @@
         <div class="row">
             <div class="col-sm-12 col-md-6">
                 <div class="dataTables_length" id="data-table_length">
-                    <label>Mostrar <select name="data-table_length" aria-controls="data-table" class="form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label>
+                    <label>
+                        Mostrar
+                        @using (Html.BeginForm("Index", "Supplier",  FormMethod.Post))
+                        {
+                        <select id="data-table_length" aria-controls="data-table" class="form-control form-control-sm">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                        </select>
+                           // <input id="Value_hidden" value="" type="hidden" class="form-control" name="pageSize">
+                        }
+
+                        entries
+                    </label>
 
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6">
-                <div id="data-table_filter" class="dataTables_filter"><label>Buscar:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="data-table"></label></div>
+            @using (Html.BeginForm("Index", "Supplier", FormMethod.Post))
+            {
+            <div class="col-sm-12 col-md-12">
+                <div id="data-table_filter" class="dataTables_filter"><input type="search" name="searchString" id="searchInput" data-search="searchString" class="form-control form-control-sm" placeholder="Búscar..." aria-controls="data-table"></div>
+
             </div>
+            }
 
         </div>
 
@@ -44,26 +65,88 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            <tr role="row" class="odd">
-                                <td tabindex="0" class="sorting_1">
-                                    @Html.DisplayFor(modelItem => item.Name)
-                                </td>
-                                <td tabindex="0" class="sorting_1">
-                                    @Html.DisplayFor(modelItem => item.Descripcion)
-                                </td>
-                                <td>
-                                    @Html.ActionLink("Editar", "Edit", new { id = item.ProveedorId }) |
-                                    @Html.ActionLink("Detalles", "Details", new { id = item.ProveedorId }) |
-                                    @Html.ActionLink("Eliminar", "Delete", new { id = item.ProveedorId })
-                                </td>
-                            </tr>
+                        <tr role="row" class="odd">
+                            <td tabindex="0" class="sorting_1">
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td tabindex="0" class="sorting_1">
+                                @Html.DisplayFor(modelItem => item.Descripcion)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Editar", "Edit", new { id = item.ProveedorId }) |
+                                @Html.ActionLink("Detalles", "Details", new { id = item.ProveedorId }) |
+                                @Html.ActionLink("Eliminar", "Delete", new { id = item.ProveedorId })
+                            </td>
+                        </tr>
                         }
                     </tbody>
                 </table>
             </div>
-        </div><div class="row"><div class="col-sm-12 col-md-5"><div class="dataTables_info" id="data-table_info" role="status" aria-live="polite">Showing 1 to 10 of 10 entries</div></div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="data-table_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="data-table_previous"><a href="#" aria-controls="data-table" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li><li class="paginate_button page-item active"><a href="#" aria-controls="data-table" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item next disabled" id="data-table_next"><a href="#" aria-controls="data-table" data-dt-idx="2" tabindex="0" class="page-link">Next</a></li></ul></div></div></div>
-    </div>
+        </div><div class="row">
+            Pagina @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+
+            <!--<div class="col-sm-12 col-md-5"><div class="dataTables_info" id="data-table_info" role="status" aria-live="polite">Showing 1 to 10 of 10 entries</div></div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="data-table_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="data-table_previous"><a href="#" aria-controls="data-table" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li><li class="paginate_button page-item active"><a href="#" aria-controls="data-table" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item next disabled" id="data-table_next"><a href="#" aria-controls="data-table" data-dt-idx="2" tabindex="0" class="page-link">Next</a></li></ul></div></div></div>-->
         </div>
+    </div>
+</div>
+
+<script>
+    function getStringSearch()
+{
+    $.ajax({
+         url: 'Supplier/Test',
+         type: 'POST',
+         contentType: 'application/json;',
+         data: JSON.stringify({ id: checkId }),
+         success: function (valid)
+         {
+              if(valid) {
+                  //show that id is valid
+              } else {
+                  //show that id is not valid
+              }
+         }
+    });
+}
+</script>
+<script>
+
+        $('#data-table_length').on('change', function (event) {
+            var form = $(event.target).parents('form');
+            var value = $("#data-table_length:selected").text().toString()
+            console.log("El valor "+value);
+           // select.setAttribute(value,value);
+            //form.setAttribute(name, value);
+
+           // form.submit();
+        });
+
+
+    function EntriesNumber() {
+        $('#data-table_length').on('change', function (event) {
+            var form = $(event.target).parents('form');
+
+            form.submit();
+        });
+
+      /*value=  $("#data-table_length :selected").val();
+        console.log(vlue);
+        $.ajax({
+            url: '/Supplier/Index',
+            type: 'POST',
+            contentType: 'application/json;',
+            data: JSON.stringify({ pageSize: value }),
+            success: function (valid) {
+                if (valid) {
+                    //show that id is valid
+                } else {
+                    //show that id is not valid
+                }
+            }
+        });*/
+    }
+</script>
 
 
 

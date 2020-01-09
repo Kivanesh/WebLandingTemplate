@@ -38,13 +38,10 @@
                     <thead>
                         <tr role="row">
                             <th class="sorting_asc" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" style="width: 147px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">
-                                @Html.DisplayNameFor(model => model.ProductId)
-                            </th>
-                            <th class="sorting_asc" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" style="width: 147px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">
                                 @Html.DisplayNameFor(model => model.ProductName)
                             </th>
                             <th class="sorting_asc" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" style="width: 147px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">
-                              @Html.DisplayNameFor(model => model.ProveedorId)
+                                @Html.DisplayNameFor(model => model.ProveedorId)
                             </th>
                             <th class="sorting_asc" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" style="width: 147px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">
                                 @Html.DisplayNameFor(model => model.Price)
@@ -66,42 +63,42 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            <tr role="row" class="odd">
-                                <td tabindex="0" class="sorting_1">
-                                    @Html.DisplayFor(modelItem => item.ProductId)
-                                </td>
-                                <td tabindex="0" class="sorting_1">
-                                    @Html.DisplayFor(modelItem => item.ProductName)
-                                </td>
-                                <td tabindex="0" class="sorting_1">
-                                    <a  href="/Supplier/Details/@item.ProveedorId">
-                                        @Html.DisplayFor(modelItem => item.ProveedorId)
-                                    </a>
-                                    
-                                </td>
-                                <td tabindex="0" class="sorting_1">
-                                    @Html.DisplayFor(modelItem => item.Price)
-                                </td>
-                                <td tabindex="0" class="sorting_1">
-                                    @Html.DisplayFor(modelItem => item.Description)
-                                </td>
-                                <td tabindex="0" class="sorting_1">
-                                    @Html.DisplayFor(modelItem => item.Size)
-                                </td>
-                                <td tabindex="0" class="sorting_1">
-                                    @Html.DisplayFor(modelItem => item.Color)
-                                </td>
-                                <td tabindex="0" class="sorting_1" >
-                                    <a href="/Category/Details/@item.ProductType">
-                                        @Html.DisplayFor(modelItem => item.ProductType)
-                                    </a>
-                                </td>
-                                <td>
-                                    @Html.ActionLink("Editar", "Edit", new { id = item.ProductId }) |
-                                    @Html.ActionLink("Detalles", "Details", new { id = item.ProductId }) |
-                                    @Html.ActionLink("Eliminar", "Delete", new { id = item.ProductId })
-                                </td>
-                            </tr>
+                        <tr role="row" class="odd">
+                            <td tabindex="0" class="sorting_1">
+                                @Html.DisplayFor(modelItem => item.ProductId)
+                            </td>
+                            <td tabindex="0" class="sorting_1">
+                                @Html.DisplayFor(modelItem => item.ProductName)
+                            </td>
+                            <td tabindex="0" class="sorting_1">
+                                <a href="/Supplier/Details/@item.ProveedorId">
+                                    @Html.DisplayFor(modelItem => item.ProveedorId)
+                                </a>
+
+                            </td>
+                            <td tabindex="0" class="sorting_1">
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </td>
+                            <td tabindex="0" class="sorting_1">
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+                            <td tabindex="0" class="sorting_1">
+                                @Html.DisplayFor(modelItem => item.Size)
+                            </td>
+                            <td tabindex="0" class="sorting_1">
+                                @Html.DisplayFor(modelItem => item.Color)
+                            </td>
+                            <td tabindex="0" class="sorting_1">
+                                <a href="/Category/Details/@item.ProductType">
+                                    @Html.DisplayFor(modelItem => item.ProductType)
+                                </a>
+                            </td>
+                            <td>
+                                @Html.ActionLink("Editar", "Edit", new { id = item.ProductId }) |
+                                @Html.ActionLink("Detalles", "Details", new { id = item.ProductId }) |
+                                @Html.ActionLink("Eliminar", "Delete", new { id = item.ProductId })
+                            </td>
+                        </tr>
                         }
                     </tbody>
                 </table>
