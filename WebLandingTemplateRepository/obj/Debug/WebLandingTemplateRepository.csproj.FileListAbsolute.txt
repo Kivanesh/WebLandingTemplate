@@ -7,6 +7,5 @@ C:\WebLandingTemplate\WebLandingTemplateRepository\bin\Debug\EntityFramework.xml
 C:\WebLandingTemplate\WebLandingTemplateRepository\bin\Debug\EntityFramework.SqlServer.xml
 C:\WebLandingTemplate\WebLandingTemplateRepository\bin\Debug\es\EntityFramework.resources.dll
 C:\WebLandingTemplate\WebLandingTemplateRepository\bin\Debug\es\EntityFramework.SqlServer.resources.dll
-C:\WebLandingTemplate\WebLandingTemplateRepository\obj\Debug\WebLandingTemplateRepository.csprojResolveAssemblyReference.cache
 C:\WebLandingTemplate\WebLandingTemplateRepository\obj\Debug\WebLandingTemplateRepository.dll
 C:\WebLandingTemplate\WebLandingTemplateRepository\obj\Debug\WebLandingTemplateRepository.pdb

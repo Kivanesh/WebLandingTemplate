@@ -55,6 +55,8 @@ C:\WebLandingTemplate\WebLandingTemplate\bin\Microsoft.Owin.Security.Twitter.dll
 C:\WebLandingTemplate\WebLandingTemplate\bin\Microsoft.Web.Infrastructure.dll
 C:\WebLandingTemplate\WebLandingTemplate\bin\Newtonsoft.Json.dll
 C:\WebLandingTemplate\WebLandingTemplate\bin\Owin.dll
+C:\WebLandingTemplate\WebLandingTemplate\bin\PagedList.dll
+C:\WebLandingTemplate\WebLandingTemplate\bin\PagedList.Mvc.dll
 C:\WebLandingTemplate\WebLandingTemplate\bin\System.Runtime.CompilerServices.Unsafe.dll
 C:\WebLandingTemplate\WebLandingTemplate\bin\System.ValueTuple.dll
 C:\WebLandingTemplate\WebLandingTemplate\bin\System.Web.Helpers.dll
@@ -78,6 +80,8 @@ C:\WebLandingTemplate\WebLandingTemplate\bin\WebLandingTemplateRepository.dll.co
 C:\WebLandingTemplate\WebLandingTemplate\bin\AutoMapper.pdb
 C:\WebLandingTemplate\WebLandingTemplate\bin\AutoMapper.xml
 C:\WebLandingTemplate\WebLandingTemplate\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\WebLandingTemplate\WebLandingTemplate\bin\PagedList.xml
+C:\WebLandingTemplate\WebLandingTemplate\bin\PagedList.Mvc.xml
 C:\WebLandingTemplate\WebLandingTemplate\bin\System.Runtime.CompilerServices.Unsafe.xml
 C:\WebLandingTemplate\WebLandingTemplate\bin\System.ValueTuple.xml
 C:\WebLandingTemplate\WebLandingTemplate\bin\System.Web.Helpers.xml

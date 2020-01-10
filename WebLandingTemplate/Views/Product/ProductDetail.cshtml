@@ -1,0 +1,171 @@
+﻿@model WebLandingTemplate.Models.ProductVM
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Detalle de Producto";
+}
+<div class="page-subheader mb-30">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-7">
+                <div class="list">
+                    <div class="list-item pl-0">
+                        <div class="list-thumb ml-0 mr-3 pr-3  b-r text-muted">
+                            Detalles
+                        </div>
+                        <div class="list-body">
+                            <div class="list-title fs-2x">
+                                <h3>Información de Producto</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 d-flex justify-content-end">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb no-padding bg-trans mb-0">
+                        <li class="breadcrumb-item"><a href="@Url.Action("Index","Admin")"><i class="icon-Home mr-2 fs14"></i></a></li>
+                        <li class="breadcrumb-item">Dashboard</li>
+                        <li class="breadcrumb-item">Productos</li>
+                        <li class="breadcrumb-item active">Detalles Producto Id: @Model.ProductId</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div><!-- page-sub-Header end-->
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="portlet-box portlet-gutter ui-buttons-col mb-30">
+                <div class="portlet-header flex-row flex d-flex align-items-center b-b">
+                    <div class="flex d-flex flex-column">
+                        <h3>Bootstrap Form Validation</h3>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <form class="needs-validation" novalidate>
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-row">
+                                <div class="col-md-2 mb-3">
+                                    <div class="input-icon-group">
+                                        @Html.LabelFor(model => model.ProductId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="input-icon-append">
+                                            <i class="fa fa-id-card"></i>
+                                            @Html.EditorFor(model => model.ProductId, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.ProductId, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="input-icon-group">
+                                        @Html.LabelFor(model => model.ProductName, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="input-icon-append">
+                                            <i class="fa fa-font"></i>
+                                            @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 mb-3">
+                                    <div class="input-icon-group">
+                                        @Html.LabelFor(model => model.ProveedorId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="input-icon-append">
+                                            <i class="fa fa-id-badge"></i>
+                                            @Html.EditorFor(model => model.ProveedorId, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.ProveedorId, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="input-icon-group">
+                                        @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="input-icon-append">
+                                            <i class="fa fa-dollar-sign"></i>
+                                            @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!--row-->
+                            <div class="form-row">
+                                <div class="col-md-6 mb-3">
+                                    <div class="input-icon-group">
+                                        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="input-icon-append">
+                                            <i class="fa fa-book"></i>
+                                            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="input-icon-group">
+                                        @Html.LabelFor(model => model.Size, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="input-icon-append">
+                                            <i class="fa fa-exclamation"></i>
+                                            @Html.EditorFor(model => model.Size, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Size, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!--row-->
+                            <div class="form-row">
+                                <div class="col-md-4 mb-3">
+                                    <div class="input-icon-group">
+                                       @Html.LabelFor(model => model.Color, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="input-icon-append">
+                                            <i class="fa fa-moon"></i>
+                                            @Html.EditorFor(model => model.Color, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Color, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="input-icon-group">
+                                        @Html.LabelFor(model => model.ProductType, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="input-icon-append">
+                                            <i class="fa fa-sun"></i>
+                                            @Html.EditorFor(model => model.ProductType, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.ProductType, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!--row-->
+                            <div class="form-group pb-20 mb-0">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                    <label class="form-check-label" for="invalidCheck">
+                                        Agree to terms and conditions
+                                    </label>
+                                    <div class="invalid-feedback">
+                                        You must agree before submitting.
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary" type="submit">Submit form</button>
+                        </form>
+                    }
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div><!-- main end-->
+<footer class="content-footer bg-light b-t">
+    <div class="d-flex flex align-items-center pl-15 pr-15">
+        <div class="d-flex flex p-3 ml-auto">
+            <div>
+                <a href="#" class="d-inline-flex pl-0 pr-2 b-r">Edit</a>
+                <a href="#" class="d-inline-flex pl-2 pr-2 b-r">Storage</a>
+                <a href="#" class="d-inline-flex pl-2 pr-2 ">Privacy</a>
+            </div>
+        </div>
+        <div class="d-flex flex p-3 mr-auto justify-content-end">
+            <div class="text-muted">© Copyright 2014-2018. Assan</div>
+        </div>
+    </div>
+</footer><!-- footer end-->
+

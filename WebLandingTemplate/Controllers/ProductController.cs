@@ -36,7 +36,7 @@ namespace WebLandingTemplate.Controllers
             var prodVM = new ProductVM();
             AutoMapper.Mapper.Map(prodDto, prodVM);
 
-            return View(prodVM);
+            return View("ProductDetail",prodVM);
         }
 
         // GET: Product/Create
@@ -68,7 +68,7 @@ namespace WebLandingTemplate.Controllers
             var prodDto = _productBusiness.GetProduct(id);
             var prodVM = new ProductVM();
             AutoMapper.Mapper.Map(prodDto, prodVM);
-            return View(prodVM);
+            return View("ProductDetail", prodVM);
         }
 
         // POST: Product/Edit/5

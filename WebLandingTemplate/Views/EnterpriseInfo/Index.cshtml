@@ -1,100 +1,192 @@
 ﻿@model WebLandingTemplate.Models.EnterpriseInfoVM
-
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
-
     ViewBag.Title = "Index";
 }
+<div class="page-subheader mb-30">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-7">
+                <div class="list">
+                    <div class="list-item pl-0">
+                        <div class="list-thumb ml-0 mr-3 pr-3  b-r text-muted">
+                            Detalles
+                        </div>
+                        <div class="list-body">
+                            <div class="list-title fs-2x">
+                                <h3>Información Empresarial</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 d-flex justify-content-end">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb no-padding bg-trans mb-0">
+                        <li class="breadcrumb-item"><a href="@Url.Action("Index","Admin")"><i class="icon-Home mr-2 fs14"></i></a></li>
+                        <li class="breadcrumb-item">Dashboard</li>
+                        <li class="breadcrumb-item active">Info Empresa</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div><!-- page-sub-Header end-->
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="portlet-box portlet-gutter ui-buttons-col mb-30">
+                <div class="portlet-header flex-row flex d-flex align-items-center b-b">
+                    <div class="flex d-flex flex-column">
+                        <h3>Bootstrap Form Validation</h3>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                    <form class="needs-validation" novalidate>
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-row">
+                            <div class="col-md-4 mb-3">
+                                <div class="input-icon-group">
+                                    @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="input-icon-append">
+                                        <i class="fa fa-address-card"></i>
+                                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="input-icon-group">
+                                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="input-icon-append">
+                                        <i class="fa fa-envelope"></i>
+                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="input-icon-group">
+                                    @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="input-icon-append">
+                                        <i class="fa fa-phone"></i>
+                                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!--row-->
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <div class="input-icon-group">
+                                    @Html.LabelFor(model => model.BusinessHours, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="input-icon-append">
+                                        <i class="fa fa-hourglass-start"></i>
+                                        @Html.EditorFor(model => model.BusinessHours, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.BusinessHours, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="input-icon-group">
+                                    @Html.LabelFor(model => model.SocialMedia, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="input-icon-append">
+                                        <i class="fa fa-users"></i>
+                                        @Html.EditorFor(model => model.SocialMedia, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.SocialMedia, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!--row-->
+                        <div class="form-row">
+                            <div class="col-md-4 mb-3">
+                                <div class="input-icon-group">
+                                    @Html.LabelFor(model => model.Mision, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="input-icon-append">
+                                        <i class="fa fa-exclamation"></i>
+                                       @Html.EditorFor(model => model.Mision, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Mision, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="input-icon-group">
+                                    @Html.LabelFor(model => model.Vision, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="input-icon-append">
+                                        <i class="fa fa-binoculars"></i>
+                                       @Html.EditorFor(model => model.Vision, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Vision, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="input-icon-group">
+                                    @Html.LabelFor(model => model.Valores, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="input-icon-append">
+                                        <i class="fa fa-sun"></i>
+                                        @Html.EditorFor(model => model.Valores, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Valores, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!--row-->
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <div class="input-icon-group">
+                                    @Html.LabelFor(model => model.EmailOptional1, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="input-icon-append">
+                                        <i class="fa fa-envelope"></i>
+                                        @Html.EditorFor(model => model.EmailOptional1, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.EmailOptional1, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="input-icon-group">
+                                    @Html.LabelFor(model => model.EmailOptional2, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="input-icon-append">
+                                        <i class="fa fa-envelope"></i>
+                                        @Html.EditorFor(model => model.EmailOptional2, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.EmailOptional2, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                           
+                        </div><!--row-->
+                        <div class="form-group pb-20 mb-0">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                <label class="form-check-label" for="invalidCheck">
+                                    Agree to terms and conditions
+                                </label>
+                                <div class="invalid-feedback">
+                                    You must agree before submitting.
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Submit form</button>
+                    </form>
+                    }
+                </div>
+            </div>
 
-<h2>Index</h2>
-
-<div>
-    <h4>EnterpriseInfoVM</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Phone)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Phone)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.BusinessHours)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.BusinessHours)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SocialMedia)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SocialMedia)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Mision)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Mision)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Vision)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Vision)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Valores)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Valores)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.EmailOptional1)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EmailOptional1)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.EmailOptional2)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EmailOptional2)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+        </div>
+    </div>
+</div><!-- main end-->
+<footer class="content-footer bg-light b-t">
+    <div class="d-flex flex align-items-center pl-15 pr-15">
+        <div class="d-flex flex p-3 ml-auto">
+            <div>
+                <a href="@Url.Action("Edit", "EnterpriseInfo")" class="d-inline-flex pl-0 pr-2 b-r">Edit</a>
+                <a href="#" class="d-inline-flex pl-2 pr-2 b-r">Storage</a>
+                <a href="#" class="d-inline-flex pl-2 pr-2 ">Privacy</a>
+            </div>
+        </div>
+        <div class="d-flex flex p-3 mr-auto justify-content-end">
+            <div class="text-muted">© Copyright 2014-2018. Assan</div>
+        </div>
+    </div>
+</footer><!-- footer end-->
