@@ -37,6 +37,17 @@ namespace WebLandingTemplate.Controllers
             AutoMapper.Mapper.Map(prodDto, prodVM);
 
             return View("ProductDetail",prodVM);
+            //return PartialView("ModalProduct", prodVM);
+        }
+
+        // GET: Product/Details/5
+        public ActionResult DetailsModal(int id)
+        {
+            var prodDto = _productBusiness.GetProduct(id);
+            var prodVM = new ProductVM();
+            AutoMapper.Mapper.Map(prodDto, prodVM);
+
+            return PartialView("ModalProduct", prodVM);
         }
 
         // GET: Product/Create

@@ -1,4 +1,5 @@
 C:\WebLandingTemplate\WebLandingTemplateDomainModel\bin\Debug\WebLandingTemplateDomainModel.dll
 C:\WebLandingTemplate\WebLandingTemplateDomainModel\bin\Debug\WebLandingTemplateDomainModel.pdb
+C:\WebLandingTemplate\WebLandingTemplateDomainModel\obj\Debug\WebLandingTemplateDomainModel.csprojResolveAssemblyReference.cache
 C:\WebLandingTemplate\WebLandingTemplateDomainModel\obj\Debug\WebLandingTemplateDomainModel.dll
 C:\WebLandingTemplate\WebLandingTemplateDomainModel\obj\Debug\WebLandingTemplateDomainModel.pdb

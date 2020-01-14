@@ -35,30 +35,50 @@ namespace WebLandingTemplate.Controllers
             var itemVM = new CategoryVM();
             AutoMapper.Mapper.Map(itemDto, itemVM);
 
-            return View(itemVM);
+            return PartialView("CategoryDetail",itemVM);
         }
+
+        // GET: Product/Details/5
+        public ActionResult DetailsModal(int id)
+        {
+            var itemDto = _categoryBusiness.GetCategory(id);
+            var itemVM = new CategoryVM();
+            AutoMapper.Mapper.Map(itemDto, itemVM);
+
+            return PartialView("ModalCategory", itemVM);
+        }
+
 
         // GET: Category/Create
         public ActionResult Create()
         {
-            return View();
+            return PartialView();
         }
 
         // POST: Category/Create
         [HttpPost]
         public ActionResult Create(CategoryVM itemVM)
         {
-            try
+            if (ModelState.IsValid)
             {
-                var itemDto = new CategoryDto();
-                AutoMapper.Mapper.Map(itemVM, itemDto);
-                var result = _categoryBusiness.InsertCategory(itemDto);
-                return RedirectToAction("Index");
+                try
+                {
+                    var itemDto = new CategoryDto();
+                    AutoMapper.Mapper.Map(itemVM, itemDto);
+                    var result = _categoryBusiness.InsertCategory(itemDto);
+                    return RedirectToAction("Index");
+                }
+                catch
+                {
+                    return PartialView();
+                }
             }
-            catch
+            else
             {
-                return View();
+                return View("Create","_AdminLayout",itemVM);
             }
+
+           
         }
 
         // GET: Category/Edit/5

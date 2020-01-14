@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="button">
-                    @Html.ActionLink("Nueva Categoria", "Create", new { id = "" }, new { @class = "btn btn-primary mr-1 mb-2" })
+                    @Html.ActionLink("Nueva Categoria", "Create", "Category", new { id = "" }, new { @class = " modal-link btn btn-primary mr-1 mb-2" })
 
                 </div>
             </div>
@@ -52,6 +52,7 @@
                                     @Html.DisplayFor(modelItem => item.ItemCodeType)
                                 </td>
                                 <td>
+                                    @Html.ActionLink("Details", "DetailsModal", "Category", new { id = item.CategoryId }, new { @class = "modal-link switch-disable", title = "Detalles de Categoria" }) |
                                     @Html.ActionLink("Editar", "Edit", new { id = item.CategoryId }) |
                                     @Html.ActionLink("Detalles", "Details", new { id = item.CategoryId }) |
                                     @Html.ActionLink("Eliminar", "Delete", new { id = item.CategoryId })
@@ -64,6 +65,7 @@
         </div><div class="row"><div class="col-sm-12 col-md-5"><div class="dataTables_info" id="data-table_info" role="status" aria-live="polite">Showing 1 to 10 of 10 entries</div></div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="data-table_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="data-table_previous"><a href="#" aria-controls="data-table" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li><li class="paginate_button page-item active"><a href="#" aria-controls="data-table" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item next disabled" id="data-table_next"><a href="#" aria-controls="data-table" data-dt-idx="2" tabindex="0" class="page-link">Next</a></li></ul></div></div></div>
     </div>
 </div>
+
 
 
 

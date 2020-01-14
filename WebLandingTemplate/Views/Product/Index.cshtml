@@ -94,6 +94,7 @@
                                 </a>
                             </td>
                             <td>
+                                @Html.ActionLink("Modal", "DetailsModal", "Product", new { id = item.ProductId }, new { @class = "modal-link switch-disable", title = "Detalles de Categoria" }) |
                                 @Html.ActionLink("Editar", "Edit", new { id = item.ProductId }) |
                                 @Html.ActionLink("Detalles", "Details", new { id = item.ProductId }) |
                                 @Html.ActionLink("Eliminar", "Delete", new { id = item.ProductId })

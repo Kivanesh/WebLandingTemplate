@@ -2801,7 +2801,6 @@
     <Content Include="Views\Supplier\Create.cshtml" />
     <Content Include="Views\Supplier\Edit.cshtml" />
     <Content Include="Views\Supplier\Delete.cshtml" />
-    <Content Include="Views\Category\Create.cshtml" />
     <Content Include="Views\Category\Delete.cshtml" />
     <Content Include="Views\Category\Details.cshtml" />
     <Content Include="Views\Category\Edit.cshtml" />
@@ -2844,6 +2843,11 @@
     <Content Include="Views\ContactMessage\Inbox.cshtml" />
     <Content Include="Views\ContactMessage\MessageDetail.cshtml" />
     <Content Include="Views\Product\ProductDetail.cshtml" />
+    <Content Include="Views\Category\ModalCategory.cshtml" />
+    <Content Include="Views\Shared\_Modal.cshtml" />
+    <Content Include="Views\Product\ModalProduct.cshtml" />
+    <Content Include="Views\Category\CategoryDetail.cshtml" />
+    <Content Include="Views\Category\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
