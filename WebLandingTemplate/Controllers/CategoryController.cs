@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -19,14 +20,25 @@ namespace WebLandingTemplate.Controllers
         }
 
         // GET: Category
-        public ActionResult Index()
+        public ActionResult Index(int? page, string searchString, int pageSize = 5)
         {
-            var listaDto = _categoryBusiness.GetAllCategory();
+            int pageNumber = (page ?? 1);
             var listaVM = new List<CategoryVM>();
-            AutoMapper.Mapper.Map(listaDto, listaVM);
+           
 
-            return View(listaVM);
-            
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                var listaDto =_categoryBusiness.GetAllCategory().Where(c => c.Name.Contains(searchString));
+                AutoMapper.Mapper.Map(listaDto, listaVM);
+            }
+            else
+            {
+                var listaDto = _categoryBusiness.GetAllCategory();
+                AutoMapper.Mapper.Map(listaDto, listaVM);
+            }
+
+            return View(listaVM.ToPagedList(pageNumber, pageSize));
+
         }
         // GET: Category/Details/5
         public ActionResult Details(int id)
