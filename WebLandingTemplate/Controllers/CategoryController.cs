@@ -47,7 +47,7 @@ namespace WebLandingTemplate.Controllers
             var itemVM = new CategoryVM();
             AutoMapper.Mapper.Map(itemDto, itemVM);
 
-            return PartialView("CategoryDetail",itemVM);
+            return PartialView(itemVM);
         }
 
         // GET: Product/Details/5
@@ -89,6 +89,7 @@ namespace WebLandingTemplate.Controllers
             else
             {
                 return View("Create","_AdminLayout",itemVM);
+                //return PartialView("ModalCategory", itemVM);
             }
 
            
@@ -100,23 +101,32 @@ namespace WebLandingTemplate.Controllers
             var itemDto = _categoryBusiness.GetCategory(id);
             var itemVM = new CategoryVM();
             AutoMapper.Mapper.Map(itemDto, itemVM);
-            return View(itemVM);
+            ViewBag.ModalName = "Editar Categoría";
+            return PartialView(itemVM);
+            //return View(itemVM);
         }
 
         // POST: Category/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, CategoryVM itemVM)
         {
-            try
-            {
-                var itemDto = new CategoryDto();
-                AutoMapper.Mapper.Map(itemVM, itemDto);
-                var result = _categoryBusiness.UpdateCategory(itemDto);
-                return RedirectToAction("Index");
+            if (ModelState.IsValid) {
+                try
+                {
+                    var itemDto = new CategoryDto();
+                    AutoMapper.Mapper.Map(itemVM, itemDto);
+                    var result = _categoryBusiness.UpdateCategory(itemDto);
+                    return RedirectToAction("Index");
+                }
+                catch
+                {
+                    return View();
+                }
             }
-            catch
+            else
             {
-                return View();
+                return View("Create","_AdminLayout",itemVM);
+                //return PartialView("ModalCategory", itemVM);
             }
         }
 

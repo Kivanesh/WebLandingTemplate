@@ -59,8 +59,8 @@
                                 </td>
                                 <td>
                                     @Html.ActionLink("Details", "DetailsModal", "Category", new { id = item.CategoryId }, new { @class = "modal-link switch-disable", title = "Detalles de Categoria" }) |
-                                    @Html.ActionLink("Editar", "Edit", new { id = item.CategoryId }) |
-                                    @Html.ActionLink("Detalles", "Details", new { id = item.CategoryId }) |
+                                    @Html.ActionLink("Editar", "Edit", new { id = item.CategoryId }, new { @class = "modal-link btn btn-primary mr-1 mb-2" }) |
+                                    @Html.ActionLink("Detalles", "Details", new { id = item.CategoryId }, new { @class = "modal-link btn btn-primary mr-1 mb-2" }) |
                                     @Html.ActionLink("Eliminar", "Delete", new { id = item.CategoryId })
                                 </td>
                             </tr>

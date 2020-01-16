@@ -1,35 +1,51 @@
 ﻿@model WebLandingTemplate.Models.CategoryVM
 
-@{
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
-    ViewBag.Title = "Details";
-}
+<div class="modal-body form-control-file">
+    <div class="row-fluid form-group col-md-12">
 
-<h2>Details</h2>
+        <div class="row">
+            <div class="portlet-box portlet-gutter ui-buttons-col mb-30">
+                <div class="portlet-header flex-row flex d-flex align-items-center b-b">
+                    <div class="flex d-flex flex-column">
+                        <h3>@ViewBag.ModalName</h3>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <form>
+                        <div class="form-row">
+                            <div class="col-md-5 mb-3">
+                                <div class="input-icon-group">
+                                    @Html.DisplayNameFor(model => model.Name)
+                                    <div class="input-icon-append">
+                                        <i class="fa fa-user"></i>
+                                        @Html.LabelFor(model => model.Name, new { @class = "form-control" , @readonly = "readonly" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <div class="input-icon-group">
+                                    @Html.DisplayNameFor(model => model.ItemCodeType)
+                                    <div class="input-icon-append">
+                                        <i class="fa fa-bookmark"></i>
+                                        @Html.LabelFor(model => model.ItemCodeType, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!--row-->
 
-<div>
-    <h4>CategoryVM</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+                    </form>
+                 
+                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ItemCodeType)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ItemCodeType)
-        </dd>
-
-    </dl>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.CategoryId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<div class="row-fluid">
+    <div class="modal-footer">
+        <button type="button" id="CancelModal" class="btn-danger btn-sm btn-secondary rounded" data-dismiss="modal"><span><i class="fa fa-close" aria-hidden="true"></i> </span>Cerrar</button>
+    </div>
+</div>
+
+
+

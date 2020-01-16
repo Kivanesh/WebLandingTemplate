@@ -10,6 +10,7 @@ namespace WebLandingTemplate.Models
 {
     public class CategoryVM
     {
+       [Key]
         public int CategoryId { get; set; }
 
         [Required]
