@@ -1,0 +1,55 @@
+﻿@model WebLandingTemplate.Models.LoginViewModel
+@{
+    ViewBag.Title = "Iniciar sesión";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="bg-parallax parallax-overlay accounts-page" data-jarallax='{"speed": 0.2}' style='background-image: url("/Html/images/bg6.jpg")'>
+    <div class="container">
+        <div class="row pb30">
+            <div class="col-lg-4 col-md-6 mr-auto ml-auto col-sm-8">
+                <section id="loginForm">
+                    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <h3 class="text-white text-center mb30">Login to continue</h3>
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <form>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Email, new { @class = " text-white control-label" })
+                                <div class="col-md-12">
+                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Password, new { @class = " text-white control-label" })
+                                <div class="col-md-12">
+                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <div class="checkbox">
+                                        @Html.CheckBoxFor(m => m.RememberMe)
+                                        @Html.LabelFor(m => m.RememberMe)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-rounded btn-primary btn-block">Sign In</button>
+                            </div>
+                            <div class="text-center"><a href="#" class="btn btn-link btn-block">Having trouble logging in?</a></div>
+                            <hr>
+                            <div>
+                                <a href="@Url.Action("Register", "Account")" class="btn btn-white-outline btn-block">Sign Up</a>
+                            </div>
+                        </form>
+                    }
+                    </section>
+            </div>
+        </div>
+    </div>
+</div>
