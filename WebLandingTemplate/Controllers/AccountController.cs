@@ -58,7 +58,7 @@ namespace WebLandingTemplate.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
-            return View();
+            return View("LoginView");
         }
 
         //
@@ -70,7 +70,7 @@ namespace WebLandingTemplate.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View(model);
+                return View("LoginView",model);
             }
 
             // No cuenta los errores de inicio de sesión para el bloqueo de la cuenta
@@ -87,7 +87,7 @@ namespace WebLandingTemplate.Controllers
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Intento de inicio de sesión no válido.");
-                    return View(model);
+                    return View("LoginView",model);
             }
         }
 

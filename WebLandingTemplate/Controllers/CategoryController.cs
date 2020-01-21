@@ -65,7 +65,7 @@ namespace WebLandingTemplate.Controllers
         public ActionResult Create()
         {
             ViewBag.ModalName = "Crear Categoría";
-            return PartialView();
+            return PartialView("ModalCategory");
         }
 
         // POST: Category/Create

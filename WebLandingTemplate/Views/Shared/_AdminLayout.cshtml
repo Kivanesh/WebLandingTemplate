@@ -13,6 +13,8 @@
     <link href="~/Html-adminDashboard/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!--Common Plugins CSS -->
     <link href="~/Html-adminDashboard/css/plugins/plugins.css" rel="stylesheet">
+    <!--smart-form CSS-->
+    <link type="text/css" rel="stylesheet" href=@Url.Content("/Html/smart-form/contact/css/smart-forms.css")>
     <!--fonts-->
     <link href="~/Html-adminDashboard/lib/line-icons/line-icons.css" rel="stylesheet">
     <link href="~/Html-adminDashboard/lib/font-awesome/css/fontawesome-all.min.css" rel="stylesheet">
@@ -70,6 +72,12 @@
     <!-- Sweetalerts2 js -->
     <script type="text/javascript" src="~/Html-adminDashboard/lib/sweet-alerts2/sweetalert2.min.js"></script>
     <script src="~/Html-adminDashboard/js/plugins-custom/sweetalert2-custom.js"></script>
+
+    <!--smart-form script-->
+    <script src=@Url.Content("/Html/smart-form/contact/js/jquery.form.min.js") type="text/javascript"></script>
+    <script src=@Url.Content("/Html/smart-form/contact/js/jquery.validate.min.js") type="text/javascript"></script>
+    <script src=@Url.Content("/Html/smart-form/contact/js/additional-methods.min.js") type="text/javascript"></script>
+    <script type="text/javascript" src=@Url.Content("/Html/smart-form/contact/js/smart-form.js")></script>
 
     @RenderSection("scripts", required: false)
 
