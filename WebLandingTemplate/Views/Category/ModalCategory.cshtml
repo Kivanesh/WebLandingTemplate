@@ -11,41 +11,45 @@
                     </div>
                 </div>
                 <div class="portlet-body">
-                    <form method="post" action="@Url.Action("Create", "Category")" id="category-form">
-                        <div class="form-body">
-                            <div class="form-row">
-                                <div class="col-md-5 mb-3">
-                                    <div class="input-icon-group">
-                                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        <div class="input-icon-append">
-                                            <i class="fa fa-user"></i>
-                                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                       <form method="post" action="@Url.Action(""+ViewBag.GoTo+"", "Category")" id="category-form">
+                                <div class="form-body">
+                                    <div class="form-row">
+                                        <div class="col-md-5 mb-3">
+                                            <div class="input-icon-group">
+                                                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="input-icon-append">
+                                                    <i class="fa fa-user"></i>
+                                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-5 mb-3">
-                                    <div class="input-icon-group">
-                                        @Html.LabelFor(model => model.ItemCodeType, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        <div class="input-icon-append">
-                                            <i class="fa fa-bookmark"></i>
-                                            @Html.EnumDropDownListFor(model => model.ItemCodeTypeEnum, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.ItemCodeType, "", new { @class = "text-danger" })
+                                        <div class="col-md-5 mb-3">
+                                            <div class="input-icon-group">
+                                                @Html.LabelFor(model => model.ItemCodeType, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="input-icon-append">
+                                                    <i class="fa fa-bookmark"></i>
+                                                    @Html.EnumDropDownListFor(model => model.ItemCodeTypeEnum, "--- Selecciona ---", new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.ItemCodeTypeEnum, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div><!--row-->
-                            @Html.HiddenFor(model => model.CategoryId)
-                            @Html.HiddenFor(model => model.ItemCodeType)
-                            <div class="result"></div><!-- end .result  section -->
-                        </div><!-- end .form-body section -->
-                        <div class="form-footer">
-                            <div class="float-left">
-                                <button type="submit" data-btntext-sending="Sending..." class="button btn btn-primary"><span><i class="fa fa-paper-plane" aria-hidden="true"></i> </span>Enviar</button>
-                                <button type="reset" class="button btn btn-warning"><span><i class="fa fa-eraser" aria-hidden="true"></i> </span> Limpiar </button>
-                            </div>
-                        </div><!-- end .form-footer section -->
-                    </form>
+                                    </div><!--row-->
+                                    @Html.HiddenFor(model => model.CategoryId)
+                                    @Html.HiddenFor(model => model.ItemCodeType)
+                                    <div class="result"></div><!-- end .result  section -->
+                                </div><!-- end .form-body section -->
+                                 @if (ViewBag.GoTo != "Details")
+                                 {
+                                    <div class="form-footer">
+                                        <div class="float-left">
+                                            <button type="submit" data-btntext-sending="Sending..." class="button btn btn-primary"><span><i class="fa fa-paper-plane" aria-hidden="true"></i> </span>Enviar</button>
+                                            <button type="reset" class="button btn btn-warning"><span><i class="fa fa-eraser" aria-hidden="true"></i> </span> Limpiar </button>
+                                        </div>
+                                    </div><!-- end .form-footer section -->
+                                 }
+                               
+                       </form>
                 </div>
             </div>
         </div>
@@ -63,6 +67,14 @@
 
     jQuery(document).ready(function ($) {
 
+        $(function () {
+            var CodeType = $('#ItemCodeType').val();
+            console.log("El valor del ItemCodeType es:  " + CodeType);
+            if (CodeType != 0) {
+                $('#ItemCodeTypeEnum').val(CodeType);
+            }
+        });  //----> End show into dropdown option Selected
+       
         $('#ItemCodeTypeEnum').on('change', function (e) {
             e.preventDefault();
             console.log("Le diste click ");
@@ -70,13 +82,13 @@
             $('#ItemCodeType').val(this.value);
             $('#CategoryId').val(369);
             console.log("Salio del JS chage");
-        });
+        });  //----> End change for Dropdown
 
         $("#category-form").validate({
 						/* validation states + elements
 						------------------------------------------- */
-						errorClass: "state-error",
-						validClass: "state-success",
+						errorClass: "error",
+						validClass: "valid",
 						errorElement: "em",
 						onkeyup: false,
 						onclick: false,
@@ -114,15 +126,10 @@
 						/* validation highlighting + error placement
 						---------------------------------------------------- */
 						highlight: function(element, errorClass, validClass) {
-                            $(element).closest('.field').addClass(errorClass).removeClass(validClass);
-                            $(element).addClass("error");
-                            console.log("This shit Get into The Validation: 1");
+                            $(element).addClass(errorClass).removeClass(validClass);
 						},
 						unhighlight: function(element, errorClass, validClass) {
-                            console.log("This shit Get into The Validation: 2");
-                            $(element).closest('.field').removeClass(errorClass).addClass(validClass);
-                            $(element).removeClass("error");
-                            $(element).addClass("valid");
+                            $(element).removeClass(errorClass).addClass(validClass);
                             
 						},
 						errorPlacement: function(error, element) {
@@ -183,7 +190,7 @@
 						//	  });
 						//}
 
-				});
+				}); //----> End Category Validate
 
 
 

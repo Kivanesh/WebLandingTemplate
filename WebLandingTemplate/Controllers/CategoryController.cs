@@ -23,10 +23,10 @@ namespace WebLandingTemplate.Controllers
         {
             List<SelectListItem> list = new List<SelectListItem>();
             list.Add(new SelectListItem() { Value = null, Text = "---Select---" });
-            list.Add(new SelectListItem() { Value = "10", Text = "10" });
-            list.Add(new SelectListItem() { Value = "25", Text = "25" });
-            list.Add(new SelectListItem() { Value = "50", Text = "50" });
-            list.Add(new SelectListItem() { Value = "100", Text = "100" });
+            list.Add(new SelectListItem() { Value = "3", Text = "3" });
+            list.Add(new SelectListItem() { Value = "6", Text = "6" });
+            list.Add(new SelectListItem() { Value = "9", Text = "9" });
+            list.Add(new SelectListItem() { Value = "15", Text = "15" });
                                                     
             return new SelectList(list, "Value", "Text");
         }
@@ -53,31 +53,23 @@ namespace WebLandingTemplate.Controllers
             return View(listaVM.ToPagedList(pageNumber, pageSize));
 
         }
+        
         // GET: Category/Details/5
         public ActionResult Details(int id)
         {
             var itemDto = _categoryBusiness.GetCategory(id);
             var itemVM = new CategoryVM();
             AutoMapper.Mapper.Map(itemDto, itemVM);
-
-            return PartialView(itemVM);
-        }
-
-        // GET: Product/Details/5
-        public ActionResult DetailsModal(int id)
-        {
-            var itemDto = _categoryBusiness.GetCategory(id);
-            var itemVM = new CategoryVM();
-            AutoMapper.Mapper.Map(itemDto, itemVM);
-
+            ViewBag.ModalName = "Detalles de Categoria";
+            ViewBag.GoTo = "Details";
             return PartialView("ModalCategory", itemVM);
         }
-
 
         // GET: Category/Create
         public ActionResult Create()
         {
             ViewBag.ModalName = "Crear Categoría";
+            ViewBag.GoTo = "Create";
             return PartialView("ModalCategory");
         }
 
@@ -115,13 +107,15 @@ namespace WebLandingTemplate.Controllers
             var itemVM = new CategoryVM();
             AutoMapper.Mapper.Map(itemDto, itemVM);
             ViewBag.ModalName = "Editar Categoría";
-            return PartialView(itemVM);
+            ViewBag.GoTo = "Edit";
+            //return PartialView(itemVM);
+            return PartialView("ModalCategory", itemVM);
             //return View(itemVM);
         }
 
         // POST: Category/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, CategoryVM itemVM)
+        public ActionResult Edit(CategoryVM itemVM)
         {
             if (ModelState.IsValid) {
                 try
@@ -169,32 +163,28 @@ namespace WebLandingTemplate.Controllers
             }
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        // POST: Category/Eliminar/5
+        [HttpPost]
+        public bool Eliminar(int id)
+        {
+            try
+            {
+                return true;
+                var result = _categoryBusiness.DeleteCategory(id);
+                if (result == "Succes")
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
 
 
