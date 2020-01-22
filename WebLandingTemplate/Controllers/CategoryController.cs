@@ -19,9 +19,22 @@ namespace WebLandingTemplate.Controllers
             _categoryBusiness = categoryBusiness;
         }
 
+        private IEnumerable<SelectListItem> DataItems()
+        {
+            List<SelectListItem> list = new List<SelectListItem>();
+            list.Add(new SelectListItem() { Value = null, Text = "---Select---" });
+            list.Add(new SelectListItem() { Value = "10", Text = "10" });
+            list.Add(new SelectListItem() { Value = "25", Text = "25" });
+            list.Add(new SelectListItem() { Value = "50", Text = "50" });
+            list.Add(new SelectListItem() { Value = "100", Text = "100" });
+                                                    
+            return new SelectList(list, "Value", "Text");
+        }
+
         // GET: Category
         public ActionResult Index(int? page, string searchString, int pageSize = 5)
         {
+            ViewBag.dropdownsrc = DataItems();
             int pageNumber = (page ?? 1);
             var listaVM = new List<CategoryVM>();
            
@@ -136,7 +149,7 @@ namespace WebLandingTemplate.Controllers
             var itemDto = _categoryBusiness.GetCategory(id);
             var itemVM = new CategoryVM();
             AutoMapper.Mapper.Map(itemDto, itemVM);
-            return View(itemVM);
+            return PartialView(itemVM);
         }
 
         // POST: Category/Delete/5

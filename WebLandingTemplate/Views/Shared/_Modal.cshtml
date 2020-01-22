@@ -17,9 +17,10 @@
         //cuando un link es clickeado con esos atributos, boostrap va a mostrar el href content en un modal dialog
         $('body').on('click', '.modal-link', function (e) {
             e.preventDefault();
+            //$("#ejemplo").one("click", function () { alert("Hola, soy una alerta que sólo aparecerá 1 vez al hacer click."); });
             $(this).attr('data-target', "#modal-container");
             $(this).attr('data-toggle', "modal");
-            $('#modal-container').on('show.bs.modal', function (event) {
+            $('#modal-container').one('show.bs.modal', function (event) {
                 var button = $(event.relatedTarget); // Button that triggered the modal
                 var url = button.attr("href");
                 var modal = $(this);
@@ -29,9 +30,9 @@
         });
         //Adjunta listener to .modal-close-btn cuando el boton es presionado se cierra el modal
         $('body').on('click', '.modal-close-btn', function () {
-            alert("Si agarro el click");
+            console.log("Si agarro el evento 1 del modal");
             $('#modal-container').modal('hide');
-            alert("Si agarro el click segundo");
+            console.log("Se finalizo el evento 1 del modal");
         });
         //Limpia el cache del modal, asi el nuevo contenido puede ser cargado
         $('#modal-container').on('hidden.bs.modal', function () {

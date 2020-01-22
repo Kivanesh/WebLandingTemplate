@@ -15,16 +15,23 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="button">
-                    @Html.ActionLink("Nueva Categoria", "Create", "Category", new { id = "" }, new { @class = "modal-link btn btn-primary mr-1 mb-2" })
-
+                    <button class="btn btn-icon btn-danger "><i class="far fa-edit"></i>  @Html.ActionLink(" Nueva Categoria", "Create", "Category", null, new { @class = "modal-link" })</button>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-12 col-md-6">
+                
                 <div class="dataTables_length" id="data-table_length">
-                    <label>Mostrar <select name="data-table_length" aria-controls="data-table" class="form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label>
-
+                    <label>Mostrar
+                    @*<select name="data-table_length" aria-controls="data-table" class="form-control form-control-sm">
+                        <option value="10" selected="selected">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                        </select>*@ 
+                    @Html.DropDownList("Rows", ViewBag.dropdownsrc as SelectList, new { id = "RowNumber", @class = "RowNumber form-control form-control-sm" })
+                    entries</label>
                 </div>
             </div>
             @using (Html.BeginForm("Index", "Category", FormMethod.Post))
@@ -46,7 +53,7 @@
                             <th class="sorting" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" style="width: 143px;" aria-label="Last name: activate to sort column ascending">Item Code Type</th>
                         </tr>
                     </thead>
-
+                    @*<button class="btn btn-outline-light-primary"></button>*@
                     <tbody>
                         @foreach (var item in Model)
                         {
@@ -58,11 +65,16 @@
                                     @Html.DisplayFor(modelItem => item.ItemCodeType)
                                 </td>
                                 <td>
-                                    @Html.ActionLink("Details", "DetailsModal", "Category", new { id = item.CategoryId }, new { @class = "modal-link switch-disable", title = "Detalles de Categoria" }) |
-                                    @Html.ActionLink("Editar", "Edit", new { id = item.CategoryId }, new { @class = "modal-link btn btn-primary mr-1 mb-2" }) |
-                                    @Html.ActionLink("Detalles", "Details", new { id = item.CategoryId }, new { @class = "modal-link btn btn-primary mr-1 mb-2" }) |
-                                    @Html.ActionLink("Eliminar", "Delete", new { id = item.CategoryId })
-                                </td>
+                                    <div class="btn-group-sm btn-group-rounded pt-20">
+                                        <button class="btn btn-icon btn-sm btn-danger "><i class="icon-Eye-Scan"></i> @Html.ActionLink(" Detalles", "DetailsModal", "Category", new { id = item.CategoryId }, new { @class = "modal-link ", title = "Detalles" })</button>
+                                        <button class="btn btn-icon btn-sm btn-danger "><i class="icon-Open-Book"></i> @Html.ActionLink(" Editar", "Edit", "Category", new { id = item.CategoryId }, new { @class = "modal-link", title = "Editar" }) </button>
+                                        <button class="btn btn-icon btn-sm btn-danger "><i class="icon-Delete-File"></i> @Html.ActionLink(" Eliminar", "Delete", "Category", new { id = item.CategoryId }, new { @class = "modal-link", title = "Eliminar" })</button>
+                                    </div>
+                                    @*@Html.ActionLink(" ", "DetailsModal", "Category", new { id = item.CategoryId }, new { @class = "modal-link switch-disable fa fa-sun", title = "Detalles de Categoria" }) |
+                                    @Html.ActionLink(" ", "Details", "Category", new { id = item.CategoryId }, new { @class = "btn-sm btn-primary btn-circle fa fa-eye modal-link", title = "Detalles" }) |
+                                    @Html.ActionLink(" ", "Edit", "Category",    new { id = item.CategoryId }, new { @class = "btn-sm btn-warning btn-circle fa fa-edit modal-link", title = "Editar" }) |
+                                    @Html.ActionLink(" ", "Delete", "Category",  new { id = item.CategoryId }, new { @class = "btn-sm btn-danger btn-circle fa fa-trash modal-link", title = "Eliminar" })
+                                </td>*@
                             </tr>
                         }
                     </tbody>
@@ -79,6 +91,30 @@
         </div>
     </div>
 
+<script type="text/javascript">
 
+    $('#RowNumber').on('change', function (e) {
+        e.preventDefault();
+        console.log("Le diste click ");
+        console.log('You selected: ', this.value);
+        $('#RowNumber').val(this.value);
+        //$('#RowNumber').text(this.value);
+        $.ajax({
+            url: '/category/Index',
+            type: 'POST',
+            contentType: 'application/json;',
+            data: JSON.stringify({ page: null, searchString: "", pageSize: this.value }),
+            success: function (data) {
+                //Agarrar bien lo que Retorna el controller y mostrarlo
+                $("html").html(data); // ---> Funciona haciendo pendejadas 
+                //$("html").load(data);
+            }
+        });
+
+    });
+
+   
+
+</script>
 
 
