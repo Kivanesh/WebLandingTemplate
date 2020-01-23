@@ -19,22 +19,42 @@ namespace WebLandingTemplate.Controllers
             _categoryBusiness = categoryBusiness;
         }
 
-        private IEnumerable<SelectListItem> DataItems()
+        private IEnumerable<SelectListItem> DataItems(int pageSize)
         {
+            const int valueA =3, valueB = 6, valueC = 9, valueD = 15;
             List<SelectListItem> list = new List<SelectListItem>();
-            list.Add(new SelectListItem() { Value = null, Text = "---Select---" });
-            list.Add(new SelectListItem() { Value = "3", Text = "3" });
-            list.Add(new SelectListItem() { Value = "6", Text = "6" });
-            list.Add(new SelectListItem() { Value = "9", Text = "9" });
-            list.Add(new SelectListItem() { Value = "15", Text = "15" });
+            //list.Add(new SelectListItem() { Value = null, Text = "---Select---" });
+            list.Add(new SelectListItem() { Value = valueA.ToString(), Text = valueA.ToString(), Selected=false });
+            list.Add(new SelectListItem() { Value = valueB.ToString(), Text = valueB.ToString(), Selected = false });
+            list.Add(new SelectListItem() { Value = valueC.ToString(), Text = valueC.ToString(), Selected = false });
+            list.Add(new SelectListItem() { Value = valueD.ToString(), Text = valueD.ToString(), Selected = false });
+
+            switch (pageSize)
+            {
+                case valueA:
+                    list.ElementAtOrDefault(0).Selected = true;
+                    break;
+                case 6:
+                    list.ElementAtOrDefault(1).Selected = true;
+                    break;
+                case 9:
+                    list.ElementAtOrDefault(2).Selected = true;
+                    break;
+                case 15:
+                    list.ElementAtOrDefault(3).Selected = true;
+                    break;
+                default:
+                    break;
+            }
                                                     
-            return new SelectList(list, "Value", "Text");
+            return new SelectList(list, "Value", "Text","Selected");
         }
 
         // GET: Category
-        public ActionResult Index(int? page, string searchString, int pageSize = 5)
+        public ActionResult Index(int? page, string searchString, int pageSize = 3)
         {
-            ViewBag.dropdownsrc = DataItems();
+            ViewBag.dropdownsrc = DataItems(pageSize);
+            
             int pageNumber = (page ?? 1);
             var listaVM = new List<CategoryVM>();
            
