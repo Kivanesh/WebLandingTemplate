@@ -1,0 +1,187 @@
+﻿@model WebLandingTemplate.Models.SupplierVM
+
+<div class="modal-body form-control-file">
+    <div class="row-fluid form-group col-md-12">
+
+        <div class="row">
+            <div class="portlet-box portlet-gutter ui-buttons-col mb-30">
+                <div class="portlet-header flex-row flex d-flex align-items-center b-b">
+                    <div class="flex d-flex flex-column">
+                        <h3>@ViewBag.ModalName</h3>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <form method="post" action="@Url.Action(""+ViewBag.GoTo+"", "Supplier")" id="supplier-form">
+                        <div class="form-body">
+                            <div class="form-row">
+                                <div class="col-md-5 mb-3">
+                                    <div class="input-icon-group">
+                                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="input-icon-append">
+                                            <i class="fa fa-user"></i>
+                                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5 mb-3">
+                                    <div class="input-icon-group">
+                                        @Html.LabelFor(model => model.Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="input-icon-append">
+                                            <i class="fa fa-user"></i>
+                                            @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5 mb-3">
+                                    <div class="input-icon-group">
+                                        @Html.LabelFor(model => model.Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        @*<div class="input-icon-append">
+            <i class="fa fa-user"></i>
+            Html.EditorFor(model => model.Logo, new { htmlAttributes = new { @class = "form-control" } })
+            <input type="file" name="imageUpload">
+            @Html.ValidationMessageFor(model => model.Logo, "", new { @class = "text-danger" })
+        </div>*@
+                                    </div>
+                                </div>
+                            </div><!--row-->
+                            @Html.HiddenFor(model => model.Name)
+                            <div class="result"></div><!-- end .result  section -->
+                        </div><!-- end .form-body section -->
+                        @if (ViewBag.GoTo != "Details")
+                        {
+                            <div class="form-footer">
+                                <div class="float-left">
+                                    <button type="submit" data-btntext-sending="Sending..." class="button btn btn-primary"><span><i class="fa fa-paper-plane" aria-hidden="true"></i> </span>Enviar</button>
+                                    <button type="reset" class="button btn btn-warning"><span><i class="fa fa-eraser" aria-hidden="true"></i> </span> Limpiar </button>
+                                </div>
+                            </div><!-- end .form-footer section -->
+                        }
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="modal-footer">
+            <button type="button" id="CancelModal" class="button btn-danger rounded" data-dismiss="modal"><span><i class="fa fa-window-close" aria-hidden="true"></i> </span>Cerrar</button>
+        </div>
+    </div>
+
+
+</div>
+
+<script type="text/javascript">
+
+    jQuery(document).ready(function ($) {
+
+   
+
+        $("#supplier-form").validate({
+						/* validation states + elements
+						------------------------------------------- */
+						errorClass: "error",
+						validClass: "valid",
+						errorElement: "em",
+						onkeyup: false,
+						onclick: false,
+						/* validation rules
+						------------------------------------------ */
+						rules: {
+                                Name: {
+										required: true,
+										minlength: 5
+								},
+                                Description: {
+                                    required: true,
+                                    minlength: 5
+                                },
+                               
+						},
+						messages:{
+                                categoryname: {
+										required: 'Enter your name',
+										minlength: 'Name must be at least {0} characters'
+								},
+                            Description: {
+										required: 'Selecciona una Opcion',
+										default: 'Enter a VALID option'
+                                }
+
+						},
+						/* validation highlighting + error placement
+						---------------------------------------------------- */
+						highlight: function(element, errorClass, validClass) {
+                            $(element).addClass(errorClass).removeClass(validClass);
+						},
+						unhighlight: function(element, errorClass, validClass) {
+                            $(element).removeClass(errorClass).addClass(validClass);
+
+						},
+						errorPlacement: function(error, element) {
+                            if (element.is(":radio") || element.is(":checkbox")) {
+                                console.log("This shit Get into The Validation: 3");
+                               element.closest('.option-group').after(error);
+
+                            } else {
+                                console.log("This shit Get into The Validation: 4");
+									error.insertAfter(element.parent());
+						   }
+						},
+
+						/* ajax form submition
+						---------------------------------------------------- */
+      //                  submitHandler: function (form) {
+      //                    /*---------------------------------------------------- Build Model from InputForm Template ADD by Kvnsh */
+      //                      //var itemVM = {
+
+      //                      //}
+      //                      //var messageVM = {
+      //                      //    Subject : sendersubject.value,
+      //                      //    Email : emailaddress.value,
+      //                      //    ContactName : sendername.value,
+      //                      //    Message : sendermessage.value,
+      //                      //    Phone: senderphone.value,
+      //                      //    ContactDate: document.getElementById("messageVM_ContactDate").value,
+      //                      //    ComeFrom: document.getElementById("messageVM_ComeFrom").value
+      //                      //}
+      //                      //var PageVM = {
+      //                      //    "messageVM" : messageVM
+      //                      //}
+      //                      //console.log(PageVM);
+      //                      console.log('HeRe are You u.u');
+      //                      console.log(form);
+      //                       /*---------------------------------------------------- */
+      //                      $(form).ajaxSubmit({
+      //                              data: form,
+						//		    target:'.result',
+						//			beforeSubmit:function(){
+						//					swapButton();
+						//					$('.form-footer').addClass('progress');
+						//			},
+						//			error:function(){
+						//					swapButton();
+						//					$('.form-footer').removeClass('progress');
+						//			},
+						//			 success:function(){
+						//				 	swapButton();
+						//					$('.form-footer').removeClass('progress');
+						//					$('.alert-success').show().delay(7000).fadeOut();
+						//					$('.field').removeClass("state-error, state-success");
+						//					if( $('.alert-error').length == 0){
+						//						$('#smart-form').resetForm();
+						//						reloadCaptcha();
+						//					}
+						//			 }
+						//	  });
+						//}
+
+				}); //----> End Category Validate
+
+
+
+    });
+
+</script>

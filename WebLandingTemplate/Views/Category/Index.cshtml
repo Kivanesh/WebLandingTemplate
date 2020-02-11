@@ -4,13 +4,14 @@
 
 @{
     ViewBag.Title = "Index";
+    ViewBag.Type = "Categorías";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <!---<h2>Consultar</h2>-->
 
 <div class="bg-white table-responsive rounded shadow-sm pt-3 pb-3 mb-30">
-    <h6 class="pl-3 pr-3 text-capitalize font400 mb-20">Categorias</h6>
+    <h6 class="pl-3 pr-3 text-capitalize font400 mb-20">@ViewBag.Type</h6>
     <div id="data-table_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
         <div class="row">
             <div class="col-sm-12">
@@ -21,9 +22,9 @@
         </div>
         <div class="row">
             <div class="col-sm-12 col-md-6">
-                
                 <div class="dataTables_length" id="data-table_length">
-                    <label>Mostrar
+                    <label>
+                    Mostrar
                     @Html.DropDownList("Rows", ViewBag.dropdownsrc as SelectList, new { id = "RowNumber", @class = "RowNumber form-control form-control-sm" })
                     entries</label>
                 </div>
@@ -31,8 +32,7 @@
             @using (Html.BeginForm("Index", "Category", FormMethod.Post))
             {
                 <div class="col-sm-12 col-md-12">
-                    <div id="data-table_filter" class="dataTables_filter"><input type="search" name="searchString" id="searchInput" data-search="searchString" class="form-control form-control-sm" placeholder="Búscar..." aria-controls="data-table"></div>
-
+                    <div id="data-table_filter" class="dataTables_filter"><input type="search" name="searchString" id="searchInput" data-search="searchString" class="form-control form-control-sm" placeholder="Búscar..." aria-controls="data-table"></div> 
                 </div>
             }
 

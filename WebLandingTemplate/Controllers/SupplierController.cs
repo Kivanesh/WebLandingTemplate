@@ -23,12 +23,44 @@ namespace WebLandingTemplate.Controllers
         {
             _supplierBusiness = supplierBusiness;
         }
-        // GET: Supplier
-        public ActionResult Index(int? page, string searchString, int pageSize = 5)
-        {
-            // searchString = "vende"; 
-            int pageNumber = (page ?? 1);
 
+        private IEnumerable<SelectListItem> DataItems(int pageSize)
+        {
+            const int valueA = 3, valueB = 6, valueC = 9, valueD = 15;
+            List<SelectListItem> list = new List<SelectListItem>();
+            //list.Add(new SelectListItem() { Value = null, Text = "---Select---" });
+            list.Add(new SelectListItem() { Value = valueA.ToString(), Text = valueA.ToString(), Selected = false });
+            list.Add(new SelectListItem() { Value = valueB.ToString(), Text = valueB.ToString(), Selected = false });
+            list.Add(new SelectListItem() { Value = valueC.ToString(), Text = valueC.ToString(), Selected = false });
+            list.Add(new SelectListItem() { Value = valueD.ToString(), Text = valueD.ToString(), Selected = false });
+
+            switch (pageSize)
+            {
+                case valueA:
+                    list.ElementAtOrDefault(0).Selected = true;
+                    break;
+                case 6:
+                    list.ElementAtOrDefault(1).Selected = true;
+                    break;
+                case 9:
+                    list.ElementAtOrDefault(2).Selected = true;
+                    break;
+                case 15:
+                    list.ElementAtOrDefault(3).Selected = true;
+                    break;
+                default:
+                    break;
+            }
+
+            return new SelectList(list, "Value", "Text", "Selected");
+        }
+
+        // GET: Supplier
+        public ActionResult Index(int? page, string searchString, int pageSize = 3)
+        {
+            ViewBag.dropdownsrc = DataItems(pageSize);
+
+            int pageNumber = (page ?? 1);
             var listaVM = new List<SupplierVM>();
 
             if (!string.IsNullOrEmpty(searchString))
@@ -57,7 +89,11 @@ namespace WebLandingTemplate.Controllers
         // GET: Supplier/Create
         public ActionResult Create()
         {
-            return View();
+             ViewBag.ModalName = "Crear Proveedor";
+             ViewBag.GoTo = "Create";
+             return PartialView("ModalSupplier");
+            //return View();
+            
         }
 
         // POST: Supplier/Create
@@ -66,11 +102,11 @@ namespace WebLandingTemplate.Controllers
         {
 
             HttpFileCollectionBase collectionBase = Request.Files;
-            if (collectionBase.Get(0).ContentLength > 0 && collectionBase.Get(0).ContentType == "image/jpeg")
+         /*   if (collectionBase.Get(0).ContentLength > 0 && collectionBase.Get(0).ContentType == "image/jpeg")
             {
                 WebImage image = new WebImage(collectionBase.Get(0).InputStream);
                 supplierVM.Logo = image.GetBytes();
-            }
+            }*/
             try
             {
                 // TODO: Add insert logic here

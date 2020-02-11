@@ -1,9 +1,6 @@
 ﻿@model WebLandingTemplate.Models.SupplierVM
 
-@{
-    ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
-}
+
 
 <!--<form action="/Create/Supplier" method="post" class="portlet-box portlet-gutter ui-buttons-col mb-30"></form>-->
 @using (Html.BeginForm("Create", "Supplier", FormMethod.Post, new { enctype = "multipart/form-data" }))
