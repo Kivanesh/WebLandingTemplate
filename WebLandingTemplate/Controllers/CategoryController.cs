@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using WebLandingTemplate.Models;
 using WebLandingTemplateBusinessLogic.Interface;
 using WebLandingTemplateBusinessLogic.Logic;
+using WebLandingTemplateDomainModel.Enums;
 using WebLandingTemplateDomainModel.Models;
 
 namespace WebLandingTemplate.Controllers
@@ -21,10 +22,10 @@ namespace WebLandingTemplate.Controllers
 
         private IEnumerable<SelectListItem> DataItems(int pageSize)
         {
-            const int valueA =3, valueB = 6, valueC = 9, valueD = 15;
+            const int valueA = 3, valueB = 6, valueC = 9, valueD = 15;
             List<SelectListItem> list = new List<SelectListItem>();
             //list.Add(new SelectListItem() { Value = null, Text = "---Select---" });
-            list.Add(new SelectListItem() { Value = valueA.ToString(), Text = valueA.ToString(), Selected=false });
+            list.Add(new SelectListItem() { Value = valueA.ToString(), Text = valueA.ToString(), Selected = false });
             list.Add(new SelectListItem() { Value = valueB.ToString(), Text = valueB.ToString(), Selected = false });
             list.Add(new SelectListItem() { Value = valueC.ToString(), Text = valueC.ToString(), Selected = false });
             list.Add(new SelectListItem() { Value = valueD.ToString(), Text = valueD.ToString(), Selected = false });
@@ -50,11 +51,23 @@ namespace WebLandingTemplate.Controllers
             return new SelectList(list, "Value", "Text","Selected");
         }
 
+        private IEnumerable<SelectListItem> DataFilterType()
+        {
+            var istenum  = Enum.GetValues(typeof(ItemCodeTypeEnum)).Cast<ItemCodeTypeEnum>().Select(p => new SelectListItem()
+            {
+            Text = p.ToString(),
+            Value = ((int)p).ToString()
+            }).ToList();
+
+            return new SelectList(istenum, "Value", "Text", "Selected");
+        }
+
         // GET: Category
         public ActionResult Index(int? page, string searchString, int pageSize = 3)
         {
             ViewBag.dropdownsrc = DataItems(pageSize);
-            
+            ViewBag.typesrc = DataFilterType();
+
             int pageNumber = (page ?? 1);
             var listaVM = new List<CategoryVM>();
            
