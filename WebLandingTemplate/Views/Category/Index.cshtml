@@ -22,7 +22,7 @@
             <div class="row col-sm-12 col-md-6">
                 <div class="dataTables_length col-6" id="data-table_length">
                     <label>
-                    Mostrar
+                    Filas a Mostrar
                     @Html.DropDownList("Rows", ViewBag.dropdownsrc as SelectList, new { id = "RowNumber", @class = "RowNumber form-control form-control-sm" })
                     </label>
                 </div>
@@ -127,6 +127,29 @@
         });
 
     });
+
+    $('#FilterNumber').on('change', function (e) {
+        e.preventDefault();
+        var pagesize = $('#RowNumber').val();
+        var FilterId = $('#FilterNumber').val();
+        
+        //console.log("numero de rows " + pagesize);
+        //console.log("id seleccionado filtro " + FilterId);
+
+        $.ajax({
+            url: '/category/Index',
+            type: 'POST',
+            contentType: 'application/json;',
+            data: JSON.stringify({ page: null, searchString: "", pageSize: pagesize, filterType: FilterId }),
+            success: function (data) {
+                document.open();
+                document.write(data);
+                document.close();
+            }
+        });
+
+    });
+
 
     function BorrarItem(CategoryId) {
         swal({

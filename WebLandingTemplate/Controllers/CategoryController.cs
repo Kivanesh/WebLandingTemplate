@@ -29,6 +29,7 @@ namespace WebLandingTemplate.Controllers
             list.Add(new SelectListItem() { Value = valueB.ToString(), Text = valueB.ToString(), Selected = false });
             list.Add(new SelectListItem() { Value = valueC.ToString(), Text = valueC.ToString(), Selected = false });
             list.Add(new SelectListItem() { Value = valueD.ToString(), Text = valueD.ToString(), Selected = false });
+            list.Insert(0, new SelectListItem() { Value = null, Text = "--Seleciona--", Selected = false });
 
             switch (pageSize)
             {
@@ -37,6 +38,7 @@ namespace WebLandingTemplate.Controllers
                     break;
                 case 6:
                     list.ElementAtOrDefault(1).Selected = true;
+                    list.ElementAtOrDefault(1).Text = "6";
                     break;
                 case 9:
                     list.ElementAtOrDefault(2).Selected = true;
@@ -58,15 +60,18 @@ namespace WebLandingTemplate.Controllers
             Text = p.ToString(),
             Value = ((int)p).ToString()
             }).ToList();
+            istenum.Insert(0,new SelectListItem() { Value = null, Text = "--Seleciona--", Selected = false });
 
             return new SelectList(istenum, "Value", "Text", "Selected");
         }
 
         // GET: Category
-        public ActionResult Index(int? page, string searchString, int pageSize = 3)
+        public ActionResult Index(int? page, string searchString, int pageSize = 5, int? filterType = null)
         {
             ViewBag.dropdownsrc = DataItems(pageSize);
             ViewBag.typesrc = DataFilterType();
+
+            
 
             int pageNumber = (page ?? 1);
             var listaVM = new List<CategoryVM>();
@@ -83,6 +88,10 @@ namespace WebLandingTemplate.Controllers
                 AutoMapper.Mapper.Map(listaDto, listaVM);
             }
 
+            if (filterType != null)
+            {
+                listaVM = listaVM.Where(s => s.ItemCodeType == filterType).ToList();
+            }
             return View(listaVM.ToPagedList(pageNumber, pageSize));
 
         }
