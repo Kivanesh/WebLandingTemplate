@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <div class="portlet-body">
-                    @using (Html.BeginForm())
+                    @using(Html.BeginForm("Edit", "EnterpriseInfo", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
                         @Html.AntiForgeryToken()
                     <form class="needs-validation" novalidate>

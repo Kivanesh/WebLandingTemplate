@@ -72,7 +72,7 @@ namespace WebLandingTemplate.Controllers
 
         // POST: EnterpriseInfo/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, EnterpriseInfoVM itemVM)
+        public ActionResult Edit(EnterpriseInfoVM itemVM)
         {
             try
             {
