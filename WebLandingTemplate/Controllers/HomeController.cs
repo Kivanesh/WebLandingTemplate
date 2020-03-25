@@ -29,11 +29,19 @@ namespace WebLandingTemplate.Controllers
 
         public ActionResult Index()
         {
-            //Account/Login
-
-            ViewBag.calis = _corpBusiness.GetEnterpriseInfo().Mision;
-
-            return View();
+            // Build the VM 
+            ContactPageVM contactPageVM = new ContactPageVM();
+            var itemDto = _corpBusiness.GetEnterpriseInfo();
+            var itemVM = new EnterpriseInfoVM();
+            AutoMapper.Mapper.Map(itemDto, itemVM);
+            contactPageVM.corpinfoVM = itemVM;
+            contactPageVM.messageVM = new ContactMessageVM();
+            
+            itemDto = _corpBusiness.GetEnterpriseInfo();
+            itemVM = new EnterpriseInfoVM();
+            AutoMapper.Mapper.Map(itemDto, itemVM);
+            contactPageVM.corpinfoVM = itemVM;
+            return View(contactPageVM);
         }
 
         public ActionResult Dashboard()
@@ -59,9 +67,6 @@ namespace WebLandingTemplate.Controllers
             AutoMapper.Mapper.Map(itemDto, itemVM);
             contactPageVM.corpinfoVM = itemVM;
             contactPageVM.messageVM = new ContactMessageVM();
-            
-            ViewBag.Message = "Your contact page.";
-
             return View(contactPageVM);
         }
 
