@@ -101,6 +101,11 @@
     <EntitySetMapping Name="EnterpriseInformation">
       <EntityTypeMapping TypeName="LandingEntities.EnterpriseInformation">
         <MappingFragment StoreEntitySet="EnterpriseInformation">
+          <ScalarProperty Name="PromotionalText4" ColumnName="PromotionalText4" />
+          <ScalarProperty Name="PromotionalText3" ColumnName="PromotionalText3" />
+          <ScalarProperty Name="PromotionalText2" ColumnName="PromotionalText2" />
+          <ScalarProperty Name="PromotionalText1" ColumnName="PromotionalText1" />
+          <ScalarProperty Name="IdInfo" ColumnName="IdInfo" />
           <ScalarProperty Name="Logo" ColumnName="Logo" />
           <ScalarProperty Name="Address" ColumnName="Address" />
           <ScalarProperty Name="Email" ColumnName="Email" />

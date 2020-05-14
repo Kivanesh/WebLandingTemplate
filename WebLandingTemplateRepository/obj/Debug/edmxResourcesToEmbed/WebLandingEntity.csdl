@@ -102,19 +102,24 @@
   </EntityType>
   <EntityType Name="EnterpriseInformation">
     <Key>
-      <PropertyRef Name="Address" />
+      <PropertyRef Name="IdInfo" />
     </Key>
-    <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="BusinessHours" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="SocialMedia" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="Mision" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="Vision" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="Valores" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="EmailOptional1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="EmailOptional2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BusinessHours" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SocialMedia" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Mision" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Vision" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Valores" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EmailOptional1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EmailOptional2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="IdInfo" Type="Int32" Nullable="false" />
+    <Property Name="PromotionalText1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PromotionalText2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PromotionalText3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PromotionalText4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="ImageSources">
     <Key>

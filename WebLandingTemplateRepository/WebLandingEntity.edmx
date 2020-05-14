@@ -106,19 +106,24 @@
         </EntityType>
         <EntityType Name="EnterpriseInformation">
           <Key>
-            <PropertyRef Name="Address" />
+            <PropertyRef Name="IdInfo" />
           </Key>
-          <Property Name="Address" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="Email" Type="nvarchar" MaxLength="255" />
-          <Property Name="Phone" Type="nvarchar" MaxLength="255" />
-          <Property Name="BusinessHours" Type="nvarchar" MaxLength="255" />
-          <Property Name="SocialMedia" Type="nvarchar" MaxLength="255" />
-          <Property Name="Mision" Type="nvarchar" MaxLength="255" />
-          <Property Name="Vision" Type="nvarchar" MaxLength="255" />
-          <Property Name="Valores" Type="nvarchar" MaxLength="255" />
-          <Property Name="EmailOptional1" Type="nvarchar" MaxLength="255" />
-          <Property Name="EmailOptional2" Type="nvarchar" MaxLength="255" />
+          <Property Name="IdInfo" Type="int" Nullable="false" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="Phone" Type="nvarchar(max)" />
+          <Property Name="BusinessHours" Type="nvarchar(max)" />
+          <Property Name="SocialMedia" Type="nvarchar(max)" />
+          <Property Name="Mision" Type="nvarchar(max)" />
+          <Property Name="Vision" Type="nvarchar(max)" />
+          <Property Name="Valores" Type="nvarchar(max)" />
+          <Property Name="EmailOptional1" Type="nvarchar(max)" />
+          <Property Name="EmailOptional2" Type="nvarchar(max)" />
           <Property Name="Logo" Type="varbinary(max)" />
+          <Property Name="PromotionalText1" Type="nvarchar(max)" />
+          <Property Name="PromotionalText2" Type="nvarchar(max)" />
+          <Property Name="PromotionalText3" Type="nvarchar(max)" />
+          <Property Name="PromotionalText4" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="ImageSources">
           <Key>
@@ -160,6 +165,7 @@
           <Property Name="Name" Type="nvarchar" MaxLength="255" />
           <Property Name="Logo" Type="varbinary(max)" />
           <Property Name="Descripcion" Type="nvarchar" MaxLength="255" />
+          <Property Name="ContactPhone" Type="nvarchar(max)" />
         </EntityType>
         <Association Name="FK__ImageSour__ItemI__48CFD27E">
           <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
@@ -452,19 +458,24 @@
         </EntityType>
         <EntityType Name="EnterpriseInformation">
           <Key>
-            <PropertyRef Name="Address" />
+            <PropertyRef Name="IdInfo" />
           </Key>
-          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="BusinessHours" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="SocialMedia" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Mision" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Vision" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Valores" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="EmailOptional1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="EmailOptional2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BusinessHours" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SocialMedia" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Mision" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Vision" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Valores" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EmailOptional1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EmailOptional2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="IdInfo" Type="Int32" Nullable="false" />
+          <Property Name="PromotionalText1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PromotionalText2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PromotionalText3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PromotionalText4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ImageSources">
           <Key>
@@ -515,6 +526,7 @@
           <Property Name="Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="Descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Products" Relationship="Self.FK__Products__Provee__45F365D3" FromRole="suppliers" ToRole="Products" />
+          <Property Name="ContactPhone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
@@ -778,6 +790,11 @@
           <EntitySetMapping Name="EnterpriseInformation">
             <EntityTypeMapping TypeName="LandingEntities.EnterpriseInformation">
               <MappingFragment StoreEntitySet="EnterpriseInformation">
+                <ScalarProperty Name="PromotionalText4" ColumnName="PromotionalText4" />
+                <ScalarProperty Name="PromotionalText3" ColumnName="PromotionalText3" />
+                <ScalarProperty Name="PromotionalText2" ColumnName="PromotionalText2" />
+                <ScalarProperty Name="PromotionalText1" ColumnName="PromotionalText1" />
+                <ScalarProperty Name="IdInfo" ColumnName="IdInfo" />
                 <ScalarProperty Name="Logo" ColumnName="Logo" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -830,6 +847,7 @@
           <EntitySetMapping Name="suppliers">
             <EntityTypeMapping TypeName="LandingEntities.suppliers">
               <MappingFragment StoreEntitySet="suppliers">
+                <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
                 <ScalarProperty Name="ProveedorId" ColumnName="ProveedorId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Logo" ColumnName="Logo" />

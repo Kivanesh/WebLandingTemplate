@@ -24,6 +24,7 @@ namespace WebLandingTemplateRepository
         public string Name { get; set; }
         public byte[] Logo { get; set; }
         public string Descripcion { get; set; }
+        public string ContactPhone { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Products> Products { get; set; }

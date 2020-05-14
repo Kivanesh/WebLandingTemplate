@@ -101,19 +101,24 @@
   </EntityType>
   <EntityType Name="EnterpriseInformation">
     <Key>
-      <PropertyRef Name="Address" />
+      <PropertyRef Name="IdInfo" />
     </Key>
-    <Property Name="Address" Type="nvarchar" MaxLength="255" Nullable="false" />
-    <Property Name="Email" Type="nvarchar" MaxLength="255" />
-    <Property Name="Phone" Type="nvarchar" MaxLength="255" />
-    <Property Name="BusinessHours" Type="nvarchar" MaxLength="255" />
-    <Property Name="SocialMedia" Type="nvarchar" MaxLength="255" />
-    <Property Name="Mision" Type="nvarchar" MaxLength="255" />
-    <Property Name="Vision" Type="nvarchar" MaxLength="255" />
-    <Property Name="Valores" Type="nvarchar" MaxLength="255" />
-    <Property Name="EmailOptional1" Type="nvarchar" MaxLength="255" />
-    <Property Name="EmailOptional2" Type="nvarchar" MaxLength="255" />
+    <Property Name="IdInfo" Type="int" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" />
+    <Property Name="Email" Type="nvarchar(max)" />
+    <Property Name="Phone" Type="nvarchar(max)" />
+    <Property Name="BusinessHours" Type="nvarchar(max)" />
+    <Property Name="SocialMedia" Type="nvarchar(max)" />
+    <Property Name="Mision" Type="nvarchar(max)" />
+    <Property Name="Vision" Type="nvarchar(max)" />
+    <Property Name="Valores" Type="nvarchar(max)" />
+    <Property Name="EmailOptional1" Type="nvarchar(max)" />
+    <Property Name="EmailOptional2" Type="nvarchar(max)" />
     <Property Name="Logo" Type="varbinary(max)" />
+    <Property Name="PromotionalText1" Type="nvarchar(max)" />
+    <Property Name="PromotionalText2" Type="nvarchar(max)" />
+    <Property Name="PromotionalText3" Type="nvarchar(max)" />
+    <Property Name="PromotionalText4" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="ImageSources">
     <Key>
