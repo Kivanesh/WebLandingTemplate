@@ -4,7 +4,7 @@
 @{
     ViewBag.Title = "Index";
     ViewBag.Type = "Proveedores";
-  
+
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 
 }
@@ -63,8 +63,8 @@
                                 </td>
                                 <td>
                                     <div class="btn-group-sm btn-group-rounded pt-20">
-                                        <button class="btn btn-icon btn-sm btn-danger "><i class="icon-Eye-Scan"></i> @Html.ActionLink(" Detalles", "Details", "Category", new { id = item.ProveedorId }, new { @class = "modal-link ", title = "Detalles" })</button>
-                                        <button class="btn btn-icon btn-sm btn-danger "><i class="icon-Open-Book"></i> @Html.ActionLink(" Editar", "Edit", "Category", new { id = item.ProveedorId }, new { @class = "modal-link", title = "Editar" }) </button>
+                                        <button class="btn btn-icon btn-sm btn-danger "><i class="icon-Eye-Scan"></i> @Html.ActionLink(" Detalles", "Details", "Supplier", new { id = item.ProveedorId }, new { @class = "modal-link ", title = "Detalles" })</button>
+                                        <button class="btn btn-icon btn-sm btn-danger "><i class="icon-Open-Book"></i> @Html.ActionLink(" Editar", "Edit", "Supplier", new { id = item.ProveedorId }, new { @class = "modal-link", title = "Editar" }) </button>
                                         @*<button class="btn btn-icon btn-sm btn-danger "><i class="icon-Delete-File"></i> @Html.ActionLink(" Eliminar", "Delete", "Category", new { id = item.CategoryId }, new { @class = "modal-link", title = "Eliminar" })</button>*@
                                         <button class="btn btn-icon btn-sm btn-danger " onclick="BorrarItem(@item.ProveedorId )"><i class="icon-Delete-File"></i> Eliminar</button>
 
@@ -109,7 +109,7 @@
 
     });
 
-    function BorrarItem(CategoryId) {
+    function BorrarItem(SupplierId) {
         swal({
             title: 'Estas Seguro?',
             text: "No Es Posible Revertir",
@@ -125,7 +125,7 @@
                 async: false,
                 type: 'POST',
                 url: '/Supplier/Eliminar/',
-                data: { id: CategoryId },
+                data: { id: SupplierId },
                 //dataType: "json",
                 //contentType: 'application/json; charset=utf-8',
                 success: function (data) {
@@ -183,7 +183,78 @@
     }
 
 
+    function BorrarItemDos(SupplierId) {
+        swal({
+            title: 'Estas Seguro?',
+            text: "No Es Posible Revertir",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Si, Borrar',
+            cancelButtonText: 'No, Cancel!',
+            confirmButtonClass: 'btn btn-success mt-2',
+            cancelButtonClass: 'btn btn-danger ml-2 mt-2',
+            buttonsStyling: false
+        }).then(function () {
+            $.ajax({
+                async: false,
+                type: 'POST',
+                url: '/Supplier/Eliminar/',
+                data: { id: SupplierId },
+                //dataType: "json",
+                //contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    if (data === 'True') {
+                        swal({
+                            title: 'Eliminado!',
+                            text: "El Elemento ha sido Eliminado",
+                            type: 'success',
+                            confirmButtonClass: 'btn btn-confirm mt-2'
+                        }).then(function () {
+                            window.location = "/Supplier/Index";
+                        });
+                    }
+                    else {
+                        swal({
+                            title: 'Error',
+                            text: "Algo Inesperado sucedio, No se Elimino el registro",
+                            type: 'error',
+                            confirmButtonClass: 'btn btn-confirm mt-2'
+                        })
+                    }
+                },
+                error: function (xhr, type, exception) {
+                    swal({
+                        title: 'Error',
+                        text: "ajax error response type " + type + ' \nException: ' + exception + ' \nXhr: ' + xhr,
+                        type: 'error',
+                        confirmButtonClass: 'btn btn-confirm mt-2'
+                    })
+                    // if ajax fails display error alert
+                    console.log('Mierda no jalo X.X ' + exception + xhr);
+                }
+            });
+            //.then(function () {
 
+            //    //------------------------------------------ Same Logic as Ajax Call without POST Type
+            //    //var url = '/ContactMessage/Eliminar/' + $('#MessageId').val();
+            //    //window.location.href = url;
+            //    //------------------------------------------ Same Logic as Ajax Call without POST Type
+            //    //var url = $("#RedirectTo").val();
+            //    //location.href = url;
+            //});
+        }, function (dismiss) {
+            // dismiss can be 'cancel', 'overlay',
+            // 'close', and 'timer'
+            if (dismiss === 'cancel') {
+                swal({
+                    title: 'Cancelado',
+                    text: "El Elemento Queda Intacto",
+                    type: 'error',
+                    confirmButtonClass: 'btn btn-confirm mt-2'
+                })
+            }
+        });
+    }
 </script>
 
 

@@ -96,8 +96,17 @@ namespace WebLandingTemplateBusinessLogic.Logic
 
         public string DeleteSupplier(int id)
         {
-            supplierRepository.Delete(x => x.ProveedorId == id);
-            return "delete";
+            string result = string.Empty;
+            try
+            {
+                supplierRepository.Delete(x => x.ProveedorId == id);
+                result = "Succes";
+            }
+            catch (Exception ex)
+            {
+                result = "Error: " + ex.Message;
+            }
+            return result;
         }
     }
 }

@@ -83,17 +83,21 @@ namespace WebLandingTemplate.Controllers
             var supDto = _supplierBusiness.GetSupplier(id);
             var suppVM = new SupplierVM();
             AutoMapper.Mapper.Map(supDto, suppVM);
-            return View(suppVM);
+            ViewBag.ModalName = "Detalles de Categoria";
+            ViewBag.GoTo = "Details";
+            return PartialView("ModalSupplier", suppVM);
+
         }
 
         // GET: Supplier/Create
         public ActionResult Create()
         {
-             ViewBag.ModalName = "Crear Proveedor";
-             ViewBag.GoTo = "Create";
-             return PartialView("ModalSupplier");
+            ViewBag.ModalName = "Crear Proveedor";
+            ViewBag.GoTo = "Create";
+            return PartialView("ModalSupplier");
+
             //return View();
-            
+
         }
 
         // POST: Supplier/Create
@@ -102,18 +106,27 @@ namespace WebLandingTemplate.Controllers
         {
 
             HttpFileCollectionBase collectionBase = Request.Files;
-         /*   if (collectionBase.Get(0).ContentLength > 0 && collectionBase.Get(0).ContentType == "image/jpeg")
-            {
-                WebImage image = new WebImage(collectionBase.Get(0).InputStream);
-                supplierVM.Logo = image.GetBytes();
-            }*/
+
             try
             {
+                if (collectionBase.Get(0).ContentLength > 0 && collectionBase.Get(0).ContentType == "image/jpeg")
+                {
+                    WebImage image = new WebImage(collectionBase.Get(0).InputStream);
+                    supplierVM.Logo = image.GetBytes();
+                    var suppDto = new SupplierDto();
+                    AutoMapper.Mapper.Map(supplierVM, suppDto);
+                    var result = _supplierBusiness.InsertSupplier(suppDto);
+                    return RedirectToAction("Index");
+                }
+                else//CUANDO NO ES JPG
+                {
+                    return RedirectToAction("Index");
+
+                    ///Debe mostral un modal de error
+                    ///
+
+                }
                 // TODO: Add insert logic here
-                var suppDto = new SupplierDto();
-                AutoMapper.Mapper.Map(supplierVM, suppDto);
-                var result = _supplierBusiness.InsertSupplier(suppDto);
-                return RedirectToAction("Index");
             }
             catch (DbEntityValidationException ex)
             {
@@ -138,7 +151,11 @@ namespace WebLandingTemplate.Controllers
             var suppDto = _supplierBusiness.GetSupplier(id);
             var suppVM = new SupplierVM();
             AutoMapper.Mapper.Map(suppDto, suppVM);
-            return View(suppVM);
+            ViewBag.ModalName = "Editar Categoría";
+            ViewBag.GoTo = "Edit";
+            //return PartialView(itemVM);
+            return PartialView("ModalSupplier", suppVM);
+            //return View(itemVM);
         }
 
         // POST: Supplier/Edit/5
@@ -147,6 +164,8 @@ namespace WebLandingTemplate.Controllers
         {
             try
             {
+                supplierVM.ProveedorId = id;
+
                 HttpFileCollectionBase collectionBase = Request.Files;
                 string typeFile = collectionBase.Get(0).ContentType;
                 if (collectionBase.Get(0).ContentLength > 0 && collectionBase.Get(0).ContentType == "image/jpeg")
@@ -154,10 +173,17 @@ namespace WebLandingTemplate.Controllers
                     WebImage image = new WebImage(collectionBase.Get(0).InputStream);
                     supplierVM.Logo = image.GetBytes();
                 }
+                else
+                {
+                    SupplierDto supplier = _supplierBusiness.GetSupplier(id);
+                    supplierVM.Logo = supplier.Logo;
+                }
                 var supplierDto = new SupplierDto();
                 // TODO: Add update logic here
                 AutoMapper.Mapper.Map(supplierVM, supplierDto);
                 _supplierBusiness.UpdateSupplier(supplierDto);
+
+                SupplierDto suppliers = _supplierBusiness.GetSupplier(id);
                 return RedirectToAction("Index");
             }
             catch
@@ -177,23 +203,46 @@ namespace WebLandingTemplate.Controllers
         }
 
         // POST: Supplier/Delete/5
+        /* [HttpPost]
+         public ActionResult Delete(int id, SupplierVM supplierVM)
+         {
+             try
+             {
+                 // TODO: Add delete logic here
+                // var suppDto = new SupplierDto();
+                 //AutoMapper.Mapper.Map(supplierVM, suppDto);
+                 var result = _supplierBusiness.DeleteSupplier(id);
+
+                 return RedirectToAction("Index");
+             }
+             catch
+             {
+                 return View();
+             }
+         }*/
+
+        // POST: ContactMessage/Eliminar/5
         [HttpPost]
-        public ActionResult Delete(int id, SupplierVM supplierVM)
+        public bool Eliminar(int id)
         {
             try
             {
-                // TODO: Add delete logic here
-                var suppDto = new SupplierDto();
-                AutoMapper.Mapper.Map(supplierVM, suppDto);
+                //return true;
                 var result = _supplierBusiness.DeleteSupplier(id);
-                return RedirectToAction("Index");
+                if (result == "Succes")
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             catch
             {
-                return View();
+                return false;
             }
         }
-
 
         public ActionResult getImage(int id)
         {
