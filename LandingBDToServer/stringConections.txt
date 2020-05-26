@@ -1,0 +1,10 @@
+----------------------- ORIGINALES
+--webconfig
+  Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-WebLandingTemplate.mdf;Initial Catalog=aspnet-WebLandingTemplate;Integrated Security=True
+  Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-WebLandingTemplate.mdf;Initial Catalog=aspnet-WebLandingTemplate;Integrated Security=True;MultipleActiveResultSets=True;App=EntityFramework
+  
+  --App config
+  data source=(LocalDB)\MSSQLLocalDB;attachdbfilename=C:\WebLandingTemplate\App_GlobalData\aspnet-WebLandingTemplate.mdf;integrated security=True;connect timeout=30;MultipleActiveResultSets=True;App=EntityFramework
+
+----------------------- SERVER
+Data Source=65.99.252.110;Initial Catalog=besmicom_aspnet-WebLandingTemplate;User ID=besmicom_besmicom;Password=#besmicom_B777D;Integrated Security=false;Connect Timeout=30;MultipleActiveResultSets=True;App=EntityFramework
