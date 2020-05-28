@@ -162,13 +162,14 @@ namespace WebLandingTemplate.Controllers
         [HttpPost]
         public ActionResult Edit(int id, SupplierVM supplierVM)
         {
+            HttpFileCollectionBase collectionBase = Request.Files;
             try
             {
                 supplierVM.ProveedorId = id;
 
-                HttpFileCollectionBase collectionBase = Request.Files;
+                
                 string typeFile = collectionBase.Get(0).ContentType;
-                if (collectionBase.Get(0).ContentLength > 0 && collectionBase.Get(0).ContentType == "/jpeg/jpg/png")
+                if (collectionBase.Get(0).ContentLength > 0 && collectionBase.Get(0).ContentType == "image/jpeg")
                 {
                     WebImage image = new WebImage(collectionBase.Get(0).InputStream);
                     supplierVM.Logo = image.GetBytes();
