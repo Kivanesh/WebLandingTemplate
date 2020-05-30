@@ -79,7 +79,7 @@ namespace WebLandingTemplate.Controllers
             return View(listaVM.ToPagedList(pageNumber, pageSize));
         }
 
-        // GET: Product/Details/5
+        /* GET: Product/Details/5
         public ActionResult Details(int id)
         {
             var prodDto = _productBusiness.GetProduct(id);
@@ -88,15 +88,16 @@ namespace WebLandingTemplate.Controllers
 
             return View("ProductDetail",prodVM);
             //return PartialView("ModalProduct", prodVM);
-        }
+        }*/
 
         // GET: Product/Details/5
-        public ActionResult DetailsModal(int id)
+        public ActionResult Details(int id)
         {
             var prodDto = _productBusiness.GetProduct(id);
             var prodVM = new ProductVM();
             AutoMapper.Mapper.Map(prodDto, prodVM);
-
+            ViewBag.ModalName = "Detalles de Producto";
+            ViewBag.GoTo = "Details";
             return PartialView("ModalProduct", prodVM);
         }
 
@@ -140,7 +141,7 @@ namespace WebLandingTemplate.Controllers
         // POST: Product/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, ProductVM prodVM)
-        {
+            {
             try
             {
                 var prodDto = new ProductDto();
