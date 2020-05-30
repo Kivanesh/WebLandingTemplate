@@ -1,6 +1,9 @@
-﻿@model IEnumerable<WebLandingTemplate.Models.ProductVM>
-
+﻿@model PagedList.IPagedList<WebLandingTemplate.Models.ProductVM>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
+    ViewBag.Title = "Index";
+    ViewBag.Type = "Productos";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     ViewBag.Title = "Index";
 }
@@ -9,27 +12,36 @@
 
 
 <div class="bg-white table-responsive rounded shadow-sm pt-3 pb-3 mb-30">
-    <h6 class="pl-3 pr-3 text-capitalize font400 mb-20">Productos</h6>
+    <h6 class="pl-3 pr-3 text-capitalize font400 mb-20">@ViewBag.Type</h6>
     <div id="data-table_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
         <div class="row">
             <div class="col-sm-12">
                 <div class="button">
-                    @Html.ActionLink("Nuevo Producto", "Create", new { id = "" }, new { @class = "btn btn-primary mr-1 mb-2" })
+                    <button class="btn btn-icon btn-danger ">
+                        <i class="far fa-edit"></i>
+                        @Html.ActionLink("Nuevo Producto", "Create", "Product", null, new { @class = "modal-link" })
 
+                    </button>
                 </div>
             </div>
         </div>
+
         <div class="row">
             <div class="col-sm-12 col-md-6">
                 <div class="dataTables_length" id="data-table_length">
-                    <label>Mostrar <select name="data-table_length" aria-controls="data-table" class="form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label>
-
+                    <label>
+                        Mostrar
+                        @Html.DropDownList("Rows", ViewBag.dropdownsrc as SelectList, new { id = "RowNumber", @class = "RowNumber form-control form-control-sm" })
+                        entries
+                    </label>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6">
-                <div id="data-table_filter" class="dataTables_filter"><label>Buscar:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="data-table"></label></div>
-            </div>
-
+            @using (Html.BeginForm("Index", "Product", FormMethod.Post))
+            {
+                <div class="col-sm-12 col-md-12">
+                    <div id="data-table_filter" class="dataTables_filter"><input type="search" name="searchString" id="searchInput" data-search="searchString" class="form-control form-control-sm" placeholder="Búscar..." aria-controls="data-table"></div>
+                </div>
+            }
         </div>
 
         <div class="row">
@@ -37,74 +49,238 @@
                 <table id="data-table" class="table mb-0 table-striped dataTable no-footer dtr-inline" cellspacing="0" width="100%" role="grid" aria-describedby="data-table_info" style="width: 100%;">
                     <thead>
                         <tr role="row">
-                            <th class="sorting_asc" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" style="width: 147px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">
-                                @Html.DisplayNameFor(model => model.ProductName)
-                            </th>
-                            <th class="sorting_asc" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" style="width: 147px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">
-                                @Html.DisplayNameFor(model => model.ProveedorId)
-                            </th>
-                            <th class="sorting_asc" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" style="width: 147px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">
-                                @Html.DisplayNameFor(model => model.Price)
-                            </th>
-                            <th class="sorting_asc" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" style="width: 147px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">
-                                @Html.DisplayNameFor(model => model.Description)
-                            </th>
-                            <th class="sorting_asc" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" style="width: 147px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">
-                                @Html.DisplayNameFor(model => model.Size)
-                            </th>
-                            <th class="sorting_asc" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" style="width: 147px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">
-                                @Html.DisplayNameFor(model => model.Color)
-                            </th>
-                            <th class="sorting_asc" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" style="width: 147px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">
-                                @Html.DisplayNameFor(model => model.ProductType)
-                            </th>
+                            <th class="sorting_asc" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" style="width: 147px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">Nombre</th>
+                            <th class="sorting" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" style="width: 143px;" aria-label="Last name: activate to sort column ascending">Precio</th>
+                            <th class="sorting" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" style="width: 143px;" aria-label="Last name: activate to sort column ascending">Descripción</th>
+                            <th class="sorting" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" style="width: 143px;" aria-label="Last name: activate to sort column ascending">Tamaño</th>
+                            <th class="sorting" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" style="width: 143px;" aria-label="Last name: activate to sort column ascending">Color</th>
+                            <th class="sorting" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" style="width: 143px;" aria-label="Last name: activate to sort column ascending">Tipo</th>
+
+
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var item in Model)
                         {
-                        <tr role="row" class="odd">
-                            <td tabindex="0" class="sorting_1">
-                                @Html.DisplayFor(modelItem => item.ProductId)
-                            </td>
-                            <td tabindex="0" class="sorting_1">
-                                @Html.DisplayFor(modelItem => item.ProductName)
-                            </td>
-                            <td tabindex="0" class="sorting_1">
-                                <a href="/Supplier/Details/@item.ProveedorId">
-                                    @Html.DisplayFor(modelItem => item.ProveedorId)
-                                </a>
+                            <tr role="row" class="odd">
+                                    
+                                <td tabindex="0" class="sorting_1">
+                                    @Html.DisplayFor(modelItem => item.ProductName)
+                                </td>
 
-                            </td>
-                            <td tabindex="0" class="sorting_1">
-                                @Html.DisplayFor(modelItem => item.Price)
-                            </td>
-                            <td tabindex="0" class="sorting_1">
-                                @Html.DisplayFor(modelItem => item.Description)
-                            </td>
-                            <td tabindex="0" class="sorting_1">
-                                @Html.DisplayFor(modelItem => item.Size)
-                            </td>
-                            <td tabindex="0" class="sorting_1">
-                                @Html.DisplayFor(modelItem => item.Color)
-                            </td>
-                            <td tabindex="0" class="sorting_1">
-                                <a href="/Category/Details/@item.ProductType">
-                                    @Html.DisplayFor(modelItem => item.ProductType)
-                                </a>
-                            </td>
-                            <td>
-                                @Html.ActionLink("Modal", "DetailsModal", "Product", new { id = item.ProductId }, new { @class = "modal-link switch-disable", title = "Detalles de Categoria" }) |
-                                @Html.ActionLink("Editar", "Edit", new { id = item.ProductId }) |
-                                @Html.ActionLink("Detalles", "Details", new { id = item.ProductId }) |
-                                @Html.ActionLink("Eliminar", "Delete", new { id = item.ProductId })
-                            </td>
-                        </tr>
+                                <td tabindex="0" class="sorting_1">
+                                    @Html.DisplayFor(modelItem => item.Price)
+                                </td>
+                                <td tabindex="0" class="sorting_1">
+                                    @Html.DisplayFor(modelItem => item.Description)
+                                </td>
+                                <td tabindex="0" class="sorting_1">
+                                    @Html.DisplayFor(modelItem => item.Size)
+                                </td>
+                                <td tabindex="0" class="sorting_1">
+                                    @Html.DisplayFor(modelItem => item.Color)
+                                </td>
+                                <td tabindex="0" class="sorting_1">
+                                    <a href="/Category/Details/@item.ProductType">
+                                        @Html.DisplayFor(modelItem => item.ProductType)
+                                    </a>
+                                </td>
+                                <td>
+                                    <div class="btn-group-sm btn-group-rounded pt-20">
+                                        <button class="btn btn-icon btn-sm btn-danger "><i class="icon-Eye-Scan"></i> @Html.ActionLink(" Detalles", "Details", "Product", new { id = item.ProveedorId }, new { @class = "modal-link ", title = "Detalles" })</button>
+                                        <button class="btn btn-icon btn-sm btn-danger "><i class="icon-Open-Book"></i> @Html.ActionLink(" Editar", "Edit", "Product", new { id = item.ProveedorId }, new { @class = "modal-link", title = "Editar" }) </button>
+                                        @*<button class="btn btn-icon btn-sm btn-danger "><i class="icon-Delete-File"></i> @Html.ActionLink(" Eliminar", "Delete", "Category", new { id = item.CategoryId }, new { @class = "modal-link", title = "Eliminar" })</button>*@
+                                        <button class="btn btn-icon btn-sm btn-danger " onclick="BorrarItem(@item.ProductId )"><i class="icon-Delete-File"></i> Eliminar</button>
+
+                                    </div>
+                                    @*Html.ActionLink("Editar", "Edit", new { id = item.ProveedorId }) |
+                                        @Html.ActionLink("Detalles", "Details", new { id = item.ProveedorId }) |
+                                        @Html.ActionLink("Eliminar", "Delete", new { id = item.ProveedorId })*@
+                                </td>
+                            </tr>
                         }
                     </tbody>
                 </table>
             </div>
-        </div><div class="row"><div class="col-sm-12 col-md-5"><div class="dataTables_info" id="data-table_info" role="status" aria-live="polite">Showing 1 to 10 of 10 entries</div></div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="data-table_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="data-table_previous"><a href="#" aria-controls="data-table" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li><li class="paginate_button page-item active"><a href="#" aria-controls="data-table" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item next disabled" id="data-table_next"><a href="#" aria-controls="data-table" data-dt-idx="2" tabindex="0" class="page-link">Next</a></li></ul></div></div></div>
+        </div><div class="row">
+            Pagina @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+
+            <!--<div class="col-sm-12 col-md-5"><div class="dataTables_info" id="data-table_info" role="status" aria-live="polite">Showing 1 to 10 of 10 entries</div></div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="data-table_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="data-table_previous"><a href="#" aria-controls="data-table" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li><li class="paginate_button page-item active"><a href="#" aria-controls="data-table" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item next disabled" id="data-table_next"><a href="#" aria-controls="data-table" data-dt-idx="2" tabindex="0" class="page-link">Next</a></li></ul></div></div></div>-->
+        </div>
     </div>
 </div>
+
+<
+<script type="text/javascript">
+
+    $('#RowNumber').on('change', function (e) {
+        e.preventDefault();
+        console.log("Le diste click ");
+        console.log('You selected: ', this.value);
+        $('#RowNumber').val(this.value);
+        $.ajax({
+            url: '/Product/Index',
+            type: 'POST',
+            contentType: 'application/json;',
+            data: JSON.stringify({ page: null, searchString: "", pageSize: this.value }),
+            success: function (data) {
+                document.open();
+                document.write(data);
+                document.close();
+            }
+        });
+
+    });
+
+    function BorrarItem(ProductId) {
+        swal({
+            title: 'Estas Seguro?',
+            text: "No Es Posible Revertir",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Si, Borrar',
+            cancelButtonText: 'No, Cancel!',
+            confirmButtonClass: 'btn btn-success mt-2',
+            cancelButtonClass: 'btn btn-danger ml-2 mt-2',
+            buttonsStyling: false
+        }).then(function () {
+            $.ajax({
+                async: false,
+                type: 'POST',
+                url: '/Product/Eliminar/',
+                data: { id: ProductId },
+                //dataType: "json",
+                //contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    if (data === 'True') {
+                        swal({
+                            title: 'Eliminado!',
+                            text: "El Elemento ha sido Eliminado",
+                            type: 'success',
+                            confirmButtonClass: 'btn btn-confirm mt-2'
+                        }).then(function () {
+                            window.location = "/Product/Index";
+                        });
+                    }
+                    else {
+                        swal({
+                            title: 'Error',
+                            text: "Algo Inesperado sucedio, No se Elimino el registro",
+                            type: 'error',
+                            confirmButtonClass: 'btn btn-confirm mt-2'
+                        })
+                    }
+                },
+                error: function (xhr, type, exception) {
+                    swal({
+                        title: 'Error',
+                        text: "ajax error response type " + type + ' \nException: ' + exception + ' \nXhr: ' + xhr,
+                        type: 'error',
+                        confirmButtonClass: 'btn btn-confirm mt-2'
+                    })
+                    // if ajax fails display error alert
+                    console.log('Mierda no jalo X.X ' + exception + xhr);
+                }
+            });
+            //.then(function () {
+
+            //    //------------------------------------------ Same Logic as Ajax Call without POST Type
+            //    //var url = '/ContactMessage/Eliminar/' + $('#MessageId').val();
+            //    //window.location.href = url;
+            //    //------------------------------------------ Same Logic as Ajax Call without POST Type
+            //    //var url = $("#RedirectTo").val();
+            //    //location.href = url;
+            //});
+        }, function (dismiss) {
+            // dismiss can be 'cancel', 'overlay',
+            // 'close', and 'timer'
+            if (dismiss === 'cancel') {
+                swal({
+                    title: 'Cancelado',
+                    text: "El Elemento Queda Intacto",
+                    type: 'error',
+                    confirmButtonClass: 'btn btn-confirm mt-2'
+                })
+            }
+        });
+    }
+
+
+    function BorrarItemDos(SupplierId) {
+        swal({
+            title: 'Estas Seguro?',
+            text: "No Es Posible Revertir",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Si, Borrar',
+            cancelButtonText: 'No, Cancel!',
+            confirmButtonClass: 'btn btn-success mt-2',
+            cancelButtonClass: 'btn btn-danger ml-2 mt-2',
+            buttonsStyling: false
+        }).then(function () {
+            $.ajax({
+                async: false,
+                type: 'POST',
+                url: '/Product/Eliminar/',
+                data: { id: SupplierId },
+                //dataType: "json",
+                //contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    if (data === 'True') {
+                        swal({
+                            title: 'Eliminado!',
+                            text: "El Elemento ha sido Eliminado",
+                            type: 'success',
+                            confirmButtonClass: 'btn btn-confirm mt-2'
+                        }).then(function () {
+                            window.location = "/Product/Index";
+                        });
+                    }
+                    else {
+                        swal({
+                            title: 'Error',
+                            text: "Algo Inesperado sucedio, No se Elimino el registro",
+                            type: 'error',
+                            confirmButtonClass: 'btn btn-confirm mt-2'
+                        })
+                    }
+                },
+                error: function (xhr, type, exception) {
+                    swal({
+                        title: 'Error',
+                        text: "ajax error response type " + type + ' \nException: ' + exception + ' \nXhr: ' + xhr,
+                        type: 'error',
+                        confirmButtonClass: 'btn btn-confirm mt-2'
+                    })
+                    // if ajax fails display error alert
+                    console.log('Mierda no jalo X.X ' + exception + xhr);
+                }
+            });
+            //.then(function () {
+
+            //    //------------------------------------------ Same Logic as Ajax Call without POST Type
+            //    //var url = '/ContactMessage/Eliminar/' + $('#MessageId').val();
+            //    //window.location.href = url;
+            //    //------------------------------------------ Same Logic as Ajax Call without POST Type
+            //    //var url = $("#RedirectTo").val();
+            //    //location.href = url;
+            //});
+        }, function (dismiss) {
+            // dismiss can be 'cancel', 'overlay',
+            // 'close', and 'timer'
+            if (dismiss === 'cancel') {
+                swal({
+                    title: 'Cancelado',
+                    text: "El Elemento Queda Intacto",
+                    type: 'error',
+                    confirmButtonClass: 'btn btn-confirm mt-2'
+                })
+            }
+        });
+    }
+</script>
+
+
+
 
