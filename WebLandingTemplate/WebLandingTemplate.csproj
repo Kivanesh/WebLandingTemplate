@@ -2848,6 +2848,10 @@
     <Content Include="Views\Product\ModalProduct.cshtml" />
     <Content Include="Views\Category\CategoryDetail.cshtml" />
     <Content Include="Views\Category\Create.cshtml" />
+    <Content Include="Views\Account\LoginView.cshtml" />
+    <Content Include="Views\Home\_ContactPartial.cshtml" />
+    <Content Include="Views\Home\_ValPartial.cshtml" />
+    <Content Include="Views\Supplier\ModalSupplier.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

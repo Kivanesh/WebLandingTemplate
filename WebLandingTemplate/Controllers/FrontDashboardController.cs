@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,14 +19,58 @@ namespace WebLandingTemplate.Controllers
             _frontDashboardBusiness = frontDashboardBusiness;
         }
 
-        // GET: FrontDashboard
-        public ActionResult Index()
+        private IEnumerable<SelectListItem> DataItems(int pageSize)
         {
-            var listaDto = _frontDashboardBusiness.GetAllItems();
-            var listaVM = new List<FrontDashboardVM>();
-            AutoMapper.Mapper.Map(listaDto, listaVM);
+            const int valueA = 3, valueB = 6, valueC = 9, valueD = 15;
+            List<SelectListItem> list = new List<SelectListItem>();
+            //list.Add(new SelectListItem() { Value = null, Text = "---Select---" });
+            list.Add(new SelectListItem() { Value = valueA.ToString(), Text = valueA.ToString(), Selected = false });
+            list.Add(new SelectListItem() { Value = valueB.ToString(), Text = valueB.ToString(), Selected = false });
+            list.Add(new SelectListItem() { Value = valueC.ToString(), Text = valueC.ToString(), Selected = false });
+            list.Add(new SelectListItem() { Value = valueD.ToString(), Text = valueD.ToString(), Selected = false });
 
-            return View(listaVM);
+            switch (pageSize)
+            {
+                case valueA:
+                    list.ElementAtOrDefault(0).Selected = true;
+                    break;
+                case 6:
+                    list.ElementAtOrDefault(1).Selected = true;
+                    break;
+                case 9:
+                    list.ElementAtOrDefault(2).Selected = true;
+                    break;
+                case 15:
+                    list.ElementAtOrDefault(3).Selected = true;
+                    break;
+                default:
+                    break;
+            }
+
+            return new SelectList(list, "Value", "Text", "Selected");
+        }
+
+        // GET: FrontDashboard
+        public ActionResult Index(int? page, string searchString, int pageSize = 3)
+        {
+
+            ViewBag.dropdownsrc = DataItems(pageSize);
+
+            int pageNumber = (page ?? 1);
+            var listaVM = new List<FrontDashboardVM>();
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                var listaDto = _frontDashboardBusiness.GetAllItems().Where(c => c.ElementName.Contains(searchString) || c.ItemImageId.ToString().Contains(searchString));
+                AutoMapper.Mapper.Map(listaDto, listaVM);
+            }
+            else
+            {
+                var listaDto = _frontDashboardBusiness.GetAllItems();
+                AutoMapper.Mapper.Map(listaDto, listaVM);
+            }
+
+            return View(listaVM.ToPagedList(pageNumber, pageSize));
 
         }
 
@@ -35,6 +80,10 @@ namespace WebLandingTemplate.Controllers
             var itemDto = _frontDashboardBusiness.GetItem(id);
             var itemVM = new FrontDashboardVM();
             AutoMapper.Mapper.Map(itemDto, itemVM);
+
+            //ViewBag.ModalName = "Detalles de Categoria";
+            //ViewBag.GoTo = "Details";
+            //return PartialView("ModalSupplier", itemVM);
 
             return View(itemVM);
         }
