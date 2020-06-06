@@ -483,7 +483,7 @@
           </Key>
           <Property Name="ImageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ItemId" Type="Int32" />
-          <Property Name="Name" Type="Binary" MaxLength="8000" FixedLength="false" />
+          <Property Name="Name" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="ItemCodeType" Type="Int32" />
           <NavigationProperty Name="Dashboard" Relationship="Self.FK__ImageSour__ItemI__4AB81AF0" FromRole="ImageSources" ToRole="Dashboard" />

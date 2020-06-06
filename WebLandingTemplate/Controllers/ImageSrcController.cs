@@ -12,16 +12,16 @@ namespace WebLandingTemplate.Controllers
 {
     public class ImageSrcController : Controller
     {
-        IImageSrcBusiness _imgSrcRepository;
-        public ImageSrcController(ImageSrcBusiness imgSrcRepository)
+        IImageSrcBusiness _imageSrcBusiness;
+        public ImageSrcController(ImageSrcBusiness imageSrcBusiness)
         {
-            _imgSrcRepository = imgSrcRepository;
-        } 
+            _imageSrcBusiness = imageSrcBusiness;
+        }
 
         // GET: ImageSrc
         public ActionResult Index()
         {
-            var listaDto = _imgSrcRepository.GetAllItems();
+            var listaDto = _imageSrcBusiness.GetAllItems();
             var listaVM = new List<ImageSrcVM>();
             AutoMapper.Mapper.Map(listaDto, listaVM);
 
@@ -31,7 +31,7 @@ namespace WebLandingTemplate.Controllers
         // GET: ImageSrc/Details/5
         public ActionResult Details(int id)
         {
-            var itemDto = _imgSrcRepository.GetItem(id);
+            var itemDto = _imageSrcBusiness.GetItem(id);
             var itemVM = new ImageSrcVM();
             AutoMapper.Mapper.Map(itemDto, itemVM);
 
@@ -52,7 +52,7 @@ namespace WebLandingTemplate.Controllers
             {
                 var itemDto = new ImageSrcDto();
                 AutoMapper.Mapper.Map(itemVM, itemDto);
-                var result = _imgSrcRepository.InsertItem(itemDto);
+                var result = _imageSrcBusiness.InsertItem(itemDto);
                 return RedirectToAction("Index");
             }
             catch
@@ -63,11 +63,13 @@ namespace WebLandingTemplate.Controllers
 
         // GET: ImageSrc/Edit/5
         public ActionResult Edit(int id)
-        {
-            var itemDto = _imgSrcRepository.GetItem(id);
+            {
+            var itemDto = _imageSrcBusiness.GetAllItems().Where(c => c.ItemId == id).ToList();
             var itemVM = new ImageSrcVM();
-            AutoMapper.Mapper.Map(itemDto, itemVM);
-            return View(itemVM);
+            AutoMapper.Mapper.Map(itemDto.First(), itemVM);
+            ViewBag.ModalName = "Editar Dashboard";
+            ViewBag.GoTo = "Edit";
+            return PartialView("ModalImageSrc", itemVM);
         }
 
         // POST: ImageSrc/Edit/5
@@ -78,7 +80,7 @@ namespace WebLandingTemplate.Controllers
             {
                 var itemDto = new ImageSrcDto();
                 AutoMapper.Mapper.Map(itemVM, itemDto);
-                var result = _imgSrcRepository.UpdateItem(itemDto);
+                var result = _imageSrcBusiness.UpdateItem(itemDto);
                 return RedirectToAction("Index");
             }
             catch
@@ -90,7 +92,7 @@ namespace WebLandingTemplate.Controllers
         // GET: ImageSrc/Delete/5
         public ActionResult Delete(int id)
         {
-            var itemDto = _imgSrcRepository.GetItem(id);
+            var itemDto = _imageSrcBusiness.GetItem(id);
             var itemVM = new ImageSrcVM();
             AutoMapper.Mapper.Map(itemDto, itemVM);
             return View(itemVM);
@@ -104,7 +106,7 @@ namespace WebLandingTemplate.Controllers
             {
                 var itemDto = new ImageSrcDto();
                 AutoMapper.Mapper.Map(itemVM, itemDto);
-                var result = _imgSrcRepository.DeleteItem(id);
+                var result = _imageSrcBusiness.DeleteItem(id);
                 return RedirectToAction("Index");
             }
             catch

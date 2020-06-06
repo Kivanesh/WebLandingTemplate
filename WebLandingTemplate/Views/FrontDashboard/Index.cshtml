@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="button">
-                    <button class="btn btn-icon btn-danger "><i class="far fa-edit"></i>  @Html.ActionLink(" Nuevo Proveedor", "Create", "Supplier", null, new { @class = "modal-link" })</button>
+                    <button class="btn btn-icon btn-danger "><i class="far fa-edit"></i>  @Html.ActionLink(" Nuevo Home Item", "Create", "FrontDashboard", null, new { @class = "modal-link" })</button>
                 </div>
             </div>
         </div>
@@ -68,7 +68,7 @@
                                 <td>
                                     <div class="btn-group-sm btn-group-rounded pt-20">
                                         <button class="btn btn-icon btn-sm btn-danger "><i class="icon-Eye-Scan"></i> @Html.ActionLink(" Detalles", "Details", "Supplier", new { id = item.ElementId }, new { @class = "modal-link ", title = "Detalles" })</button>
-                                        <button class="btn btn-icon btn-sm btn-danger "><i class="icon-Open-Book"></i> @Html.ActionLink(" Editar", "Edit", "Supplier", new { id = item.ElementId }, new { @class = "modal-link", title = "Editar" }) </button>
+                                        <button class="btn btn-icon btn-sm btn-danger "><i class="icon-Open-Book"></i> @Html.ActionLink(" Editar", "Edit", "ImageSrc", new { id = item.ItemImageId }, new { @class = "modal-link", title = "Editar" }) </button>
                                         @*<button class="btn btn-icon btn-sm btn-danger "><i class="icon-Delete-File"></i> @Html.ActionLink(" Eliminar", "Delete", "Category", new { id = item.CategoryId }, new { @class = "modal-link", title = "Eliminar" })</button>*@
                                         <button class="btn btn-icon btn-sm btn-danger " onclick="BorrarItem(@item.ElementId )"><i class="icon-Delete-File"></i> Eliminar</button>
 
