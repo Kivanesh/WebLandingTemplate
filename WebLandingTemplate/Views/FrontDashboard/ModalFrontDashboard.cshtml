@@ -1,4 +1,4 @@
-﻿@model WebLandingTemplate.Models.ImageSrcVM
+﻿@model List<WebLandingTemplate.Models.ImageSrcVM>
 
 <div class="modal-body form-control-file">
     <div class="row-fluid form-group col-md-12">
@@ -13,7 +13,7 @@
                 <div class="portlet-body">
                     <form method="post" action="@Url.Action(""+ViewBag.GoTo+"", "FrontDashboard")" enctype="multipart/form-data" id="supplier-form">
 
-                        @**if (ViewBag.GoTo == "Create")
+                        @*if (ViewBag.GoTo == "Create")
         {
             <div class="form-body">
                 <div class="form-row">
@@ -55,64 +55,44 @@
         }*@
                         @if (ViewBag.GoTo == "Edit")
                         {
-                            <div class="form-body">
-                                <div class="form-row">
-                                    <div class="col-md-5 mb-3">
-                                        <div class="input-icon-group">
-                                            @Html.LabelFor(model => model.ImageId, htmlAttributes: new { @class = "control-label col-md-2" })
-                                            <div class="input-icon-append">
-                                                <i class="fa fa-user"></i>
-                                                @Html.EditorFor(model => model.ImageId, new { htmlAttributes = new { @class = "form-control" } })
-                                                @Html.ValidationMessageFor(model => model.ImageId, "", new { @class = "text-danger" })
+                            foreach (var item in Model)
+                            {
+                                <div class="form-body">
+                                    <div class="form-row">
+                                        @Html.HiddenFor(model => item.ImageId, new { htmlAttributes = new { @class = "form-control" } })
 
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-5 mb-3">
-                                        <div class="input-icon-group">
-                                            @Html.LabelFor(model => model.ItemId, htmlAttributes: new { @class = "control-label col-md-2" })
-                                            <div class="input-icon-append">
-                                                <i class="fa fa-user"></i>
-                                                @Html.EditorFor(model => model.ItemId, new { htmlAttributes = new { @class = "form-control" } })
-                                                @Html.ValidationMessageFor(model => model.ItemId, "", new { @class = "text-danger" })
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-5 mb-3">
-                                        <div class="input-icon-group">
-                                            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-                                            <div class="input-icon-append">
-                                                <i class="fa fa-user"></i>
-                                                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-                                                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-5 mb-3">
-                                        <div class="input-icon-group">
-                                            @Html.LabelFor(model => model.ItemCodeType, htmlAttributes: new { @class = "control-label col-md-2" })
-                                            <div class="input-icon-append">
-                                                <i class="fa fa-user"></i>
-                                                @Html.EditorFor(model => model.ItemCodeType, new { htmlAttributes = new { @class = "form-control" } })
-                                                @Html.ValidationMessageFor(model => model.ItemCodeType, "", new { @class = "text-danger" })
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--Aqui abajo va el código-->
-                                    <div class="col-md-5 mb-3">
-                                        <div class="input-icon-group">
-                                            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-                                            <div class="input-icon-append">
-                                                <img width="100" height="100" src="@Url.Action("getImage","FrontDashboard", new { id=Model.ImageId})" />
-                                                <input type="file" name="imageLoad" id="file" onchange="return fileValidation()">
-                                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                        @Html.HiddenFor(model => item.ItemId, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.HiddenFor(model => item.ItemCodeType, new { htmlAttributes = new { @class = "form-control" } })
 
+                                        <div class="col-md-5 mb-3">
+                                            <div class="input-icon-group">
+                                                @Html.LabelFor(model => item.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="input-icon-append">
+                                                    <i class="fa fa-user"></i>
+                                                    @Html.EditorFor(model => item.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => item.Description, "", new { @class = "text-danger" })
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div><!--row-->
-                                <div class="result"></div><!-- end .result  section -->
-                            </div>
+
+
+                                        <!--Aqui abajo va el código-->
+                                        <div class="col-md-5 mb-3">
+                                            <div class="input-icon-group">
+                                                @Html.LabelFor(model => item.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="input-icon-append">
+                                                    <img width="100" height="100" src="@Url.Action("getImage","FrontDashboard", new { id = item.ImageId})" />
+                                                    <input type="file" name="imageLoad" id="file" onchange="return fileValidation()">
+                                                    @Html.ValidationMessageFor(model => item.Name, "", new { @class = "text-danger" })
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!--row-->
+                                    <div class="result"></div><!-- end .result  section -->
+                                </div>
+                            }
+
                         }
 
                         @if (ViewBag.GoTo != "Details")

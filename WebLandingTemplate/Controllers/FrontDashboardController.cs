@@ -149,8 +149,9 @@ namespace WebLandingTemplate.Controllers
             //var itemVM = new FrontDashboardVM();
             //AutoMapper.Mapper.Map(itemDto, itemVM);
             var itemDto = _imageSrcBusiness.GetAllItems().Where(c => c.ItemId==id).ToList();
-            var itemVM = new ImageSrcVM();
-            AutoMapper.Mapper.Map(itemDto.First(), itemVM);
+            var itemVM = new List<ImageSrcVM>();
+            itemDto.RemoveAt(1);
+            AutoMapper.Mapper.Map(itemDto, itemVM);
             ViewBag.ModalName = "Editar Dashboard";
             ViewBag.GoTo = "Edit";
             return PartialView("ModalFrontDashboard", itemVM);
@@ -158,10 +159,23 @@ namespace WebLandingTemplate.Controllers
 
         // POST: FrontDashboard/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FrontDashboardVM itemVM)
+        public ActionResult Edit(int id, List<ImageSrcVM> itemVM)
         {
+            HttpFileCollectionBase collectionBase = Request.Files;
             try
             {
+                string typeFile = collectionBase.Get(0).ContentType;
+                if (collectionBase.Get(0).ContentLength > 0 && collectionBase.Get(0).ContentType == "image/jpeg")
+                {
+                    WebImage image = new WebImage(collectionBase.Get(0).InputStream);
+                    //supplierVM.Logo = image.GetBytes();
+                }
+                else
+                {
+                    //SupplierDto supplier = _supplierBusiness.GetSupplier(id);
+                    //supplierVM.Logo = supplier.Logo;
+                }
+                /////
                 var itemDto = new FrontDashboardDto();
                 AutoMapper.Mapper.Map(itemVM, itemDto);
                 var result = _frontDashboardBusiness.UpdateItem(itemDto);
