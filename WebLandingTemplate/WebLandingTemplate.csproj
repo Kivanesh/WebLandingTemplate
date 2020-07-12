@@ -2852,6 +2852,12 @@
     <Content Include="Views\Home\_ContactPartial.cshtml" />
     <Content Include="Views\Home\_ValPartial.cshtml" />
     <Content Include="Views\Supplier\ModalSupplier.cshtml" />
+    <Content Include="Views\Home\_MosaicoPartial.cshtml" />
+    <Content Include="Views\Home\_FeaturesPartial.cshtml" />
+    <Content Include="Views\Home\_PromoTextPartial.cshtml" />
+    <Content Include="Views\Home\_TestimonialPartial.cshtml" />
+    <Content Include="Views\Home\_TripticoPartial.cshtml" />
+    <Content Include="Views\Home\_LogosPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

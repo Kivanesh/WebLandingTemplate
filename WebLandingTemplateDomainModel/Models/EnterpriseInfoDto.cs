@@ -19,5 +19,10 @@ namespace WebLandingTemplateDomainModel.Models
         public string EmailOptional1 { get; set; }
         public string EmailOptional2 { get; set; }
         public byte[] Logo { get; set; }
+        public int IdInfo { get; set; }
+        public string PromotionalText1 { get; set; }
+        public string PromotionalText2 { get; set; }
+        public string PromotionalText3 { get; set; }
+        public string PromotionalText4 { get; set; }
     }
 }
