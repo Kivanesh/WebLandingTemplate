@@ -52,6 +52,7 @@ namespace WebLandingTemplateBusinessLogic.Logic
         {
             EnterpriseInfoDto EnterpriseInfo = enterpriseInfoRepository.GetAll().Select(r => new EnterpriseInfoDto()
             {
+                IdInfo = r.IdInfo,
                 Address = r.Address,
                 Email = r.Email,
                 Phone = r.Phone,
@@ -62,7 +63,12 @@ namespace WebLandingTemplateBusinessLogic.Logic
                 Valores = r.Valores,
                 EmailOptional1 = r.EmailOptional1,
                 EmailOptional2 = r.EmailOptional2,
-                Logo = r.Logo
+                Logo = r.Logo,
+                PromotionalText1 = r.PromotionalText1,
+                PromotionalText2 = r.PromotionalText2,
+                PromotionalText3 = r.PromotionalText3,
+                PromotionalText4 = r.PromotionalText4,
+
             }).FirstOrDefault();
             return EnterpriseInfo;
             //throw new NotImplementedException();

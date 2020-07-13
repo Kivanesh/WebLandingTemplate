@@ -151,6 +151,7 @@ namespace WebLandingTemplate.Controllers
             var itemDto = _imageSrcBusiness.GetAllItems().Where(c => c.ItemId==id).ToList();
             var itemVM = new List<ImageSrcVM>();
             itemDto.RemoveAt(1);
+            itemDto.Add(itemDto[0]);
             AutoMapper.Mapper.Map(itemDto, itemVM);
             ViewBag.ModalName = "Editar Dashboard";
             ViewBag.GoTo = "Edit";
@@ -179,11 +180,12 @@ namespace WebLandingTemplate.Controllers
                 var itemDto = new FrontDashboardDto();
                 AutoMapper.Mapper.Map(itemVM, itemDto);
                 var result = _frontDashboardBusiness.UpdateItem(itemDto);
+                //return PartialView("ModalFrontDashboard", itemVM);
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return RedirectToAction("Index", itemVM);
             }
         }
 

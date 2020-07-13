@@ -2858,6 +2858,7 @@
     <Content Include="Views\Home\_TestimonialPartial.cshtml" />
     <Content Include="Views\Home\_TripticoPartial.cshtml" />
     <Content Include="Views\Home\_LogosPartial.cshtml" />
+    <Content Include="Views\FrontDashboard\ModalFrontDashboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
