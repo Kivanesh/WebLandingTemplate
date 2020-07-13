@@ -165,21 +165,39 @@ namespace WebLandingTemplate.Controllers
             HttpFileCollectionBase collectionBase = Request.Files;
             try
             {
-                string typeFile = collectionBase.Get(0).ContentType;
-                if (collectionBase.Get(0).ContentLength > 0 && collectionBase.Get(0).ContentType == "image/jpeg")
+
+                for (int i = 0; i < collectionBase.Count; i++)
                 {
-                    WebImage image = new WebImage(collectionBase.Get(0).InputStream);
-                    //supplierVM.Logo = image.GetBytes();
-                }
-                else
-                {
-                    //SupplierDto supplier = _supplierBusiness.GetSupplier(id);
-                    //supplierVM.Logo = supplier.Logo;
+                    string typeFile = collectionBase.Get(i).ContentType;
+                    if (collectionBase.Get(i).ContentLength > 0 && collectionBase.Get(i).ContentType == "image/jpeg")
+                    {
+                        WebImage image = new WebImage(collectionBase.Get(i).InputStream);
+                        string inputName = collectionBase.AllKeys[i];
+                      
+                        switch (inputName)
+                        {
+                            case "imageLoad+0":
+                                itemVM[0].Name = image.GetBytes();
+                                break;
+                            case "imageLoad+1":
+                                itemVM[1].Name = image.GetBytes();
+                                break;
+                            case "imageLoad+2":
+                                itemVM[2].Name = image.GetBytes();
+                                break;
+                            
+                          }
+
+                        ImageSrcDto imageDto = new ImageSrcDto();
+                        AutoMapper.Mapper.Map(itemVM[i], imageDto);
+                        var result=_imageSrcBusiness.UpdateItem(imageDto);
+
+                      
+                    }
+                    
                 }
                 /////
-                var itemDto = new FrontDashboardDto();
-                AutoMapper.Mapper.Map(itemVM, itemDto);
-                var result = _frontDashboardBusiness.UpdateItem(itemDto);
+                
                 //return PartialView("ModalFrontDashboard", itemVM);
                 return RedirectToAction("Index");
             }

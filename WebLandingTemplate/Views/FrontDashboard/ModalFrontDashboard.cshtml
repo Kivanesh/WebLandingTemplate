@@ -11,7 +11,7 @@
                     </div>
                 </div>
                 <div class="portlet-body">
-                    <form method="post" action="@Url.Action("" + ViewBag.GoTo + "", "FrontDashboard")" enctype="application/x-www-form-urlencoded" id="supplier-form">
+                    <form method="post" action="@Url.Action("" + ViewBag.GoTo + "", "FrontDashboard")" enctype="multipart/form-data" id="supplier-form">
 
                         @*if (ViewBag.GoTo == "Create")
                 {
@@ -61,6 +61,7 @@
                                 <div class="form-body">
                                     <div class="form-row">
                                         @Html.HiddenFor(model => model[i].ImageId, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.HiddenFor(model => model[i].Name, new { htmlAttributes = new { @class = "form-control" } })
 
                                         @Html.HiddenFor(model => model[i].ItemId, new { htmlAttributes = new { @class = "form-control" } })
                                         @Html.HiddenFor(model => model[i].ItemCodeType, new { htmlAttributes = new { @class = "form-control" } })
@@ -83,7 +84,7 @@
                                                 @Html.LabelFor(model => model[i].Name, htmlAttributes: new { @class = "control-label col-md-2" })
                                                 <div class="input-icon-append">
                                                     <img width="100" height="100" src="@Url.Action("getImage","FrontDashboard", new { id = Model[i].ImageId})" />
-                                                    <input type="file" name="imageLoad" id="file" onchange="return fileValidation()">
+                                                    <input type="file" name="imageLoad+@i" id="file+@i" onchange="return fileValidation()">
                                                     @Html.ValidationMessageFor(model => model[i].Name, "", new { @class = "text-danger" })
 
                                                 </div>
