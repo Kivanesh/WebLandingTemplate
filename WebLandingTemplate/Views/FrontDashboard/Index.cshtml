@@ -48,7 +48,7 @@
                         <tr role="row">
                             <th class="sorting_asc" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" style="width: 147px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">ElementId</th>
                             <th class="sorting" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" style="width: 143px;" aria-label="Last name: activate to sort column ascending">Nombre de Elemento</th>
-                            <th class="sorting" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" style="width: 143px;" aria-label="Last name: activate to sort column ascending">ImagenId</th>
+                            @*<th class="sorting" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" style="width: 143px;" aria-label="Last name: activate to sort column ascending">ImagenId</th>*@
                         </tr>
                     </thead>
 
@@ -62,15 +62,16 @@
                                 <td tabindex="0" class="sorting_1">
                                     @Html.DisplayFor(modelItem => item.ElementName)
                                 </td>
-                                <td tabindex="0" class="sorting_1">
-                                    @Html.DisplayFor(modelItem => item.ItemImageId)
-                                </td>
+                                     @Html.HiddenFor(modelItem => item.ItemImageId)
+                                @*<td tabindex="0" class="sorting_1">
+                                    @Html.HiddenFor(modelItem => item.ItemImageId)
+                                </td>*@
                                 <td>
                                     <div class="btn-group-sm btn-group-rounded pt-20">
                                         <button class="btn btn-icon btn-sm btn-danger "><i class="icon-Eye-Scan"></i> @Html.ActionLink(" Detalles", "Details", "Supplier", new { id = item.ElementId }, new { @class = "modal-link ", title = "Detalles" })</button>
-                                        <button class="btn btn-icon btn-sm btn-danger "><i class="icon-Open-Book"></i> @Html.ActionLink(" Editar", "Edit", "FrontDashboard", new { id = 1 }, new { @class = "modal-link", title = "Editar" }) </button>
+                                        <button class="btn btn-icon btn-sm btn-danger "><i class="icon-Open-Book"></i> @Html.ActionLink(" Editar", "Edit", "FrontDashboard", new { id = item.ElementId }, new { @class = "modal-link", title = "Editar" }) </button>
                                         @*<button class="btn btn-icon btn-sm btn-danger "><i class="icon-Delete-File"></i> @Html.ActionLink(" Eliminar", "Delete", "Category", new { id = item.CategoryId }, new { @class = "modal-link", title = "Eliminar" })</button>*@
-                                        <button class="btn btn-icon btn-sm btn-danger " onclick="BorrarItem(@item.ElementId )"><i class="icon-Delete-File"></i> Eliminar</button>
+                                        @*<button class="btn btn-icon btn-sm btn-danger " onclick="BorrarItem(@item.ElementId )"><i class="icon-Delete-File"></i> Eliminar</button>*@
 
                                     </div>
                                     @*Html.ActionLink("Editar", "Edit", new { id = item.ProveedorId }) |

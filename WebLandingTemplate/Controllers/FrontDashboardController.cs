@@ -11,6 +11,7 @@ using System.Web.Mvc;
 using WebLandingTemplate.Models;
 using WebLandingTemplateBusinessLogic.Interface;
 using WebLandingTemplateBusinessLogic.Logic;
+using WebLandingTemplateDomainModel.Enums;
 using WebLandingTemplateDomainModel.Models;
 
 namespace WebLandingTemplate.Controllers
@@ -56,11 +57,35 @@ namespace WebLandingTemplate.Controllers
             return new SelectList(list, "Value", "Text", "Selected");
         }
 
+        private IEnumerable<SelectListItem> DataFilterType()
+        {
+            var istenum = Enum.GetValues(typeof(ItemCodeTypeEnum)).Cast<ItemCodeTypeEnum>().Select(p => new SelectListItem()
+            {
+                Text = p.ToString(),
+                Value = ((int)p).ToString()
+            }).ToList();
+            istenum.Insert(0, new SelectListItem() { Value = null, Text = "--Seleciona--", Selected = false });
+
+            return new SelectList(istenum, "Value", "Text", "Selected");
+        }
+
+        private IEnumerable<SelectListItem> Elementos()
+        {
+            const int valueA = 1, valueB = 2, valueC = 3;
+            List<SelectListItem> list = new List<SelectListItem>();
+            list.Add(new SelectListItem() { Value = valueA.ToString(), Text = "Carrousel", Selected = false });
+            list.Add(new SelectListItem() { Value = valueB.ToString(), Text = "Mosaico", Selected = false });
+            list.Add(new SelectListItem() { Value = valueC.ToString(), Text = "Trabajos", Selected = false });
+            list.Insert(0, new SelectListItem() { Value = null, Text = "---Select---" });
+            return new SelectList(list, "Value", "Text", "Selected");
+        }
+
         // GET: FrontDashboard
         public ActionResult Index(int? page, string searchString, int pageSize = 3)
         {
 
             ViewBag.dropdownsrc = DataItems(pageSize);
+        
 
             int pageNumber = (page ?? 1);
             var listaVM = new List<FrontDashboardVM>();
@@ -98,44 +123,40 @@ namespace WebLandingTemplate.Controllers
         public ActionResult Create()
         {
             ViewBag.ModalName = "Crear Nuevo Item";
+            ViewBag.typesrc = DataFilterType();
+            ViewBag.Elements = Elementos();
             ViewBag.GoTo = "Create";
             return PartialView("ModalFrontDashboard");
         }
 
         // POST: FrontDashboard/Create
         [HttpPost]
-        public ActionResult Create(FrontDashboardVM itemVM)
+        public ActionResult Create(List<ImageSrcVM> itemVM)
         {
 
             HttpFileCollectionBase collectionBase = Request.Files;
            
             try
             {
-                //if (collectionBase.Get(0).ContentLength > 0 && collectionBase.Get(0).ContentType == "image/jpeg")
-                //{
-                    //WebImage image = new WebImage(collectionBase.Get(0).InputStream);
-
-                    //var result = _frontDashboardBusiness.GetAllItems();
+                if (collectionBase.Get(0).ContentLength > 0 && collectionBase.Get(0).ContentType == "image/jpeg")
+                {
+                    WebImage image = new WebImage(collectionBase.Get(0).InputStream);
 
                     var itemImageSrc = new ImageSrcDto();
-                    //itemImageSrc.Name = image.GetBytes();
-                    itemImageSrc.ItemCodeType = 2;
-                    itemImageSrc.Description = "Otro test";
-                    itemImageSrc.ItemId = 1;
+                    AutoMapper.Mapper.Map(itemVM.FirstOrDefault(), itemImageSrc);
+                    itemImageSrc.Name = image.GetBytes();
                     var result = _imageSrcBusiness.InsertItem(itemImageSrc);
-                    var itemDto = new FrontDashboardDto();
-                    AutoMapper.Mapper.Map(itemVM, itemDto);
-                    //var result = _frontDashboardBusiness.InsertItem(itemDto);
+
                     return RedirectToAction("Index");
-                //}
-                //else//CUANDO NO ES JPG
-                //{
-                //    return RedirectToAction("Index");
+                }
+                else//CUANDO NO ES JPG
+                {
+                    return RedirectToAction("Index");
 
-                //    ///Debe mostral un modal de error
-                //    ///
+                    ///Debe mostral un modal de error
+                    ///
 
-                //}
+                }
             }
             catch
             {

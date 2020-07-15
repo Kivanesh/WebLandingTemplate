@@ -8,7 +8,7 @@ namespace WebLandingTemplateDomainModel.Enums
 {
     public enum ItemCodeTypeEnum
     {
-        Product = 1,
-        Service = 2
+        Producto = 1,
+        Servicio = 2
     }
 }
