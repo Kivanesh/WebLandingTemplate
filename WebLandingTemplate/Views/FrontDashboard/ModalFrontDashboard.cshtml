@@ -17,8 +17,8 @@
                     <div class="form-body">
                         <div class="form-row">
                             @Html.HiddenFor(model => model[0].ImageId, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.HiddenFor(model => model[0].ItemId, new { htmlAttributes = new { @class = "form-control", @id = "ItemId" } })
-                            @Html.EditorFor(model => model[0].ItemCodeType, new { htmlAttributes = new { @class = "form-control hidden", @id = "ItemCodeType" } })
+                            @Html.EditorFor(model => model[0].ItemId, new { htmlAttributes = new { @class = "form-control", @id = "ItemId" } })
+                            @Html.EditorFor(model => model[0].ItemCodeType, new { htmlAttributes = new { @class = "form-control", @id = "ItemCodeType" } })
                             <div class="col-md-5 mb-3">
                                 <div class="input-icon-group">
                                     @Html.LabelFor(model => model[0].Description, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -159,18 +159,15 @@
 
             $('#FilterNumber').on('change', function (e) {
                 e.preventDefault();
-                console.log("Entro al tercero");
                 var FilterId = $('#FilterNumber').val();
-                $('#ItemCodeType').val() = $('#FilterNumber').val();
-                console.log(FilterId);
-                console.log($('#ItemCodeType').val());
+                document.getElementById("ItemCodeType").value = FilterId
+                
             });
 
             $('#Elementr').on('change', function (e) {
                 e.preventDefault();
-                console.log("Entro al primer");
-                $('#ImageId').val() = $('#Elementr').val();
-                console.log("Entro al segund");
+                var FilterIdd = $('#Elementr').val();
+                document.getElementById("ItemId").value = FilterIdd
             });
 
             
