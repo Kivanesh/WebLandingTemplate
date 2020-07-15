@@ -111,30 +111,31 @@ namespace WebLandingTemplate.Controllers
            
             try
             {
-                if (collectionBase.Get(0).ContentLength > 0 && collectionBase.Get(0).ContentType == "image/jpeg")
-                {
-                    WebImage image = new WebImage(collectionBase.Get(0).InputStream);
+                //if (collectionBase.Get(0).ContentLength > 0 && collectionBase.Get(0).ContentType == "image/jpeg")
+                //{
+                    //WebImage image = new WebImage(collectionBase.Get(0).InputStream);
 
                     //var result = _frontDashboardBusiness.GetAllItems();
 
                     var itemImageSrc = new ImageSrcDto();
-                    itemImageSrc.Name = image.GetBytes();
+                    //itemImageSrc.Name = image.GetBytes();
                     itemImageSrc.ItemCodeType = 2;
-                    itemImageSrc.Description = "Test";
+                    itemImageSrc.Description = "Otro test";
+                    itemImageSrc.ItemId = 1;
                     var result = _imageSrcBusiness.InsertItem(itemImageSrc);
                     var itemDto = new FrontDashboardDto();
                     AutoMapper.Mapper.Map(itemVM, itemDto);
                     //var result = _frontDashboardBusiness.InsertItem(itemDto);
                     return RedirectToAction("Index");
-                }
-                else//CUANDO NO ES JPG
-                {
-                    return RedirectToAction("Index");
+                //}
+                //else//CUANDO NO ES JPG
+                //{
+                //    return RedirectToAction("Index");
 
-                    ///Debe mostral un modal de error
-                    ///
+                //    ///Debe mostral un modal de error
+                //    ///
 
-                }
+                //}
             }
             catch
             {
@@ -145,13 +146,9 @@ namespace WebLandingTemplate.Controllers
         // GET: FrontDashboard/Edit/5
         public ActionResult Edit(int id)
         {
-            //var itemDto = _frontDashboardBusiness.GetItem(id);
-            //var itemVM = new FrontDashboardVM();
-            //AutoMapper.Mapper.Map(itemDto, itemVM);
+            
             var itemDto = _imageSrcBusiness.GetAllItems().Where(c => c.ItemId==id).ToList();
             var itemVM = new List<ImageSrcVM>();
-            itemDto.RemoveAt(1);
-            itemDto.Add(itemDto[0]);
             AutoMapper.Mapper.Map(itemDto, itemVM);
             ViewBag.ModalName = "Editar Dashboard";
             ViewBag.GoTo = "Edit";
@@ -187,14 +184,11 @@ namespace WebLandingTemplate.Controllers
                                 break;
                             
                           }
-
-                        ImageSrcDto imageDto = new ImageSrcDto();
-                        AutoMapper.Mapper.Map(itemVM[i], imageDto);
-                        var result=_imageSrcBusiness.UpdateItem(imageDto);
-
-                      
                     }
-                    
+                    ImageSrcDto imageDto = new ImageSrcDto();
+                    AutoMapper.Mapper.Map(itemVM[i], imageDto);
+                    var result = _imageSrcBusiness.UpdateItem(imageDto);
+
                 }
                 /////
                 
