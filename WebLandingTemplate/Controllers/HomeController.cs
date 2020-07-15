@@ -67,7 +67,7 @@ namespace WebLandingTemplate.Controllers
             AutoMapper.Mapper.Map(itemDto, itemVM);
             contactPageVM.corpinfoVM = itemVM;
             contactPageVM.messageVM = new ContactMessageVM();
-            return View(contactPageVM);
+            return PartialView("_ContactPartial",contactPageVM);
         }
 
         // POST: ContactMessage/Create

@@ -1,32 +1,30 @@
-﻿@model WebLandingTemplate.Models.FrontVIewModels.ContactPageVM
-
-<div class="container pt90 pb50">
+﻿<div class="container pt90 pb50">
     <div class="row">
         <div class="col-md-6 mb40">
 
-            <h4 class="text-uppercase">Address</h4>
+            <h4 class="text-uppercase">Domicilio</h4>
             <p>
                 @Model.corpinfoVM.Address
             </p>
             <br>
-            <h4 class="text-uppercase">Business hours</h4>
+            <h4 class="text-uppercase">Horario laboral</h4>
             <p>
                 @Model.corpinfoVM.BusinessHours
             </p>
             <br>
-            <h4 class="text-uppercase">Email</h4>
+            <h4 class="text-uppercase">Correo electrónico</h4>
             <p>
                 <a href="#">@Model.corpinfoVM.Email</a><br />
                 <a href="#">@Model.corpinfoVM.EmailOptional1</a><br />
                 <a href="#">@Model.corpinfoVM.EmailOptional2</a>
             </p>
             <br>
-            <h4 class="text-uppercase">Phone</h4>
+            <h4 class="text-uppercase">Número telefónico</h4>
             <p>
                 <a href="#">+52 1 @Model.corpinfoVM.Phone</a>
             </p>
             <br>
-            <h4 class="text-uppercase">Social</h4>
+            <h4 class="text-uppercase">Redes Sociales</h4>
             <div class="clearfix pt10">
                 <a href="#" class="social-icon si-border si-facebook">
                     <i class="fa fa-facebook"></i>
@@ -51,9 +49,9 @@
             </div>
         </div>
         <div class="col-md-6 mb40">
-            <h2>Nice to hear from you</h2>
+            <h2>¿Tienes alguna duda o comentario?</h2>
             <p>
-                Suspendisse ut interdum lectus. Integer ac neque faucibus, venenatis nisl quis, pellentesque lacus. Integer et ipsum sit amet dui ultrices hendrerit. Pellentesque leo massa, suscipit a felis non, posuere convallis velit. Sed tincidunt lacinia velit et aliquam.
+                Rellene el formulario  y le responderemos lo antes posible.
             </p>
             <div class="smart-wrap">
                 <div class="smart-forms smart-container">
@@ -64,64 +62,63 @@
 
                             <div class="section">
                                 <label class="field prepend-icon">
-                                    <input type="text" name="sendersubject" id="sendersubject" class="gui-input" placeholder="Enter subjec">
+                                    <input type="text" name="sendersubject" id="sendersubject" class="gui-input" placeholder="Asunto">
                                     <span class="field-icon"><i class="fa fa-lightbulb-o"></i></span>
                                 </label>
                             </div><!-- end section -->
 
                             <div class="section">
                                 <label class="field prepend-icon">
-                                    <input type="email" name="emailaddress" id="emailaddress" class="gui-input" placeholder="Email address">
+                                    <input type="email" name="emailaddress" id="emailaddress" class="gui-input" placeholder="Correo electrónico">
                                     <span class="field-icon"><i class="fa fa-envelope"></i></span>
                                 </label>
                             </div><!-- end section -->
 
                             <div class="section">
                                 <label class="field prepend-icon">
-                                    <input type="text" name="sendername" id="sendername" class="gui-input" placeholder="Enter name">
+                                    <input type="text" name="sendername" id="sendername" class="gui-input" placeholder="Nombre">
                                     <span class="field-icon"><i class="fa fa-user"></i></span>
                                 </label>
                             </div><!-- end section -->
 
                             <div class="section">
                                 <label class="field prepend-icon">
-                                    <input type="text" name="senderphone" id="senderphone" class="gui-input" placeholder="Enter Phone number">
+                                    <input type="text" name="senderphone" id="senderphone" class="gui-input" placeholder="Número telefónico">
                                     <span class="field-icon"><i class="fa fa-phone"></i></span>
                                 </label>
                             </div><!-- end section -->
 
                             <div class="section">
                                 <label class="field prepend-icon">
-                                    <textarea class="gui-textarea" id="sendermessage" name="sendermessage" placeholder="Enter message"></textarea>
+                                    <textarea class="gui-textarea" id="sendermessage" name="sendermessage" placeholder="Mensaje"></textarea>
                                     <span class="field-icon"><i class="fa fa-comments"></i></span>
-                                    <span class="input-hint"> <strong>Hint:</strong> Please enter between 80 - 300 characters.</span>
+                                    <span class="input-hint"> <strong>Hint:</strong> Favor de ingresar entre 80 y 300 caracteres.</span>
                                 </label>
                             </div><!-- end section -->
-
-                            @Html.HiddenFor(Model => Model.messageVM.ComeFrom, new { Value = ViewBag.Title })
+                            @** @Html.HiddenFor(Model => Model.messageVM.ComeFrom, new { Value = ViewBag.Title })
                             @Html.HiddenFor(Model => Model.messageVM.ContactDate, new { Value = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss tt") });
-                            @Html.HiddenFor(Model => Model.messageVM.IsRead, new { Value = false })
+                            @Html.HiddenFor(Model => Model.messageVM.IsRead, new { Value = false })*@
                             @*@Model.messageVM.ContactDate = DateTime.Now;*@
                             @*@Model.messageVM.ComeFrom = ViewBag.Title;*@
 
-                            <div class="section">
-                                <div class="smart-widget sm-left sml-120">
-                                    <label class="field">
-                                        <input type="text" name="captcha" id="captcha" class="gui-input sfcode" maxlength="6" placeholder="Enter CAPTCHA">
-                                    </label>
-                                    <label class="button captcode">
-                                        <img src="~/Html/smart-form/contact/php/captcha/captcha.php?<?php echo time();?>" id="captchax" alt="captcha">
-                                        <span class="refresh-captcha"><i class="fa fa-refresh"></i></span>
-                                    </label>
-                                </div><!-- end .smart-widget section -->
-                            </div><!-- end section -->
+                            @* <div class="section">
+            <div class="smart-widget sm-left sml-120">
+                <label class="field">
+                    <input type="text" name="captcha" id="captcha" class="gui-input sfcode" maxlength="6" placeholder="Enter CAPTCHA">
+                </label>
+                <label class="button captcode">
+                    <img src="~/Html/smart-form/contact/php/captcha/captcha.php?<?php echo time();?>" id="captchax" alt="captcha">
+                    <span class="refresh-captcha"><i class="fa fa-refresh"></i></span>
+                </label>
+            </div><!-- end .smart-widget section -->
+        </div>*@<!-- end section -->
 
                             <div class="result"></div><!-- end .result  section -->
 
                         </div><!-- end .form-body section -->
                         <div class="form-footer">
-                            <button type="submit" data-btntext-sending="Sending..." class="button btn btn-primary">Submit</button>
-                            <button type="reset" class="button"> Reset </button>
+                            <button type="submit" data-btntext-sending="Sending..." class="button btn btn-primary">Enviar</button>
+                            <button type="reset" class="button"> Limpiar </button>
                         </div><!-- end .form-footer section -->
 
                     </form>
