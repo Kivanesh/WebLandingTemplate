@@ -54,8 +54,15 @@ namespace WebLandingTemplate.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
+            ContactPageVM contactPageVM = new ContactPageVM();
+            var itemDto = _corpBusiness.GetEnterpriseInfo();
+            var itemVM = new EnterpriseInfoVM();
+            AutoMapper.Mapper.Map(itemDto, itemVM);
+            contactPageVM.corpinfoVM = itemVM;
+            contactPageVM.messageVM = new ContactMessageVM();
+            return View(contactPageVM);
 
-            return View();
+           
         }
 
         public ActionResult Contact()

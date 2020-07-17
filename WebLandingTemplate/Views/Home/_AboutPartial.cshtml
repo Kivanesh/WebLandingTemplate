@@ -1,9 +1,8 @@
 ﻿@model WebLandingTemplate.Models.FrontVIewModels.ContactPageVM
-
 @{
     ViewBag.Title = "About";
 }
-<div class="page-titles-img title-space-lg bg-parallax mb80 parallax-overlay" data-jarallax='{"speed": 0.2}' style='background-image: url("/RecursosOficiales/Tableros de Control/Diseño tablero de control..jpg");background-position:top center;'>
+<div class="page-titles-img title-space-lg bg-parallax mb80 parallax-overlay" data-jarallax='{"speed": 0.2}' style='background-image: url("images/bg3.jpg");background-position:top center;'>
     <div class="container">
         <div class="row">
             <div class=" col-md-12">
@@ -24,15 +23,15 @@
             <p>
                 Mauris lobortis nulla ut aliquet interdum. Donec commodo ac elit sed placerat. Mauris rhoncus est ac sodales gravida. In eros felis, elementum aliquam nisi vel, pellentesque faucibus nulla.
             </p>
-            <a href="" class="btn btn-primary">Contáctenos</a>
+            <a href="#" class="btn btn-primary">Hire us</a>
         </div>
         <div class="col-sm-6 mb40">
             <div class="carousel-image owl-carousel owl-theme carousel-dark">
                 <div class="item">
-                    <img src="~/RecursosOficiales/Camaras de Refrigeración/Camaras de refrigeración 5.jpg" alt="" class="img-fluid">
+                    <img src="~/Html/images/contained1.jpg" alt="" class="img-fluid">
                 </div>
                 <div class="item">
-                    <img src="~/RecursosOficiales/Mantenimiento Maquinaria/077.jpg" alt="" class="img-fluid">
+                    <img src="~/Html/images/contained2.jpg" alt="" class="img-fluid">
                 </div>
             </div> <!-- /Carousel -->
         </div>
@@ -72,48 +71,61 @@
 
             <div class="col-md-3 mb20">
                 <h4 class="text-uppercase mb30">
-                    Contacto
+                    Contact Info
                 </h4>
                 <div class="media mb20">
                     <i class="d-flex mt5 fa fa-home icon-sm-rounded mr-3"></i>
                     <div class="media-body">
-                        <h5 class="mt-0 mb0 text-uppercase">Domicilio</h5>
-                        @Html.DisplayFor(model => model.corpinfoVM.Address  )
+                        <h5 class="mt-0 mb0 text-uppercase">Address</h5>
+                        124, Munna Wali, Jhotwara, Jaipur, 302012
                     </div>
                 </div>
                 <div class="media mb20">
                     <i class="d-flex mt5 fa fa-phone icon-sm-rounded mr-3"></i>
                     <div class="media-body">
-                        <h5 class="mt-0 mb0 text-uppercase">Número Telefónico</h5>
-                       @Model.corpinfoVM.Phone
+                        <h5 class="mt-0 mb0 text-uppercase">Phone</h5>
+                        120 493-593-4939
                     </div>
                 </div>
                 <div class="media mb20">
                     <i class="d-flex mt5 fa fa-envelope icon-sm-rounded mr-3"></i>
                     <div class="media-body">
-                        <h5 class="mt-0 mb0 text-uppercase">Correo Electrónico</h5>
-                        @Model.corpinfoVM.EmailOptional1
-                     
+                        <h5 class="mt-0 mb0 text-uppercase">Email</h5>
+                        support@assan.com
                     </div>
                 </div>
             </div>
             <div class="col-md-6 mb40">
                 <h4 class="text-uppercase mb30">
-                    Localización
+                    our Location
                 </h4>
                 <div id="markermap" style="width: 100%;height: 300px;"></div>
             </div>
             <div class="col-md-3 mb20">
                 <h4 class="text-uppercase mb30">
-                    Horario Laboral
+                    Working hours
                 </h4>
                 <div class="media mb20">
                     <i class="d-flex mt5 fa fa-clock-o mr-3"></i>
                     <div class="media-body">
-                        <h5 class="mt-0 mb0 text-uppercase"> @Model.corpinfoVM.BusinessHours</h5>
+                        <h5 class="mt-0 mb0 text-uppercase">Monday - Friday</h5>
+                        10am - 7am
                     </div>
                 </div>
-              
+                <div class="media mb20">
+                    <i class="d-flex mt5 fa fa-clock-o mr-3"></i>
+                    <div class="media-body">
+                        <h5 class="mt-0 mb0 text-uppercase">Saturday</h5>
+                        Off
+                    </div>
+                </div>
+                <div class="media mb20">
+                    <i class="d-flex mt5 fa fa-clock-o mr-3"></i>
+                    <div class="media-body">
+                        <h5 class="mt-0 mb0 text-uppercase">Sunday</h5>
+                        Off
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -144,3 +156,4 @@
         });
     });
 </script>
+
