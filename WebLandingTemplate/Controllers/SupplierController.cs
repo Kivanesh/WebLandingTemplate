@@ -151,7 +151,7 @@ namespace WebLandingTemplate.Controllers
             var suppDto = _supplierBusiness.GetSupplier(id);
             var suppVM = new SupplierVM();
             AutoMapper.Mapper.Map(suppDto, suppVM);
-            ViewBag.ModalName = "Editar Categoría";
+            ViewBag.ModalName = "Editar Proveedor";
             ViewBag.GoTo = "Edit";
             //return PartialView(itemVM);
             return PartialView("ModalSupplier", suppVM);
