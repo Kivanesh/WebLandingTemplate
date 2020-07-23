@@ -2912,6 +2912,8 @@
     <Content Include="Views\Home\_LogosPartial.cshtml" />
     <Content Include="Views\FrontDashboard\ModalFrontDashboard.cshtml" />
     <Content Include="Views\ImageSrc\ModalImageSrc.cshtml" />
+    <Content Include="Views\Home\_AboutPartial.cshtml" />
+    <Content Include="Views\Home\_FooterPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

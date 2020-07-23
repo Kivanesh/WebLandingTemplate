@@ -108,15 +108,18 @@ namespace WebLandingTemplate.Controllers
         // GET: FrontDashboard/Details/5
         public ActionResult Details(int id)
         {
-            var itemDto = _frontDashboardBusiness.GetItem(id);
+           /* var itemDto = _frontDashboardBusiness.GetItem(id);
             var itemVM = new FrontDashboardVM();
+            AutoMapper.Mapper.Map(itemDto, itemVM);*/
+
+            var itemDto = _imageSrcBusiness.GetAllItems().Where(c => c.ItemId == id).ToList();
+            var itemVM = new List<ImageSrcVM>();
             AutoMapper.Mapper.Map(itemDto, itemVM);
+            ViewBag.ModalName = "Detalles Dashboard";
+            ViewBag.GoTo = "Details";
+            return PartialView("ModalFrontDashboard", itemVM);
 
-            //ViewBag.ModalName = "Detalles de Categoria";
-            //ViewBag.GoTo = "Details";
-            //return PartialView("ModalSupplier", itemVM);
-
-            return View(itemVM);
+            
         }
 
         // GET: FrontDashboard/Create

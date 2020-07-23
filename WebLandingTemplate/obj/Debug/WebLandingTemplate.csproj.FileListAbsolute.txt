@@ -133,6 +133,8 @@ C:\WebLandingTemplate\WebLandingTemplate\bin\es\Microsoft.Owin.Security.Facebook
 C:\WebLandingTemplate\WebLandingTemplate\bin\es\Microsoft.Owin.Security.Google.resources.dll
 C:\WebLandingTemplate\WebLandingTemplate\bin\es\Microsoft.Owin.Security.Twitter.resources.dll
 C:\WebLandingTemplate\WebLandingTemplate\bin\es\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
-C:\WebLandingTemplate\WebLandingTemplate\obj\Debug\WebLandingTemplate.csprojResolveAssemblyReference.cache
 C:\WebLandingTemplate\WebLandingTemplate\obj\Debug\WebLandingTemplate.dll
 C:\WebLandingTemplate\WebLandingTemplate\obj\Debug\WebLandingTemplate.pdb
+C:\WebLandingTemplate\WebLandingTemplate\obj\Debug\WebLandingTemplate.csprojAssemblyReference.cache
+C:\WebLandingTemplate\WebLandingTemplate\obj\Debug\WebLandingTemplate.csproj.CoreCompileInputs.cache
+C:\WebLandingTemplate\WebLandingTemplate\obj\Debug\WebLandingTemplate.csproj.CopyComplete
