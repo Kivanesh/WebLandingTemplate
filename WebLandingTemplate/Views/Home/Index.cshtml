@@ -1,6 +1,6 @@
 ﻿@model WebLandingTemplate.Models.FrontVIewModels.ContactPageVM
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Inicio Besmi.com";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
 }
@@ -182,25 +182,13 @@
     @{
         Html.RenderPartial("_ValPartial");
     }
-
 </div><!--/intro-->
 <div class="bg-faded">
     @{
         Html.RenderPartial("_MosaicoPArtial");
     }
 </div><!--portfolio-->
-<div class="bg-parallax parallax-overlay" data-jarallax='{"speed": 0.2}' style='background-image: url("/Html/images/bg6.jpg")'>
-    <div class="container pt60 pb60">
-        <div class="row">
-            <div class="col-lg-8">
-                <h3 class="text-white">
-                    Una solución a cada necesidad
-                </h3>
-            </div>
 
-        </div>
-    </div>
-</div><!--cta-->
 @*<div>
         @{
             Html.RenderPartial("_FeaturesPartial");
@@ -214,11 +202,11 @@
 </div><!--/.Strategy Planning-->
 
 
-<div>
+@*<div>
     @{
         Html.RenderPartial("_TestimonialPartial");
     }
-</div><!--/.testimonials-->
+</div>*@<!--/.testimonials-->
 <div>
     @{
         Html.RenderPartial("_TripticoPartial");
@@ -230,7 +218,7 @@
 
 <div class="bg-white" id="contactPartial">
     @{
-        Html.RenderPartial("_ContactPartial");
+        Html.RenderPartial("_ContactPartial", Model);
     }
 </div>
 

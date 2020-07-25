@@ -83,11 +83,11 @@
                     async: false,
                     type: 'POST',
                     url: '/ContactMessage/Eliminar/',
-                    data: { id: $('#MessageId').val() },
-                    //dataType: "json",
-                    //contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify({ id: document.getElementById('MessageId').value } ),
+                    dataType: "json",
+                    contentType: 'application/json; charset=utf-8',
                     success: function (data) {
-                        if (data === 'True') {
+                        if (data === 'true') {
                             swal({
                                 title: 'Eliminado!',
                                 text: "El Elemento ha sido Eliminado",
@@ -99,6 +99,7 @@
                         }
                     },
                     error: function (xhr, type, exception) {
+                        console.log(data)
                         swal({
                             title: 'Error',
                             text: "ajax error response type " + type + ' \nException: ' + exception + ' \nXhr: ' + xhr,
@@ -106,7 +107,7 @@
                             confirmButtonClass: 'btn btn-confirm mt-2'
                         })
                         // if ajax fails display error alert
-                        console.log('Mierda no jalo X.X ' + exception + xhr);
+                        //console.log('Mierda no jalo X.X ' + exception + xhr);
                     }
                 });
                 //.then(function () {

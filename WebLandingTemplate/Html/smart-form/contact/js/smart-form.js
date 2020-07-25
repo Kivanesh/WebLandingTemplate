@@ -113,9 +113,9 @@
                             var PageVM = {
                                 "messageVM" : messageVM
                             }
-                            console.log(PageVM);
-                            console.log('HeRe are You u.u');
-                            console.log(form);
+                            //console.log(PageVM);
+                            //console.log('HeRe are You u.u');
+                            //console.log(form);
                              /*---------------------------------------------------- */
                             $(form).ajaxSubmit({
                                     data: PageVM,

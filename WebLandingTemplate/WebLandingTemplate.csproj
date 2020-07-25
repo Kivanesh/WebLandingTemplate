@@ -2212,7 +2212,7 @@
     <Content Include="RecursosOficiales\Camaras de Refrigeración\Camaras de refrigeración 4.jpg" />
     <Content Include="RecursosOficiales\Camaras de Refrigeración\Camaras de refrigeración 5.jpg" />
     <Content Include="RecursosOficiales\Camaras de Refrigeración\Camaras de refrigeración.jpg" />
-    <Content Include="RecursosOficiales\logo.jpg" />
+    <Content Include="RecursosOficiales\logo.jpeg" />
     <Content Include="RecursosOficiales\Mantenimiento de Planta\Armado de tuberias.JPG" />
     <Content Include="RecursosOficiales\Mantenimiento de Planta\IMG_3378.JPG" />
     <Content Include="RecursosOficiales\Mantenimiento de Planta\IMG_3379.JPG" />
@@ -2800,6 +2800,7 @@
     <Content Include="Html-adminDashboard\scss\_timeline.scss" />
     <Content Include="Html-adminDashboard\scss\_variables.scss" />
     <Content Include="RecursosOficiales\CATALOGO RHINO.pdf" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

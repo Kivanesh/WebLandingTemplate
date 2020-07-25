@@ -68,6 +68,7 @@ namespace WebLandingTemplate.Controllers
         public ActionResult Contact()
         {
             // Build the VM 
+            ViewBag.Title = "Inicio Besmi.com";
             ContactPageVM contactPageVM = new ContactPageVM();
             var itemDto = _corpBusiness.GetEnterpriseInfo();
             var itemVM = new EnterpriseInfoVM();
@@ -87,8 +88,9 @@ namespace WebLandingTemplate.Controllers
                 {
                     var itemDto = new MessageDto();
                     AutoMapper.Mapper.Map(PageVM.messageVM, itemDto);
-                    var senderEmail = new MailAddress("TestWebLanding@gmail.com", "Contacto Automatico desde Web Landing");
-                    var receiverEmail = new MailAddress("test@example.com", "Receptor");
+                    var senderEmail = new MailAddress("TestWebLanding@gmail.com", "Besmi.com Correo Contacto Con Cliente");
+                    var receiverEmail = new MailAddress("irvin_lechugasss@hotmail.com", "Receptor");
+                    //var receiverEmail = new MailAddress("test@example.com", "Receptor");
                     //var receiverEmail = new MailAddress("irvin_lechugasss@hotmail.com", "Receptor");
                     var password = "MagicPass_369";
                     var sub = itemDto.Subject;

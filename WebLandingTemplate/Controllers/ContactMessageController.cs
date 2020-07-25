@@ -129,7 +129,7 @@ namespace WebLandingTemplate.Controllers
         {
             try
             {
-                return true;
+                //return true;
                 var result = _contacMsgBusiness.DeleteMessage(id);
                 if (result == "Succes")
                 {

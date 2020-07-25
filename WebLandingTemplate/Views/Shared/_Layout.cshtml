@@ -47,7 +47,7 @@
     </div><!--/preloader-->
     
     <!-- Pushy Menu -->
-    <aside class="pushy pushy-right">
+    @*<aside class="pushy pushy-right">
         <div class="cart-content">
             <div class="clearfix">
                 <a href="javascript:void(0)" class="pushy-link text-white-gray">Close</a>
@@ -94,29 +94,30 @@
                 </li><!--/cart item-->
             </ul>
         </div>
-    </aside>
+    </aside>*@
     <!-- Site Overlay -->
     <div class="site-overlay"></div>
 
     <nav class="navbar navbar-expand-lg navbar-light navbar-transparent bg-faded nav-sticky">
-        <div class="search-inline">
+        @*<div class="search-inline">
             <form>
                 <input type="text" class="form-control" placeholder="Type and hit enter...">
                 <button type="submit"><i class="ti-search"></i></button>
                 <a href="javascript:void(0)" class="search-close"><i class="ti-close"></i></a>
             </form>
-        </div><!--/search form-->
+        </div>*@<!--/search form-->
         <div class="container">
 
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand" href="~/Html/index.html">
-                <img class='logo logo-dark' src="/RecursosOficiales/logo.jpg" height="40" width="120"   alt="log">
-                <img class='logo logo-light hidden-md-down' src="/RecursosOficiales/logo.jpg" height="40" width="120"  alt="">
+            <a class="navbar-brand" href="" style="padding-bottom:20px !important;">
+                <img class='logo logo-dark' src="/RecursosOficiales/logo.jpeg" height="60" width="200" style="border:none"  alt="log">
+                <img class='logo logo-light hidden-md-down' src="/RecursosOficiales/logo.jpeg" height="60" width="200" style="border:none"   alt="">
             </a>
+            
             <!--top bar-->
-            <div class='top-bar clearfix light' style="padding-left:100px !important;">
+            <div class='top-bar clearfix light' style="padding-left:200px !important;">
                 @Html.Partial("_LoginPartial")
             </div>
             <!--end top bar-->
@@ -131,7 +132,7 @@
                     <li class="nav-item">
                         <a href="@Url.Action("About","Home")" class="nav-link d-block active"><i class="fa fa-copyright mr-1"></i>Nosotros</a>
                     </li><!--/Layout Item-->
-                    <li class="nav-item dropdown">
+                    @*<li class="nav-item dropdown">
                         <a class="nav-link  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#"><i class="fa fa-balance-scale mr-1"></i>Productos</a>
                         <ul class="dropdown-menu dropdown-menu-right">
                             <li><a href="~/Html/shop-sidebar.html" class="dropdown-item">All Products</a></li>
@@ -156,15 +157,15 @@
                                 </ul>
                             </li>
                         </ul>
-                    </li><!--/Layout Item-->
+                    </li><!--/Layout Item-->*@
                 </ul>
             </div>
-            <div class=" navbar-right-elements">
+            @*<div class=" navbar-right-elements">
                 <ul class="list-inline">
                     <li class="list-inline-item"><a href="javascript:void(0)" class="search-open"><i class="ti-search"></i></a></li>
                     <li class="list-inline-item"><a href="javascript:void(0)" class=" menu-btn"><i class="ti-shopping-cart"></i> <span class="badge badge-default">3</span></a></li>
                 </ul>
-            </div><!--right nav icons-->
+            </div>*@<!--right nav icons-->
         </div>
     </nav>
     <!--end nav-->
