@@ -50,7 +50,7 @@
                         <div class="form-row">
                             <div class="col-md-4 mb-3">
                                 <div class="input-icon-group">
-                                    @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-12" })
                                     <div class="input-icon-append">
                                         <i class="fa fa-address-card"></i>
                                         @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
@@ -60,7 +60,7 @@
                             </div>
                             <div class="col-md-4 mb-3">
                                 <div class="input-icon-group">
-                                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-12" })
                                     <div class="input-icon-append">
                                         <i class="fa fa-envelope"></i>
                                         @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
@@ -70,7 +70,7 @@
                             </div>
                             <div class="col-md-4 mb-3">
                                 <div class="input-icon-group">
-                                    @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-12" })
                                     <div class="input-icon-append">
                                         <i class="fa fa-phone"></i>
                                         @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
@@ -82,7 +82,7 @@
                         <div class="form-row">
                             <div class="col-md-6 mb-3">
                                 <div class="input-icon-group">
-                                    @Html.LabelFor(model => model.BusinessHours, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.LabelFor(model => model.BusinessHours, htmlAttributes: new { @class = "control-label col-md-12" })
                                     <div class="input-icon-append">
                                         <i class="fa fa-hourglass-start"></i>
                                         @Html.EditorFor(model => model.BusinessHours, new { htmlAttributes = new { @class = "form-control" } })
@@ -92,7 +92,7 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <div class="input-icon-group">
-                                    @Html.LabelFor(model => model.SocialMedia, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.LabelFor(model => model.SocialMedia, htmlAttributes: new { @class = "control-label col-md-12" })
                                     <div class="input-icon-append">
                                         <i class="fa fa-users"></i>
                                         @Html.EditorFor(model => model.SocialMedia, new { htmlAttributes = new { @class = "form-control" } })
@@ -104,7 +104,7 @@
                         <div class="form-row">
                             <div class="col-md-4 mb-3">
                                 <div class="input-icon-group">
-                                    @Html.LabelFor(model => model.Mision, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.LabelFor(model => model.Mision, htmlAttributes: new { @class = "control-label col-md-12" })
                                     <div class="input-icon-append">
                                         <i class="fa fa-exclamation"></i>
                                        @Html.EditorFor(model => model.Mision, new { htmlAttributes = new { @class = "form-control" } })
@@ -114,7 +114,7 @@
                             </div>
                             <div class="col-md-4 mb-3">
                                 <div class="input-icon-group">
-                                    @Html.LabelFor(model => model.Vision, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.LabelFor(model => model.Vision, htmlAttributes: new { @class = "control-label col-md-12" })
                                     <div class="input-icon-append">
                                         <i class="fa fa-binoculars"></i>
                                        @Html.EditorFor(model => model.Vision, new { htmlAttributes = new { @class = "form-control" } })
@@ -124,7 +124,7 @@
                             </div>
                             <div class="col-md-4 mb-3">
                                 <div class="input-icon-group">
-                                    @Html.LabelFor(model => model.Valores, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.LabelFor(model => model.Valores, htmlAttributes: new { @class = "control-label col-md-12" })
                                     <div class="input-icon-append">
                                         <i class="fa fa-sun"></i>
                                         @Html.EditorFor(model => model.Valores, new { htmlAttributes = new { @class = "form-control" } })
@@ -136,7 +136,7 @@
                         <div class="form-row">
                             <div class="col-md-6 mb-3">
                                 <div class="input-icon-group">
-                                    @Html.LabelFor(model => model.EmailOptional1, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.LabelFor(model => model.EmailOptional1, htmlAttributes: new { @class = "control-label col-md-12" })
                                     <div class="input-icon-append">
                                         <i class="fa fa-envelope"></i>
                                         @Html.EditorFor(model => model.EmailOptional1, new { htmlAttributes = new { @class = "form-control" } })
@@ -146,7 +146,7 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <div class="input-icon-group">
-                                    @Html.LabelFor(model => model.EmailOptional2, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.LabelFor(model => model.EmailOptional2, htmlAttributes: new { @class = "control-label col-md-12" })
                                     <div class="input-icon-append">
                                         <i class="fa fa-envelope"></i>
                                         @Html.EditorFor(model => model.EmailOptional2, new { htmlAttributes = new { @class = "form-control" } })
@@ -156,18 +156,8 @@
                             </div>
                            
                         </div><!--row-->
-                        <div class="form-group pb-20 mb-0">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                                <label class="form-check-label" for="invalidCheck">
-                                    Agree to terms and conditions
-                                </label>
-                                <div class="invalid-feedback">
-                                    You must agree before submitting.
-                                </div>
-                            </div>
-                        </div>
-                        <button class="btn btn-primary" type="submit">Submit form</button>
+                        
+                        <button class="btn btn-primary" type="submit">Enviar</button>
                     </form>
                     }
                 </div>
