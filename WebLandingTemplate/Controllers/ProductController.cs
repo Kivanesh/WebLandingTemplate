@@ -133,7 +133,7 @@ namespace WebLandingTemplate.Controllers
             var prodDto = _productBusiness.GetProduct(id);
             var prodVM = new ProductVM();
             AutoMapper.Mapper.Map(prodDto, prodVM);
-            ViewBag.ModalName = "Editar Categoría";
+            ViewBag.ModalName = "Editar Producto";
             ViewBag.GoTo = "Edit";
             return PartialView("ModalProduct", prodVM);
         }
