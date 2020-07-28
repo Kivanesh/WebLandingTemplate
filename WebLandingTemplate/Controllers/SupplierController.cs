@@ -184,7 +184,7 @@ namespace WebLandingTemplate.Controllers
                 AutoMapper.Mapper.Map(supplierVM, supplierDto);
                 _supplierBusiness.UpdateSupplier(supplierDto);
 
-                SupplierDto suppliers = _supplierBusiness.GetSupplier(id);
+                
                 return RedirectToAction("Index");
             }
             catch

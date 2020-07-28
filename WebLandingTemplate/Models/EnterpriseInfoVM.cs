@@ -40,6 +40,8 @@ namespace WebLandingTemplate.Models
 
         [DisplayName("Logo")]
         public byte[] Logo { get; set; }
+
+
         public int IdInfo { get; set; }
         [DisplayName("Texto promocional 1")]
         public string PromotionalText1 { get; set; }

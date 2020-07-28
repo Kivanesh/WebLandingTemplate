@@ -93,6 +93,11 @@ namespace WebLandingTemplateBusinessLogic.Logic
                     item.Valores = ObjModel.Valores;
                     item.EmailOptional1 = ObjModel.EmailOptional1;
                     item.EmailOptional2 = ObjModel.EmailOptional2;
+                    item.PromotionalText1 = ObjModel.PromotionalText1;
+                    item.PromotionalText2 = ObjModel.PromotionalText2;
+                    item.PromotionalText3 = ObjModel.PromotionalText3;
+                    item.PromotionalText4 = ObjModel.PromotionalText4;
+                    item.Logo = ObjModel.Logo;
                     enterpriseInfoRepository.Update(item);
                     result = "Succes";
                 }
