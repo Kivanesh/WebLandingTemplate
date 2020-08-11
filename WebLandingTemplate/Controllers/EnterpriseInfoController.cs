@@ -120,7 +120,7 @@ namespace WebLandingTemplate.Controllers
         }
 
 
-        public ActionResult getImage(int id)
+        public ActionResult getImage()
         {
             EnterpriseInfoDto supplier = _corpBusiness.GetEnterpriseInfo();
 

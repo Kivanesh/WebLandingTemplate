@@ -1,7 +1,13 @@
 ﻿using System;
+using PagedList;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using WebLandingTemplate.Models;
 using WebLandingTemplateBusinessLogic.Interface;
@@ -18,15 +24,57 @@ namespace WebLandingTemplate.Controllers
             _svcBusiness = svcBusiness;
         }
 
-
-        // GET: ServiceCorp
-        public ActionResult Index()
+        private IEnumerable<SelectListItem> DataItems(int pageSize)
         {
-            var listaDto = _svcBusiness.GetAllService();
-            var listaVM = new List<ServiceCorpVM>();
-            AutoMapper.Mapper.Map(listaDto, listaVM);
+            const int valueA = 3, valueB = 6, valueC = 9, valueD = 15;
+            List<SelectListItem> list = new List<SelectListItem>();
+            //list.Add(new SelectListItem() { Value = null, Text = "---Select---" });
+            list.Add(new SelectListItem() { Value = valueA.ToString(), Text = valueA.ToString(), Selected = false });
+            list.Add(new SelectListItem() { Value = valueB.ToString(), Text = valueB.ToString(), Selected = false });
+            list.Add(new SelectListItem() { Value = valueC.ToString(), Text = valueC.ToString(), Selected = false });
+            list.Add(new SelectListItem() { Value = valueD.ToString(), Text = valueD.ToString(), Selected = false });
 
-            return View(listaVM);
+            switch (pageSize)
+            {
+                case valueA:
+                    list.ElementAtOrDefault(0).Selected = true;
+                    break;
+                case 6:
+                    list.ElementAtOrDefault(1).Selected = true;
+                    break;
+                case 9:
+                    list.ElementAtOrDefault(2).Selected = true;
+                    break;
+                case 15:
+                    list.ElementAtOrDefault(3).Selected = true;
+                    break;
+                default:
+                    break;
+            }
+
+            return new SelectList(list, "Value", "Text", "Selected");
+        }
+        // GET: ServiceCorp
+        [Authorize]
+        public ActionResult Index(int? page, string searchString, int pageSize = 3)
+        {
+            ViewBag.dropdownsrc = DataItems(pageSize);
+
+            int pageNumber = (page ?? 1);
+            var listaVM = new List<ServiceCorpVM>();
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                var listaDto = _svcBusiness.GetAllService().Where(c => c.Name.Contains(searchString) || c.Description.Contains(searchString));
+                AutoMapper.Mapper.Map(listaDto, listaVM);
+            }
+            else
+            {
+                var listaDto = _svcBusiness.GetAllService();
+                AutoMapper.Mapper.Map(listaDto, listaVM);
+            }
+
+            return View(listaVM.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: ServiceCorp/Details/5
