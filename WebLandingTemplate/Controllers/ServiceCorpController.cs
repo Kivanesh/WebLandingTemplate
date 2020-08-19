@@ -83,14 +83,17 @@ namespace WebLandingTemplate.Controllers
             var prodDto = _svcBusiness.GetServiceCorp(id);
             var prodVM = new ServiceCorpVM();
             AutoMapper.Mapper.Map(prodDto, prodVM);
-
-            return View(prodVM);
+            ViewBag.ModalName = "Detalles de Servicio";
+            ViewBag.GoTo = "Details";
+            return PartialView("ModalService", prodVM);
         }
 
         // GET: ServiceCorp/Create
         public ActionResult Create()
         {
-            return View();
+            ViewBag.ModalName = "Crear Servicio";
+            ViewBag.GoTo = "Create";
+            return PartialView("ModalService");
         }
 
         // POST: ServiceCorp/Create
@@ -114,9 +117,11 @@ namespace WebLandingTemplate.Controllers
         public ActionResult Edit(int id)
         {
             var svcDto = _svcBusiness.GetServiceCorp(id);
-            var prodVM = new ServiceCorpVM();
-            AutoMapper.Mapper.Map(svcDto, prodVM);
-            return View(prodVM);
+            var servVM = new ServiceCorpVM();
+            AutoMapper.Mapper.Map(svcDto, servVM);
+            ViewBag.ModalName = "Editar Servicio";
+            ViewBag.GoTo = "Edit";
+            return View("ModalService",servVM);
         }
 
         // POST: ServiceCorp/Edit/5
