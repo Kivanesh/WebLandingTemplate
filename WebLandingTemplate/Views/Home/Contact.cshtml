@@ -124,7 +124,7 @@
                                   </div><!-- end section -->
 
                                   @Html.HiddenFor(Model => Model.messageVM.ComeFrom, new { Value = ViewBag.Title })
-                                  @Html.HiddenFor(Model => Model.messageVM.ContactDate, new { Value = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss tt") });
+                                  @Html.HiddenFor(Model => Model.messageVM.ContactDate, new { Value = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss tt") })
                                   @Html.HiddenFor(Model => Model.messageVM.IsRead, new { Value = false })
                                   @*@Model.messageVM.ContactDate = DateTime.Now;*@
                                   @*@Model.messageVM.ComeFrom = ViewBag.Title;*@

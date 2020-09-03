@@ -3,12 +3,12 @@
 @{
     ViewBag.Title = "About";
 }
-<div class="page-titles-img title-space-lg bg-parallax mb80 parallax-overlay" data-jarallax='{"speed": 0.2}' style='background-image: url("/RecursosOficiales/Tableros de Control/Diseño tablero de control..jpg");background-position:top center;'>
+<div class="page-titles-img title-space-lg bg-parallax mb80 parallax-overlay" data-jarallax='{"speed": 0.2}' style='background-image: url("/RecursosOficiales/Tarjeta Besmi.jpg");background-position:top center; background-size:auto'>
     <div class="container">
         <div class="row">
             <div class=" col-md-12">
-                <h1 class="text-uppercase">Nuestra Oficina</h1>
-
+                <h1 class="text-uppercase">Contactenos</h1>
+                
             </div>
         </div>
     </div>
@@ -17,19 +17,16 @@
 <div class="container">
     <div class="row pb50 align-item-center">
         <div class="col-sm-6 mb40">
-            <h2>A place where born amazing ideas</h2>
-            <p class="lead">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut feugiat urna arcu, vel molestie nunc commodo non. Nullam vestibulum odio vitae fermentum rutrum.
-            </p>
+            <h2>Una solución a cada necesidad</h2>
             <p>
-                Mauris lobortis nulla ut aliquet interdum. Donec commodo ac elit sed placerat. Mauris rhoncus est ac sodales gravida. In eros felis, elementum aliquam nisi vel, pellentesque faucibus nulla.
+                A lo largo de nuestra experiencia en la industria de las basculas y servicios de mantenimiento comercial e industrial, tenemos la seguridad de que todos nuestros clientes se van satisfechos por nuestro trabajo ya que suelen recomendarnos y se van con la tranquilidad de que brindamos garantía por el trabajo realizado  
             </p>
             <a href="" class="btn btn-primary">Contáctenos</a>
         </div>
         <div class="col-sm-6 mb40">
             <div class="carousel-image owl-carousel owl-theme carousel-dark">
                 <div class="item">
-                    <img src="~/RecursosOficiales/Camaras de Refrigeración/Camaras de refrigeración 5.jpg" alt="" class="img-fluid">
+                    <img src="~/RecursosOficiales/Basculas/Calibración y servicio básculas de recibo.JPG" class="img-fluid" />
                 </div>
                 <div class="item">
                     <img src="~/RecursosOficiales/Mantenimiento Maquinaria/077.jpg" alt="" class="img-fluid">
@@ -70,77 +67,52 @@
     <div class="container">
         <div class="row">
 
-            <div class="col-md-3 mb20">
+            <div class="col-md-4 mb20">
                 <h4 class="text-uppercase mb30">
                     Contacto
                 </h4>
                 <div class="media mb20">
-                    <i class="d-flex mt5 fa fa-home icon-sm-rounded mr-3"></i>
+                    <i class="mt5 fa fa-home icon-sm-rounded mr-3"></i>
                     <div class="media-body">
                         <h5 class="mt-0 mb0 text-uppercase">Domicilio</h5>
                         @Html.DisplayFor(model => model.corpinfoVM.Address  )
                     </div>
                 </div>
                 <div class="media mb20">
-                    <i class="d-flex mt5 fa fa-phone icon-sm-rounded mr-3"></i>
+                    <i class="mt5 fa fa-phone icon-sm-rounded mr-3"></i>
                     <div class="media-body">
                         <h5 class="mt-0 mb0 text-uppercase">Número Telefónico</h5>
                        @Model.corpinfoVM.Phone
                     </div>
                 </div>
                 <div class="media mb20">
-                    <i class="d-flex mt5 fa fa-envelope icon-sm-rounded mr-3"></i>
+                    <i class="mt5 fa fa-envelope icon-sm-rounded mr-3"></i>
                     <div class="media-body">
                         <h5 class="mt-0 mb0 text-uppercase">Correo Electrónico</h5>
                         @Model.corpinfoVM.EmailOptional1
                      
                     </div>
                 </div>
+                <div class="media mb20">
+                    <i class="mt5 fa fa-times icon-sm-rounded mr-3"></i>
+                    <div class="media-body">
+                        <h5 class="mt-0 mb0 text-uppercase"> Horario Laboral</h5>
+                       @Model.corpinfoVM.BusinessHours
+
+                    </div>
+                </div>
             </div>
-            <div class="col-md-6 mb40">
+            <div class="col-md-8 mb40">
                 <h4 class="text-uppercase mb30">
                     Localización
                 </h4>
-                <div id="markermap" style="width: 100%;height: 300px;"></div>
-            </div>
-            <div class="col-md-3 mb20">
-                <h4 class="text-uppercase mb30">
-                    Horario Laboral
-                </h4>
-                <div class="media mb20">
-                    <i class="d-flex mt5 fa fa-clock-o mr-3"></i>
-                    <div class="media-body">
-                        <h5 class="mt-0 mb0 text-uppercase"> @Model.corpinfoVM.BusinessHours</h5>
-                    </div>
+                <div>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3701.854385213658!2d-102.2811075!3d21.9016824!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8429ee474635c793%3A0xf16630ae71a73e9b!2sBasculas%2C%20Equipos%20Y%20Refacciones%20Solis!5e0!3m2!1ses-419!2smx!4v1599156387775!5m2!1ses-419!2smx" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                 </div>
-              
             </div>
+            
         </div>
     </div>
 </div>
 
 
-
-<!--google map-->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMwVpUj3-oHHW8N21819BhKttOga2Rj2s"></script>
-<script src="~/Html/js/jquery.gmap.min.js"></script>
-<script>
-    // Marker Map
-    $(document).ready(function () {
-        map = new GMaps({
-            scrollwheel: false,
-            el: '#markermap',
-            lat: 26.981942,
-            lng: 75.684486
-
-        });
-        map.addMarker({
-            lat: 26.981942,
-            lng: 75.684486,
-            title: 'Marker with InfoWindow',
-            infoWindow: {
-                content: '<h4>GUNJAN SOFTWARE</h4><p>A Small Web design Studio</p>'
-            }
-        });
-    });
-</script>

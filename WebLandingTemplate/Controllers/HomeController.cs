@@ -89,7 +89,7 @@ namespace WebLandingTemplate.Controllers
                     var itemDto = new MessageDto();
                     AutoMapper.Mapper.Map(PageVM.messageVM, itemDto);
                     var senderEmail = new MailAddress("TestWebLanding@gmail.com", "Besmi.com Correo Contacto Con Cliente");
-                    var receiverEmail = new MailAddress("irvin_lechugasss@hotmail.com", "Receptor");
+                    var receiverEmail = new MailAddress("basculasequiposyserviciosyservicios@prodigy.net.mx", "Receptor");
                     //var receiverEmail = new MailAddress("test@example.com", "Receptor");
                     //var receiverEmail = new MailAddress("irvin_lechugasss@hotmail.com", "Receptor");
                     var password = "MagicPass_369";
