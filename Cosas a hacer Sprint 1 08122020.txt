@@ -1,0 +1,15 @@
+- Depurar Codigo : quitar archivos extras htmls , css , etc.
+- Arreglar base de datos , crear una nueva y dejar a punto para nueva implementacion.
+
+- Agregar columna nueva EntityName que sea referenciada a las 3 columnas desde ImageSource
+
+
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK__ImageSour__ItemI__1CF15040".
+ The conflict occurred in database "besmicom_aspnet-WebLandingTemplate", table "dbo.Products", column 'ProductId'.
+The statement has been terminated.
+
+
+//////////////////////////
+
+		REVICION Exahustiva del Proyecto para ver el flujo y sacar dudas 
+		siguiente junta 10/12/2020

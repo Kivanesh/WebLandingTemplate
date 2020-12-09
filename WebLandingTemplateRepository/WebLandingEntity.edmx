@@ -131,7 +131,7 @@
           </Key>
           <Property Name="ImageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ItemId" Type="int" />
-          <Property Name="Name" Type="varbinary" MaxLength="8000" />
+          <Property Name="Name" Type="varbinary(max)" />
           <Property Name="Description" Type="nvarchar" MaxLength="255" />
           <Property Name="ItemCodeType" Type="int" />
         </EntityType>
@@ -145,7 +145,7 @@
           <Property Name="Price" Type="float" />
           <Property Name="Description" Type="nvarchar" MaxLength="255" />
           <Property Name="Size" Type="nvarchar" MaxLength="255" />
-          <Property Name="Color" Type="nvarchar" MaxLength="1" />
+          <Property Name="Color" Type="nvarchar(max)" />
           <Property Name="ProductType" Type="int" />
         </EntityType>
         <EntityType Name="ServiceCorp">
@@ -167,7 +167,7 @@
           <Property Name="Descripcion" Type="nvarchar" MaxLength="255" />
           <Property Name="ContactPhone" Type="nvarchar(max)" />
         </EntityType>
-        <Association Name="FK__ImageSour__ItemI__48CFD27E">
+        <Association Name="FK__ImageSour__ItemI__1CF15040">
           <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
           <End Role="ImageSources" Type="Self.ImageSources" Multiplicity="*" />
           <ReferentialConstraint>
@@ -179,7 +179,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ImageSour__ItemI__49C3F6B7">
+        <Association Name="FK__ImageSour__ItemI__1DE57479">
           <End Role="ServiceCorp" Type="Self.ServiceCorp" Multiplicity="0..1" />
           <End Role="ImageSources" Type="Self.ImageSources" Multiplicity="*" />
           <ReferentialConstraint>
@@ -191,7 +191,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ImageSour__ItemI__4AB81AF0">
+        <Association Name="FK__ImageSour__ItemI__1ED998B2">
           <End Role="Dashboard" Type="Self.Dashboard" Multiplicity="0..1" />
           <End Role="ImageSources" Type="Self.ImageSources" Multiplicity="*" />
           <ReferentialConstraint>
@@ -203,7 +203,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Products__Produc__46E78A0C">
+        <Association Name="FK__Products__Produc__1FCDBCEB">
           <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
           <End Role="Products" Type="Self.Products" Multiplicity="*" />
           <ReferentialConstraint>
@@ -215,7 +215,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Products__Provee__45F365D3">
+        <Association Name="FK__Products__Provee__20C1E124">
           <End Role="suppliers" Type="Self.suppliers" Multiplicity="0..1" />
           <End Role="Products" Type="Self.Products" Multiplicity="*" />
           <ReferentialConstraint>
@@ -227,7 +227,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ServiceCo__Servi__47DBAE45">
+        <Association Name="FK__ServiceCo__Servi__21B6055D">
           <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
           <End Role="ServiceCorp" Type="Self.ServiceCorp" Multiplicity="*" />
           <ReferentialConstraint>
@@ -311,27 +311,27 @@
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ServiceCorp" EntityType="Self.ServiceCorp" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="suppliers" EntityType="Self.suppliers" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__ImageSour__ItemI__48CFD27E" Association="Self.FK__ImageSour__ItemI__48CFD27E">
+          <AssociationSet Name="FK__ImageSour__ItemI__1CF15040" Association="Self.FK__ImageSour__ItemI__1CF15040">
             <End Role="Products" EntitySet="Products" />
             <End Role="ImageSources" EntitySet="ImageSources" />
           </AssociationSet>
-          <AssociationSet Name="FK__ImageSour__ItemI__49C3F6B7" Association="Self.FK__ImageSour__ItemI__49C3F6B7">
+          <AssociationSet Name="FK__ImageSour__ItemI__1DE57479" Association="Self.FK__ImageSour__ItemI__1DE57479">
             <End Role="ServiceCorp" EntitySet="ServiceCorp" />
             <End Role="ImageSources" EntitySet="ImageSources" />
           </AssociationSet>
-          <AssociationSet Name="FK__ImageSour__ItemI__4AB81AF0" Association="Self.FK__ImageSour__ItemI__4AB81AF0">
+          <AssociationSet Name="FK__ImageSour__ItemI__1ED998B2" Association="Self.FK__ImageSour__ItemI__1ED998B2">
             <End Role="Dashboard" EntitySet="Dashboard" />
             <End Role="ImageSources" EntitySet="ImageSources" />
           </AssociationSet>
-          <AssociationSet Name="FK__Products__Produc__46E78A0C" Association="Self.FK__Products__Produc__46E78A0C">
+          <AssociationSet Name="FK__Products__Produc__1FCDBCEB" Association="Self.FK__Products__Produc__1FCDBCEB">
             <End Role="Categories" EntitySet="Categories" />
             <End Role="Products" EntitySet="Products" />
           </AssociationSet>
-          <AssociationSet Name="FK__Products__Provee__45F365D3" Association="Self.FK__Products__Provee__45F365D3">
+          <AssociationSet Name="FK__Products__Provee__20C1E124" Association="Self.FK__Products__Provee__20C1E124">
             <End Role="suppliers" EntitySet="suppliers" />
             <End Role="Products" EntitySet="Products" />
           </AssociationSet>
-          <AssociationSet Name="FK__ServiceCo__Servi__47DBAE45" Association="Self.FK__ServiceCo__Servi__47DBAE45">
+          <AssociationSet Name="FK__ServiceCo__Servi__21B6055D" Association="Self.FK__ServiceCo__Servi__21B6055D">
             <End Role="Categories" EntitySet="Categories" />
             <End Role="ServiceCorp" EntitySet="ServiceCorp" />
           </AssociationSet>
@@ -500,7 +500,7 @@
           <Property Name="Price" Type="Double" />
           <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Size" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Color" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Color" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ProductType" Type="Int32" />
           <NavigationProperty Name="Categories" Relationship="Self.FK__Products__Produc__46E78A0C" FromRole="Products" ToRole="Categories" />
           <NavigationProperty Name="ImageSources" Relationship="Self.FK__ImageSour__ItemI__48CFD27E" FromRole="Products" ToRole="ImageSources" />
