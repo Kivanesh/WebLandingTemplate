@@ -167,6 +167,28 @@ namespace WebLandingTemplate.Controllers
             }
         }
 
+        [HttpPost]
+        public bool Eliminar(int id)
+        {
+            try
+            {
+                //return true;
+                var result = _svcBusiness.DeleteService(id);
+                if (result == "Succes")
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
 
 
 

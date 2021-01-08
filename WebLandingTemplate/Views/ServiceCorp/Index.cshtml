@@ -110,7 +110,7 @@
         console.log('You selected: ', this.value);
         $('#RowNumber').val(this.value);
         $.ajax({
-            url: '/Product/Index',
+            url: '/ServiceCorp/Index',
             type: 'POST',
             contentType: 'application/json;',
             data: JSON.stringify({ page: null, searchString: "", pageSize: this.value }),
@@ -138,7 +138,7 @@
             $.ajax({
                 async: false,
                 type: 'POST',
-                url: '/Product/Eliminar/',
+                url: '/ServiceCorp/Eliminar/',
                 data: { id: ProductId },
                 //dataType: "json",
                 //contentType: 'application/json; charset=utf-8',
@@ -150,7 +150,7 @@
                             type: 'success',
                             confirmButtonClass: 'btn btn-confirm mt-2'
                         }).then(function () {
-                            window.location = "/Product/Index";
+                            window.location = "/ServiceCorp/Index";
                         });
                     }
                     else {
