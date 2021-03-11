@@ -69,15 +69,36 @@
                                     </div>
                                     <div class="col-md-5 mb-3">
                                         <div class="input-icon-group">
-                                            @Html.LabelFor(model => model.ProductType, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            @Html.LabelFor(model => model.ProductType, "Categoría", htmlAttributes: new { @class = "control-label col-md-2" })
+
                                             <div class="input-icon-append">
                                                 <i class="fa fa-user"></i>
-                                                @Html.EditorFor(model => model.ProductType, new { htmlAttributes = new { @class = "form-control" } })
-                                                @Html.ValidationMessageFor(model => model.ProductType, "", new { @class = "text-danger" })
+                                                @Html.DropDownList("filterTypeCategory", ViewBag.typesupp as SelectList, new { id = "FilterNumberCategory", @class = "form-control form-control" })
+
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-md-5 mb-3">
+                                        <div class="input-icon-group">
+                                            @Html.LabelFor(model => model.ProveedorId, "Proveedor", htmlAttributes: new { @class = "control-label col-md-2" })
 
+                                            <div class="input-icon-append">
+                                                <i class="fa fa-user"></i>
+                                                @Html.DropDownList("filterTypeSupplier", ViewBag.typesrc as SelectList, new { id = "FilterNumber", @class = "form-control form-control" })
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @*<div class="col-md-5 mb-3">
+                                            <div class="input-icon-group">
+                                                @Html.LabelFor(model => model.ProveedorId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="input-icon-append">
+                                                    <i class="fa fa-bookmark"></i>
+                                                    @Html.EnumDropDownListFor(model => model.ItemCodeTypeEnum, "--- Selecciona ---", new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.ItemCodeTypeEnum, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>*@
 
                                 </div><!--row-->
 
@@ -139,15 +160,27 @@
                                         </div>
                                     </div>
                                     <div class="col-md-5 mb-3">
+                                            <div class="input-icon-group">
+                                                @Html.LabelFor(model => model.CategoryName, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="input-icon-append">
+                                                    <i class="fa fa-user"></i>
+                                                    @Html.DisplayFor(model => model.CategoryName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    <div class="col-md-5 mb-3">
                                         <div class="input-icon-group">
-                                            @Html.LabelFor(model => model.ProductType, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            @Html.LabelFor(model => model.ProveedorName, htmlAttributes: new { @class = "control-label col-md-2" })
                                             <div class="input-icon-append">
                                                 <i class="fa fa-user"></i>
-                                                @Html.DisplayFor(model => model.ProductType, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                @Html.DisplayFor(model => model.ProveedorName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
 
                                             </div>
                                         </div>
                                     </div>
+
 
                                 </div><!--row-->
                                 <div class="result"></div><!-- end .result  section -->
@@ -212,15 +245,27 @@
                                     </div>
                                     <div class="col-md-5 mb-3">
                                         <div class="input-icon-group">
-                                            @Html.LabelFor(model => model.ProductType, "Tipo", htmlAttributes: new { @class = "control-label col-md-2" })
+                                            @Html.LabelFor(model => model.ProductType, "Categoría", htmlAttributes: new { @class = "control-label col-md-2" })
+
                                             <div class="input-icon-append">
                                                 <i class="fa fa-user"></i>
-                                                @Html.EditorFor(model => model.ProductType, new { htmlAttributes = new { @class = "form-control" } })
-                                                @Html.ValidationMessageFor(model => model.ProductType, "", new { @class = "text-danger" })
+                                                @Html.DropDownList("filterTypeCategory", ViewBag.typesupp as SelectList, new { id = "FilterNumberCategory", @class = "form-control form-control" })
+
                                             </div>
                                         </div>
                                     </div>
-                                    <!--Aqui abajo va el código-->
+                                    <div class="col-md-5 mb-3">
+                                        <div class="input-icon-group">
+                                            @Html.LabelFor(model => model.ProveedorId, "Proveedor", htmlAttributes: new { @class = "control-label col-md-2" })
+
+                                            <div class="input-icon-append">
+                                                <i class="fa fa-user"></i>
+                                                @Html.DropDownList("filterTypeSupplier", ViewBag.typesrc as SelectList, new { id = "FilterNumberSupplier", @class = "form-control form-control" })
+
+                                            </div>
+                                        </div>
+                                    </div>
+
 
                                 </div><!--row-->
                                 <div class="result"></div><!-- end .result  section -->
@@ -281,115 +326,115 @@
 </script>
 <script type="text/javascript">
 
-        jQuery(document).ready(function ($) {
+    jQuery(document).ready(function ($) {
 
 
 
-            $("#supplier-form").validate({
-                /* validation states + elements
-                ------------------------------------------- */
-                errorClass: "error",
-                validClass: "valid",
-                errorElement: "em",
-                onkeyup: false,
-                onclick: false,
-                /* validation rules
-                ------------------------------------------ */
-                rules: {
-                    Name: {
-                        required: true,
-                        minlength: 1
-                    },
-                    Description: {
-                        required: false,
-                    },
-
+        $("#supplier-form").validate({
+            /* validation states + elements
+            ------------------------------------------- */
+            errorClass: "error",
+            validClass: "valid",
+            errorElement: "em",
+            onkeyup: false,
+            onclick: false,
+            /* validation rules
+            ------------------------------------------ */
+            rules: {
+                Name: {
+                    required: true,
+                    minlength: 1
                 },
-                messages: {
-                    categoryname: {
-                        required: 'Ingresa el nombre',
-                        minlength: 'El nombre debe contener al menos {0} caracteres'
-                    },
-                    Description: {
-                        required: 'Ingresa la descripción',
-                        minlength: 'La descripción debe contener al menos {0} caracteres',
-
-                        default: 'Enter a VALID option'
-                    }
-
-                },
-                /* validation highlighting + error placement
-                ---------------------------------------------------- */
-                highlight: function (element, errorClass, validClass) {
-                    $(element).addClass(errorClass).removeClass(validClass);
-                },
-                unhighlight: function (element, errorClass, validClass) {
-                    $(element).removeClass(errorClass).addClass(validClass);
-
-                },
-                errorPlacement: function (error, element) {
-                    if (element.is(":radio") || element.is(":checkbox")) {
-                        console.log("This shit Get into The Validation: 3");
-                        element.closest('.option-group').after(error);
-
-                    } else {
-                        console.log("This shit Get into The Validation: 4");
-                        error.insertAfter(element.parent());
-                    }
+                Description: {
+                    required: false,
                 },
 
-                /* ajax form submition
-                ---------------------------------------------------- */
-                //                  submitHandler: function (form) {
-                //                    /*---------------------------------------------------- Build Model from InputForm Template ADD by Kvnsh */
-                //                      //var itemVM = {
+            },
+            messages: {
+                categoryname: {
+                    required: 'Ingresa el nombre',
+                    minlength: 'El nombre debe contener al menos {0} caracteres'
+                },
+                Description: {
+                    required: 'Ingresa la descripción',
+                    minlength: 'La descripción debe contener al menos {0} caracteres',
 
-                //                      //}
-                //                      //var messageVM = {
-                //                      //    Subject : sendersubject.value,
-                //                      //    Email : emailaddress.value,
-                //                      //    ContactName : sendername.value,
-                //                      //    Message : sendermessage.value,
-                //                      //    Phone: senderphone.value,
-                //                      //    ContactDate: document.getElementById("messageVM_ContactDate").value,
-                //                      //    ComeFrom: document.getElementById("messageVM_ComeFrom").value
-                //                      //}
-                //                      //var PageVM = {
-                //                      //    "messageVM" : messageVM
-                //                      //}
-                //                      //console.log(PageVM);
-                //                      console.log('HeRe are You u.u');
-                //                      console.log(form);
-                //                       /*---------------------------------------------------- */
-                //                      $(form).ajaxSubmit({
-                //                              data: form,
-                //		    target:'.result',
-                //			beforeSubmit:function(){
-                //					swapButton();
-                //					$('.form-footer').addClass('progress');
-                //			},
-                //			error:function(){
-                //					swapButton();
-                //					$('.form-footer').removeClass('progress');
-                //			},
-                //			 success:function(){
-                //				 	swapButton();
-                //					$('.form-footer').removeClass('progress');
-                //					$('.alert-success').show().delay(7000).fadeOut();
-                //					$('.field').removeClass("state-error, state-success");
-                //					if( $('.alert-error').length == 0){
-                //						$('#smart-form').resetForm();
-                //						reloadCaptcha();
-                //					}
-                //			 }
-                //	  });
-                //}
+                    default: 'Enter a VALID option'
+                }
 
-            }); //----> End Category Validate
+            },
+            /* validation highlighting + error placement
+            ---------------------------------------------------- */
+            highlight: function (element, errorClass, validClass) {
+                $(element).addClass(errorClass).removeClass(validClass);
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $(element).removeClass(errorClass).addClass(validClass);
+
+            },
+            errorPlacement: function (error, element) {
+                if (element.is(":radio") || element.is(":checkbox")) {
+                    console.log("This shit Get into The Validation: 3");
+                    element.closest('.option-group').after(error);
+
+                } else {
+                    console.log("This shit Get into The Validation: 4");
+                    error.insertAfter(element.parent());
+                }
+            },
+
+            /* ajax form submition
+            ---------------------------------------------------- */
+            //                  submitHandler: function (form) {
+            //                    /*---------------------------------------------------- Build Model from InputForm Template ADD by Kvnsh */
+            //                      //var itemVM = {
+
+            //                      //}
+            //                      //var messageVM = {
+            //                      //    Subject : sendersubject.value,
+            //                      //    Email : emailaddress.value,
+            //                      //    ContactName : sendername.value,
+            //                      //    Message : sendermessage.value,
+            //                      //    Phone: senderphone.value,
+            //                      //    ContactDate: document.getElementById("messageVM_ContactDate").value,
+            //                      //    ComeFrom: document.getElementById("messageVM_ComeFrom").value
+            //                      //}
+            //                      //var PageVM = {
+            //                      //    "messageVM" : messageVM
+            //                      //}
+            //                      //console.log(PageVM);
+            //                      console.log('HeRe are You u.u');
+            //                      console.log(form);
+            //                       /*---------------------------------------------------- */
+            //                      $(form).ajaxSubmit({
+            //                              data: form,
+            //		    target:'.result',
+            //			beforeSubmit:function(){
+            //					swapButton();
+            //					$('.form-footer').addClass('progress');
+            //			},
+            //			error:function(){
+            //					swapButton();
+            //					$('.form-footer').removeClass('progress');
+            //			},
+            //			 success:function(){
+            //				 	swapButton();
+            //					$('.form-footer').removeClass('progress');
+            //					$('.alert-success').show().delay(7000).fadeOut();
+            //					$('.field').removeClass("state-error, state-success");
+            //					if( $('.alert-error').length == 0){
+            //						$('#smart-form').resetForm();
+            //						reloadCaptcha();
+            //					}
+            //			 }
+            //	  });
+            //}
+
+        }); //----> End Category Validate
 
 
 
-        });
+    });
 
 </script>
 

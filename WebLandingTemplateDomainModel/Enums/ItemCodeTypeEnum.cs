@@ -11,4 +11,10 @@ namespace WebLandingTemplateDomainModel.Enums
         Producto = 1,
         Servicio = 2
     }
+
+
+    public enum SupplierTypeEnum
+    {
+        
+    }
 }

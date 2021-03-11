@@ -19,9 +19,12 @@ namespace WebLandingTemplate.Controllers
     public class ServiceCorpController : Controller
     {
         IServiceCorpBusiness _svcBusiness;
-        public ServiceCorpController(ServiceCorpBusiness svcBusiness)
+        ICategoryBusiness _categoryBusiness;
+
+        public ServiceCorpController(ServiceCorpBusiness svcBusiness,CategoryBusiness categoryBusiness)
         {
             _svcBusiness = svcBusiness;
+            _categoryBusiness = categoryBusiness;
         }
 
         private IEnumerable<SelectListItem> DataItems(int pageSize)
@@ -54,6 +57,21 @@ namespace WebLandingTemplate.Controllers
 
             return new SelectList(list, "Value", "Text", "Selected");
         }
+
+        private IEnumerable<SelectListItem> DataFilterCategory()
+        {
+            //var istenum = Enum.GetValues(typeof(ItemCodeTypeEnum)).Cast<ItemCodeTypeEnum>().Select(p => new SelectListItem()
+            var istenum = _categoryBusiness.GetAllCategory().Where(p => p.ItemCodeType == 2 ).Select(p => new SelectListItem()
+
+            {
+                Text = p.Name,
+                Value = ((int)p.CategoryId).ToString()
+            }).ToList();
+            istenum.Insert(0, new SelectListItem() { Value = null, Text = "--Seleciona--", Selected = true });
+
+            return new SelectList(istenum, "Value", "Text", "Selected");
+        }
+
         // GET: ServiceCorp
         [Authorize]
         public ActionResult Index(int? page, string searchString, int pageSize = 3)
@@ -83,9 +101,10 @@ namespace WebLandingTemplate.Controllers
             var prodDto = _svcBusiness.GetServiceCorp(id);
             var prodVM = new ServiceCorpVM();
             AutoMapper.Mapper.Map(prodDto, prodVM);
+            prodVM.CategoryName = _categoryBusiness.GetCategory(prodVM.ServiceType).Name;
             ViewBag.ModalName = "Detalles de Servicio";
             ViewBag.GoTo = "Details";
-            return PartialView("ModalService", prodVM);
+            return PartialView("ModalServiceCorp", prodVM);
         }
 
         // GET: ServiceCorp/Create
@@ -93,16 +112,19 @@ namespace WebLandingTemplate.Controllers
         {
             ViewBag.ModalName = "Crear Servicio";
             ViewBag.GoTo = "Create";
-            return PartialView("ModalService");
+            ViewBag.typescat = DataFilterCategory();
+            return PartialView("ModalServiceCorp");
         }
 
         // POST: ServiceCorp/Create
         [HttpPost]
-        public ActionResult Create(ServiceCorpVM svcVM)
+        public ActionResult Create(ServiceCorpVM svcVM, int filterTypeCategory)
         {
             try
             {
                 var svcDto = new ServiceCorpDto();
+                svcVM.ServiceType = filterTypeCategory;
+                svcVM.ServiceType = filterTypeCategory;
                 AutoMapper.Mapper.Map(svcVM, svcDto);
                 var result = _svcBusiness.InsertService(svcDto);
                 return RedirectToAction("Index");
@@ -119,18 +141,20 @@ namespace WebLandingTemplate.Controllers
             var svcDto = _svcBusiness.GetServiceCorp(id);
             var servVM = new ServiceCorpVM();
             AutoMapper.Mapper.Map(svcDto, servVM);
+            ViewBag.typescat = DataFilterCategory();
             ViewBag.ModalName = "Editar Servicio";
             ViewBag.GoTo = "Edit";
-            return View("ModalService",servVM);
+            return PartialView("ModalServiceCorp",servVM);
         }
 
         // POST: ServiceCorp/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, ServiceCorpVM svcVM)
+        public ActionResult Edit(int id, ServiceCorpVM svcVM, int filterTypeCategory)
         {
             try
             {
                 var svcDto = new ServiceCorpDto();
+                svcVM.ServiceType = filterTypeCategory;
                 AutoMapper.Mapper.Map(svcVM, svcDto);
                 var result = _svcBusiness.UpdateService(svcDto);
                 return RedirectToAction("Index");

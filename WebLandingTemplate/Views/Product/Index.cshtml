@@ -54,7 +54,7 @@
                             <th class="sorting" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" style="width: 143px;" aria-label="Last name: activate to sort column ascending">Descripción</th>
                             <th class="sorting" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" style="width: 143px;" aria-label="Last name: activate to sort column ascending">Tamaño</th>
                             <th class="sorting" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" style="width: 143px;" aria-label="Last name: activate to sort column ascending">Color</th>
-                            <th class="sorting" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" style="width: 143px;" aria-label="Last name: activate to sort column ascending">Tipo</th>
+                            <th class="sorting" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" style="width: 143px;" aria-label="Last name: activate to sort column ascending">Categoría</th>
 
 
                         </tr>
@@ -62,42 +62,42 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            <tr role="row" class="odd">
-                                
-                                <td tabindex="0" class="sorting_1">
-                                    @Html.DisplayFor(modelItem => item.ProductName)
-                                </td>
+                        <tr role="row" class="odd">
 
-                                <td tabindex="0" class="sorting_1">
-                                    @Html.DisplayFor(modelItem => item.Price)
-                                </td>
-                                <td tabindex="0" class="sorting_1">
-                                    @Html.DisplayFor(modelItem => item.Description)
-                                </td>
-                                <td tabindex="0" class="sorting_1">
-                                    @Html.DisplayFor(modelItem => item.Size)
-                                </td>
-                                <td tabindex="0" class="sorting_1">
-                                    @Html.DisplayFor(modelItem => item.Color)
-                                </td>
-                                <td tabindex="0" class="sorting_1">
-                                    <a href="/Category/Details/@item.ProductType">
-                                        @Html.DisplayFor(modelItem => item.ProductType)
-                                    </a>
-                                </td>
-                                <td>
-                                    <div class="btn-group-sm btn-group-rounded pt-20">
-                                        <button class="btn btn-icon btn-sm btn-danger "><i class="icon-Eye-Scan"></i> @Html.ActionLink(" Detalles", "Details", "Product", new { id = item.ProductId }, new { @class = "modal-link ", title = "Detalles" })</button>
-                                        <button class="btn btn-icon btn-sm btn-danger "><i class="icon-Open-Book"></i> @Html.ActionLink(" Editar", "Edit", "Product", new { id = item.ProductId }, new { @class = "modal-link", title = "Editar" }) </button>
-                                        @*<button class="btn btn-icon btn-sm btn-danger "><i class="icon-Delete-File"></i> @Html.ActionLink(" Eliminar", "Delete", "Category", new { id = item.CategoryId }, new { @class = "modal-link", title = "Eliminar" })</button>*@
-                                        <button class="btn btn-icon btn-sm btn-danger " onclick="BorrarItem(@item.ProductId )"><i class="icon-Delete-File"></i> Eliminar</button>
+                            <td tabindex="0" class="sorting_1">
+                                @Html.DisplayFor(modelItem => item.ProductName)
+                            </td>
 
-                                    </div>
-                                    @*Html.ActionLink("Editar", "Edit", new { id = item.ProveedorId }) |
-                                        @Html.ActionLink("Detalles", "Details", new { id = item.ProveedorId }) |
-                                        @Html.ActionLink("Eliminar", "Delete", new { id = item.ProveedorId })*@
-                                </td>
-                            </tr>
+                            <td tabindex="0" class="sorting_1">
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </td>
+                            <td tabindex="0" class="sorting_1">
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+                            <td tabindex="0" class="sorting_1">
+                                @Html.DisplayFor(modelItem => item.Size)
+                            </td>
+                            <td tabindex="0" class="sorting_1">
+                                @Html.DisplayFor(modelItem => item.Color)
+                            </td>
+                            <td tabindex="0" class="sorting_1">
+                                <a href="/Category/Details/@item.ProductType">
+                                    @Html.DisplayFor(modelItem => item.ProductType)
+                                </a>
+                            </td>
+                            <td>
+                                <div class="btn-group-sm btn-group-rounded pt-20">
+                                    <button class="btn btn-icon btn-sm btn-danger "><i class="icon-Eye-Scan"></i> @Html.ActionLink(" Detalles", "Details", "Product", new { id = item.ProductId }, new { @class = "modal-link ", title = "Detalles" })</button>
+                                    <button class="btn btn-icon btn-sm btn-danger "><i class="icon-Open-Book"></i> @Html.ActionLink(" Editar", "Edit", "Product", new { id = item.ProductId }, new { @class = "modal-link", title = "Editar" }) </button>
+                                    @*<button class="btn btn-icon btn-sm btn-danger "><i class="icon-Delete-File"></i> @Html.ActionLink(" Eliminar", "Delete", "Category", new { id = item.CategoryId }, new { @class = "modal-link", title = "Eliminar" })</button>*@
+                                    <button class="btn btn-icon btn-sm btn-danger " onclick="BorrarItem(@item.ProductId )"><i class="icon-Delete-File"></i> Eliminar</button>
+
+                                </div>
+                                @*Html.ActionLink("Editar", "Edit", new { id = item.ProveedorId }) |
+            @Html.ActionLink("Detalles", "Details", new { id = item.ProveedorId }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.ProveedorId })*@
+                            </td>
+                        </tr>
                         }
                     </tbody>
                 </table>

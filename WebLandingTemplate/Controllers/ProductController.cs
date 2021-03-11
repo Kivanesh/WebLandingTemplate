@@ -13,16 +13,26 @@ using WebLandingTemplate.Models;
 using WebLandingTemplateBusinessLogic.Interface;
 using WebLandingTemplateBusinessLogic.Logic;
 using WebLandingTemplateDomainModel.Models;
+using WebLandingTemplateDomainModel.Enums;
+
 
 namespace WebLandingTemplate.Controllers
 {
     public class ProductController : Controller
     {
         IProductBusiness _productBusiness;
-        public ProductController(ProductBusiness productBusiness)
+        ISupplierBusiness _supplierBusiness;
+        ICategoryBusiness _categoryBusiness;
+
+
+        public ProductController(ProductBusiness productBusiness, SupplierBusiness supplierBusiness, CategoryBusiness categoryBusiness)
         {
             _productBusiness = productBusiness;
+            _supplierBusiness = supplierBusiness;
+            _categoryBusiness = categoryBusiness;
         }
+        
+
 
         private IEnumerable<SelectListItem> DataItems(int pageSize)
         {
@@ -55,6 +65,67 @@ namespace WebLandingTemplate.Controllers
             return new SelectList(list, "Value", "Text", "Selected");
         }
 
+        private IEnumerable<SelectListItem> DataFilterSupplier()
+        {
+            //var istenum = Enum.GetValues(typeof(ItemCodeTypeEnum)).Cast<ItemCodeTypeEnum>().Select(p => new SelectListItem()
+            var istenum = _supplierBusiness.GetAllSupplier().Select(p => new SelectListItem()
+
+                        {
+                            Text = p.Name,
+                Value = ((int)p.ProveedorId).ToString()
+            }).ToList();
+            istenum.Insert(0, new SelectListItem() { Value = null, Text = "--Seleciona--", Selected = true });
+           
+            return new SelectList(istenum, "Value", "Text", "Selected");
+        }
+
+        private IEnumerable<SelectListItem> DataFilterCategory()
+        {
+            //var istenum = Enum.GetValues(typeof(ItemCodeTypeEnum)).Cast<ItemCodeTypeEnum>().Select(p => new SelectListItem()
+            var istenum = _categoryBusiness.GetAllCategory().Where(p=>p.ItemCodeType==1).Select(p => new SelectListItem()
+
+            {
+                Text = p.Name,
+                Value = ((int)p.CategoryId).ToString()
+            }).ToList();
+            istenum.Insert(0, new SelectListItem() { Value = null, Text = "--Seleciona--", Selected = true });
+
+            return new SelectList(istenum, "Value", "Text", "Selected");
+        }
+
+        private IEnumerable<SelectListItem> DataFilterCategory(int? idSelected)
+        {
+            //var istenum = Enum.GetValues(typeof(ItemCodeTypeEnum)).Cast<ItemCodeTypeEnum>().Select(p => new SelectListItem()
+            var istenum = _categoryBusiness.GetAllCategory().Where(p => p.ItemCodeType == 1).Select(p => new SelectListItem()
+
+            {
+                Text = p.Name,
+                Value = ((int)p.CategoryId).ToString()
+            }).ToList();
+            istenum.Insert(0, new SelectListItem() { Value = null, Text = "--Seleciona--", Selected = true });
+
+            return new SelectList(istenum, "Value", "Text", "Selected");
+        }
+
+        private IEnumerable<SelectListItem> DataFilterSupplierEdit(int? idSelected)
+        {
+            //var istenum = Enum.GetValues(typeof(ItemCodeTypeEnum)).Cast<ItemCodeTypeEnum>().Select(p => new SelectListItem()
+            var istenum = _supplierBusiness.GetAllSupplier().Select(p => new SelectListItem()
+
+            {
+                Text = p.Name,
+                Value = ((int)p.ProveedorId).ToString()
+               
+            }).ToList();
+
+
+              
+
+            var a = new SelectList(istenum, "Value", "Text", "Selected");
+            
+            return a;
+        }
+
         // GET: Product
         [Authorize]
         public ActionResult Index(int? page, string searchString, int pageSize = 3)
@@ -76,6 +147,7 @@ namespace WebLandingTemplate.Controllers
                 AutoMapper.Mapper.Map(listaDto, listaVM);
             }
 
+
             return View(listaVM.ToPagedList(pageNumber, pageSize));
         }
 
@@ -96,6 +168,8 @@ namespace WebLandingTemplate.Controllers
             var prodDto = _productBusiness.GetProduct(id);
             var prodVM = new ProductVM();
             AutoMapper.Mapper.Map(prodDto, prodVM);
+            prodVM.ProveedorName=_supplierBusiness.GetSupplier(prodVM.ProveedorId).Name;
+            prodVM.CategoryName = _categoryBusiness.GetCategory(prodVM.ProductType).Name;
             ViewBag.ModalName = "Detalles de Producto";
             ViewBag.GoTo = "Details";
             return PartialView("ModalProduct", prodVM);
@@ -106,17 +180,22 @@ namespace WebLandingTemplate.Controllers
         {
             ViewBag.ModalName = "Crear Producto";
             ViewBag.GoTo = "Create";
+
+            ViewBag.typesrc = DataFilterSupplier();
+            ViewBag.typesupp = DataFilterCategory();
             return PartialView("ModalProduct");
 
         }
 
         // POST: Product/Create
         [HttpPost]
-        public ActionResult Create(ProductVM prodVM)
+        public ActionResult Create(ProductVM prodVM,int filterTypeCategory, int filterTypeSupplier)
         {
             try
             {
                 var prodDto = new ProductDto();
+                prodVM.ProveedorId = filterTypeSupplier;
+                prodVM.ProductType = filterTypeCategory;
                 AutoMapper.Mapper.Map(prodVM, prodDto);
                 var result = _productBusiness.InsertProduct(prodDto);
                 return RedirectToAction("Index");
@@ -134,17 +213,21 @@ namespace WebLandingTemplate.Controllers
             var prodVM = new ProductVM();
             AutoMapper.Mapper.Map(prodDto, prodVM);
             ViewBag.ModalName = "Editar Producto";
+            ViewBag.typesrc = DataFilterSupplierEdit(prodVM.ProveedorId);
+            ViewBag.typesupp = DataFilterCategory(prodVM.ProductType);
             ViewBag.GoTo = "Edit";
             return PartialView("ModalProduct", prodVM);
         }
 
         // POST: Product/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, ProductVM prodVM)
+        public ActionResult Edit(int id, ProductVM prodVM, int filterType, int filterTypeSupplier)
             {
             try
             {
                 var prodDto = new ProductDto();
+                prodVM.ProveedorId = filterType;
+                prodVM.ProductType = filterTypeSupplier;
                 AutoMapper.Mapper.Map(prodVM, prodDto);
                 var result = _productBusiness.UpdateProduct(prodDto);
                 return RedirectToAction("Index");
