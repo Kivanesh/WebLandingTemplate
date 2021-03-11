@@ -124,7 +124,6 @@ namespace WebLandingTemplate.Controllers
             {
                 var svcDto = new ServiceCorpDto();
                 svcVM.ServiceType = filterTypeCategory;
-                svcVM.ServiceType = filterTypeCategory;
                 AutoMapper.Mapper.Map(svcVM, svcDto);
                 var result = _svcBusiness.InsertService(svcDto);
                 return RedirectToAction("Index");

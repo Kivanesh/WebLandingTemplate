@@ -74,7 +74,7 @@ namespace WebLandingTemplate.Controllers
                             Text = p.Name,
                 Value = ((int)p.ProveedorId).ToString()
             }).ToList();
-            istenum.Insert(0, new SelectListItem() { Value = null, Text = "--Seleciona--", Selected = true });
+            //istenum.Insert(0, new SelectListItem() { Value = null, Text = "--Seleciona--", Selected = true });
            
             return new SelectList(istenum, "Value", "Text", "Selected");
         }
@@ -88,7 +88,7 @@ namespace WebLandingTemplate.Controllers
                 Text = p.Name,
                 Value = ((int)p.CategoryId).ToString()
             }).ToList();
-            istenum.Insert(0, new SelectListItem() { Value = null, Text = "--Seleciona--", Selected = true });
+            //istenum.Insert(0, new SelectListItem() { Value = null, Text = "--Seleciona--", Selected = true });
 
             return new SelectList(istenum, "Value", "Text", "Selected");
         }
@@ -180,9 +180,8 @@ namespace WebLandingTemplate.Controllers
         {
             ViewBag.ModalName = "Crear Producto";
             ViewBag.GoTo = "Create";
-
-            ViewBag.typesrc = DataFilterSupplier();
-            ViewBag.typesupp = DataFilterCategory();
+            ViewBag.typeSupplier = DataFilterSupplier();
+            ViewBag.typeCategory = DataFilterCategory();
             return PartialView("ModalProduct");
 
         }
@@ -194,8 +193,8 @@ namespace WebLandingTemplate.Controllers
             try
             {
                 var prodDto = new ProductDto();
-                prodVM.ProveedorId = filterTypeSupplier;
                 prodVM.ProductType = filterTypeCategory;
+                prodVM.ProveedorId = filterTypeSupplier;
                 AutoMapper.Mapper.Map(prodVM, prodDto);
                 var result = _productBusiness.InsertProduct(prodDto);
                 return RedirectToAction("Index");
@@ -221,13 +220,13 @@ namespace WebLandingTemplate.Controllers
 
         // POST: Product/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, ProductVM prodVM, int filterType, int filterTypeSupplier)
+        public ActionResult Edit(int id, ProductVM prodVM/*, int filterTypeCategory, int filterTypeSupplier*/)
             {
             try
             {
                 var prodDto = new ProductDto();
-                prodVM.ProveedorId = filterType;
-                prodVM.ProductType = filterTypeSupplier;
+                //prodVM.ProveedorId = filterTypeSupplier;
+                //prodVM.ProductType = filterTypeCategory;
                 AutoMapper.Mapper.Map(prodVM, prodDto);
                 var result = _productBusiness.UpdateProduct(prodDto);
                 return RedirectToAction("Index");

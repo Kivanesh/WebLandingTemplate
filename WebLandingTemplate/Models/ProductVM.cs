@@ -20,7 +20,6 @@ namespace WebLandingTemplate.Models
         public int ProveedorId { get; set; }
 
         [DisplayName("Precio")]
-        [StringLength(maximumLength: 50)]
         public Nullable<double> Price { get; set; }
 
         [DisplayName("Descripción")]

@@ -15,8 +15,13 @@ namespace WebLandingTemplate.Controllers
     public class CategoryController : Controller
     {
         ICategoryBusiness _categoryBusiness;
-        public CategoryController(CategoryBusiness categoryBusiness)
+        IProductBusiness _productBusiness;
+        IServiceCorpBusiness _svcBusiness;
+
+        public CategoryController(ProductBusiness productBusiness, ServiceCorpBusiness svcBusiness, CategoryBusiness categoryBusiness)
         {
+            _productBusiness = productBusiness;
+            _svcBusiness = svcBusiness;
             _categoryBusiness = categoryBusiness;
         }
 
@@ -211,10 +216,37 @@ namespace WebLandingTemplate.Controllers
         {
             try
             {
-                return true;
+                //return true;
+
+
+                var categoryObj = _categoryBusiness.GetCategory(id);
+                switch (categoryObj.ItemCodeType)
+                {
+                    case 1:
+                        var itemLstP = _productBusiness.GetAllProducts().Where(c => c.ProductType == id).ToList();
+                        foreach (ProductDto i in itemLstP)
+                        {
+                            i.ProductType = 16;
+                            var res = _productBusiness.UpdateProduct(i);
+                        }
+                        break;
+                    case 2:
+                        var itemLstS = _svcBusiness.GetAllService().Where(c => c.ServiceType == id).ToList();
+                        foreach (ServiceCorpDto i in itemLstS)
+                        {
+                            i.ServiceType = 17;
+                          var res=  _svcBusiness.UpdateService(i);
+                        }
+                        break;
+
+                }
+                
                 var result = _categoryBusiness.DeleteCategory(id);
                 if (result == "Succes")
                 {
+                    
+
+                    
                     return true;
                 }
                 else
