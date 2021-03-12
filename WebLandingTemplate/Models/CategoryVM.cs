@@ -22,6 +22,10 @@ namespace WebLandingTemplate.Models
         [DisplayName("Tipo")]
         public Nullable<int> ItemCodeType { get; set; }
 
+        [DisplayName("Tipo")]
+        [StringLength(maximumLength: 150)]
+        public string TypeName { get; set; }
+
         [Required]
         [Range(1, int.MaxValue, ErrorMessage = "Select a correct Option")]
         public ItemCodeTypeEnum? ItemCodeTypeEnum { get; set; }

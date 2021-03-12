@@ -11,45 +11,125 @@
                     </div>
                 </div>
                 <div class="portlet-body">
-                       <form method="post" action="@Url.Action(""+ViewBag.GoTo+"", "Category")" id="category-form">
-                                <div class="form-body">
-                                    <div class="form-row">
-                                        <div class="col-md-5 mb-3">
-                                            <div class="input-icon-group">
-                                                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-                                                <div class="input-icon-append">
-                                                    <i class="fa fa-user"></i>
-                                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-                                                </div>
+                    <form method="post" action="@Url.Action(""+ViewBag.GoTo+"", "Category")" id="category-form">
+                        @if (ViewBag.GoTo == "Create")
+                        {
+                            <div class="form-body">
+                                <div class="form-row">
+                                    <div class="col-md-5 mb-3">
+                                        <div class="input-icon-group">
+                                            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="input-icon-append">
+                                                <i class="fa fa-user"></i>
+                                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
-                                        <div class="col-md-5 mb-3">
-                                            <div class="input-icon-group">
-                                                @Html.LabelFor(model => model.ItemCodeType, htmlAttributes: new { @class = "control-label col-md-2" })
-                                                <div class="input-icon-append">
-                                                    <i class="fa fa-bookmark"></i>
-                                                    @Html.EnumDropDownListFor(model => model.ItemCodeTypeEnum, "--- Selecciona ---", new { @class = "form-control" })
-                                                    @Html.ValidationMessageFor(model => model.ItemCodeTypeEnum, "", new { @class = "text-danger" })
-                                                </div>
+                                    </div>
+                                    <div class="col-md-5 mb-3">
+                                        <div class="input-icon-group">
+                                            @Html.LabelFor(model => model.ItemCodeType, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="input-icon-append">
+                                                <i class="fa fa-bookmark"></i>
+                                                @Html.EnumDropDownListFor(model => model.ItemCodeTypeEnum, "--- Selecciona ---", new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.ItemCodeTypeEnum, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
-                                    </div><!--row-->
-                                    @Html.HiddenFor(model => model.CategoryId)
-                                    @Html.HiddenFor(model => model.ItemCodeType)
-                                    <div class="result"></div><!-- end .result  section -->
-                                </div><!-- end .form-body section -->
-                                 @if (ViewBag.GoTo != "Details")
-                                 {
-                                    <div class="form-footer">
-                                        <div class="float-left">
-                                            <button type="submit" data-btntext-sending="Sending..." class="button btn btn-primary"><span><i class="fa fa-paper-plane" aria-hidden="true"></i> </span>Enviar</button>
-                                            <button type="reset" class="button btn btn-warning"><span><i class="fa fa-eraser" aria-hidden="true"></i> </span> Limpiar </button>
+                                    </div>
+                                </div><!--row-->
+                                @Html.HiddenFor(model => model.CategoryId)
+                                @Html.HiddenFor(model => model.ItemCodeType)
+                                <div class="result"></div><!-- end .result  section -->
+                            </div>
+                        }
+                        @if (ViewBag.GoTo == "Edit")
+                        {
+                            <div class="form-body">
+                                <div class="form-row">
+                                    <div class="col-md-5 mb-3">
+                                        <div class="input-icon-group">
+                                            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="input-icon-append">
+                                                <i class="fa fa-user"></i>
+                                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                            </div>
                                         </div>
-                                    </div><!-- end .form-footer section -->
-                                 }
-                               
-                       </form>
+                                    </div>
+                                    <div class="col-md-5 mb-3">
+                                        <div class="input-icon-group">
+                                            @Html.LabelFor(model => model.ItemCodeType, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="input-icon-append">
+                                                <i class="fa fa-bookmark"></i>
+                                                @if (Model.ItemCodeType == 1)
+                                                {
+                                                    @Html.Label("Producto")
+                                                }
+                                                else
+                                                {
+                                                    @Html.Label("Servicio")
+                                                }
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div><!--row-->
+                                @Html.HiddenFor(model => model.CategoryId)
+                                @Html.HiddenFor(model => model.ItemCodeType)
+                                <div class="result"></div><!-- end .result  section -->
+                            </div>
+
+                        }
+                        @if (ViewBag.GoTo == "Details")
+                        {
+                            <div class="form-body">
+                                <div class="form-row">
+                                    <div class="col-md-5 mb-3">
+                                        <div class="input-icon-group">
+                                            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="input-icon-append">
+                                                <i class="fa fa-user"></i>
+
+                                                @Html.DisplayFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 mb-3">
+                                        <div class="input-icon-group">
+                                            @Html.LabelFor(model => model.ItemCodeType, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="input-icon-append">
+                                                <i class="fa fa-bookmark"></i>
+
+                                                @if (Model.ItemCodeType == 1)
+                                                {
+                                                    @Html.Label("Producto")
+                                                }
+                                                else
+                                                {
+                                                    @Html.Label("Servicio")
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!--row-->
+                                @Html.HiddenFor(model => model.CategoryId)
+                                @Html.HiddenFor(model => model.ItemCodeType)
+                                <div class="result"></div><!-- end .result  section -->
+                            </div>
+                        }
+                        <!-- end .form-body section -->
+                        @if (ViewBag.GoTo != "Details")
+                        {
+                            <div class="form-footer">
+                                <div class="float-left">
+                                    <button type="submit" data-btntext-sending="Sending..." class="button btn btn-primary"><span><i class="fa fa-paper-plane" aria-hidden="true"></i> </span>Enviar</button>
+                                    <button type="reset" class="button btn btn-warning"><span><i class="fa fa-eraser" aria-hidden="true"></i> </span> Limpiar </button>
+                                </div>
+                            </div><!-- end .form-footer section -->
+                        }
+
+                    </form>
                 </div>
             </div>
         </div>

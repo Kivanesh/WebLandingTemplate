@@ -220,7 +220,7 @@ namespace WebLandingTemplate.Controllers
 
         // POST: Product/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, ProductVM prodVM/*, int filterTypeCategory, int filterTypeSupplier*/)
+        public ActionResult Edit(int id, ProductVM prodVM, int filterTypeCategory, int filterTypeSupplier)
             {
             try
             {
