@@ -225,8 +225,8 @@ namespace WebLandingTemplate.Controllers
             try
             {
                 var prodDto = new ProductDto();
-                //prodVM.ProveedorId = filterTypeSupplier;
-                //prodVM.ProductType = filterTypeCategory;
+                prodVM.ProveedorId = filterTypeSupplier;
+                prodVM.ProductType = filterTypeCategory;
                 AutoMapper.Mapper.Map(prodVM, prodDto);
                 var result = _productBusiness.UpdateProduct(prodDto);
                 return RedirectToAction("Index");

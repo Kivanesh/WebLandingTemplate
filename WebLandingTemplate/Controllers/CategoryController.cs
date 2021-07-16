@@ -219,34 +219,35 @@ namespace WebLandingTemplate.Controllers
                 //return true;
 
 
-                var categoryObj = _categoryBusiness.GetCategory(id);
-                switch (categoryObj.ItemCodeType)
-                {
-                    case 1:
-                        var itemLstP = _productBusiness.GetAllProducts().Where(c => c.ProductType == id).ToList();
-                        foreach (ProductDto i in itemLstP)
-                        {
-                            i.ProductType = 16;
-                            var res = _productBusiness.UpdateProduct(i);
-                        }
-                        break;
-                    case 2:
-                        var itemLstS = _svcBusiness.GetAllService().Where(c => c.ServiceType == id).ToList();
-                        foreach (ServiceCorpDto i in itemLstS)
-                        {
-                            i.ServiceType = 17;
-                          var res=  _svcBusiness.UpdateService(i);
-                        }
-                        break;
 
-                }
-                
+                var categoryObj = _categoryBusiness.GetCategory(id);
                 var result = _categoryBusiness.DeleteCategory(id);
+
                 if (result == "Succes")
                 {
                     
+                    switch (categoryObj.ItemCodeType)
+                    {
+                        case 1:
+                            var itemLstP = _productBusiness.GetAllProducts().Where(c => c.ProductType == id).ToList();
+                            foreach (ProductDto i in itemLstP)
+                            {
+                                i.ProductType = 16;
+                                var res = _productBusiness.UpdateProduct(i);
+                            }
+                            break;
+                        case 2:
+                            var itemLstS = _svcBusiness.GetAllService().Where(c => c.ServiceType == id).ToList();
+                            foreach (ServiceCorpDto i in itemLstS)
+                            {
+                                i.ServiceType = 17;
+                                var res = _svcBusiness.UpdateService(i);
+                            }
+                            break;
 
-                    
+                    }
+
+
                     return true;
                 }
                 else

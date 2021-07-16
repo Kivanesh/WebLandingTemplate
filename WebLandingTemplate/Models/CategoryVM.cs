@@ -26,7 +26,7 @@ namespace WebLandingTemplate.Models
         [StringLength(maximumLength: 150)]
         public string TypeName { get; set; }
 
-        [Required]
+        //[Required]
         [Range(1, int.MaxValue, ErrorMessage = "Select a correct Option")]
         public ItemCodeTypeEnum? ItemCodeTypeEnum { get; set; }
     }

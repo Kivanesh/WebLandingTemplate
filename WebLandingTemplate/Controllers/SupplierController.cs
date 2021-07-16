@@ -19,9 +19,13 @@ namespace WebLandingTemplate.Controllers
     public class SupplierController : Controller
     {
         ISupplierBusiness _supplierBusiness;
-        public SupplierController(SupplierBusiness supplierBusiness)
+        IProductBusiness _productBusiness;
+
+
+        public SupplierController(SupplierBusiness supplierBusiness, ProductBusiness productBusiness)
         {
             _supplierBusiness = supplierBusiness;
+            _productBusiness = productBusiness;
         }
 
         private IEnumerable<SelectListItem> DataItems(int pageSize)
@@ -228,10 +232,24 @@ namespace WebLandingTemplate.Controllers
         {
             try
             {
+
+
+                
+                
+                        
+                       
+
+                
                 //return true;
                 var result = _supplierBusiness.DeleteSupplier(id);
                 if (result == "Succes")
                 {
+                    var itemLstP = _productBusiness.GetAllProducts().Where(c => c.ProveedorId == id).ToList();
+                    foreach (ProductDto i in itemLstP)
+                    {
+                        i.ProveedorId = 14;
+                        var res = _productBusiness.UpdateProduct(i);
+                    }
                     return true;
                 }
                 else
