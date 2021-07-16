@@ -233,27 +233,28 @@ namespace WebLandingTemplate.Controllers
             try
             {
 
-
-                
-                
-                        
-                       
-
-                
-                //return true;
-                var result = _supplierBusiness.DeleteSupplier(id);
-                if (result == "Succes")
-                {
-                    var itemLstP = _productBusiness.GetAllProducts().Where(c => c.ProveedorId == id).ToList();
+                //Funtion to assign to "Sin Proveedor"
+                //
+                 var itemLstP = _productBusiness.GetAllProducts().Where(c => c.ProveedorId == id).ToList();
                     foreach (ProductDto i in itemLstP)
                     {
                         i.ProveedorId = 14;
                         var res = _productBusiness.UpdateProduct(i);
                     }
+                
+                var result = _supplierBusiness.DeleteSupplier(id);
+                if (result == "Succes")
+                {
+                   
                     return true;
                 }
                 else
                 {
+                    foreach (ProductDto i in itemLstP)
+                    {
+                        i.ProveedorId = id;
+                        var res = _productBusiness.UpdateProduct(i);
+                    }
                     return false;
                 }
             }
