@@ -32,16 +32,7 @@
                                     @Html.Hidden("RedirectTo", Url.Action("Eliminar", "ContactMessage", new { id = Model.MessageId }))
                                 </div>
                             </div>
-                            <div class="d-flex">
-                                <div class="btn-group dropdown">
-                                    <button type="button" class="btn btn-outline-light disabled text-secondary btn-sm">
-                                        <i class="fa fa-chevron-left"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-outline-light text-secondary btn-sm">
-                                        <i class="fa fa-chevron-right"></i>
-                                    </button>
-                                </div>
-                            </div>
+                            
                         </div>
                         <div class="flex slim-scroll">
                             <div class="p-4">
@@ -49,10 +40,10 @@
                                     <h4 class="">@Html.DisplayFor(model => model.Subject)</h4>
                                     @Html.HiddenFor(model => model.MessageId , new { Value = Model.MessageId  })
                                     <div class="py-3 b-t">
-                                        <img class="circle avatar50 mr-2" src="~/Html-adminDashboard/images/avatar.jpg" alt=".">
+                                        <img class="avatar50 mr-3" src="~/Html-adminDashboard/images/avatar1.png" alt=".">
                                         <a href="#">@Html.DisplayFor(model => model.Email)</a>
-                                        <span class="text-xs text-muted"> en: @Html.DisplayFor(model => model.ContactDate)</span>
-                                        <span class="float-right text-md-right text-muted"><i class="fa fa-phone"></i> @Html.DisplayFor(model => model.Phone)</span>
+                                        <span class="float-right text-md-right text-muted"><i class="fa fa-phone"></i> @Html.DisplayFor(model => model.Phone)</span><br />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p class="text-xs text-muted"> Fecha de mensaje: @Html.DisplayFor(model => model.ContactDate)</p>
                                     </div>
                                     <div class="pt-1">
                                         <p>

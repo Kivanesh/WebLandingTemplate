@@ -113,7 +113,7 @@ namespace WebLandingTemplate.Controllers
 
             try
             {
-                if (collectionBase.Get(0).ContentLength > 0 && collectionBase.Get(0).ContentType == "image/jpeg")
+                if (collectionBase.Get(0).ContentLength > 0 && (collectionBase.Get(0).ContentType == "image/jpeg" || collectionBase.Get(0).ContentType == "image/png"))
                 {
                     WebImage image = new WebImage(collectionBase.Get(0).InputStream);
                     supplierVM.Logo = image.GetBytes();
@@ -173,7 +173,7 @@ namespace WebLandingTemplate.Controllers
 
                 
                 string typeFile = collectionBase.Get(0).ContentType;
-                if (collectionBase.Get(0).ContentLength > 0 && collectionBase.Get(0).ContentType == "image/jpeg")
+                if (collectionBase.Get(0).ContentLength > 0 && (collectionBase.Get(0).ContentType == "image/jpeg" || collectionBase.Get(0).ContentType == "image/png") )
                 {
                     WebImage image = new WebImage(collectionBase.Get(0).InputStream);
                     supplierVM.Logo = image.GetBytes();

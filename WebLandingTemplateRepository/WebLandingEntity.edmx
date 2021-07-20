@@ -145,7 +145,7 @@
           <Property Name="Price" Type="float" />
           <Property Name="Description" Type="nvarchar" MaxLength="255" />
           <Property Name="Size" Type="nvarchar" MaxLength="255" />
-          <Property Name="Color" Type="nvarchar(max)" />
+          <Property Name="Color" Type="varchar" MaxLength="150" />
           <Property Name="ProductType" Type="int" />
         </EntityType>
         <EntityType Name="ServiceCorp">
@@ -500,7 +500,7 @@
           <Property Name="Price" Type="Double" />
           <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Size" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Color" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Color" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="ProductType" Type="Int32" />
           <NavigationProperty Name="Categories" Relationship="Self.FK__Products__Produc__46E78A0C" FromRole="Products" ToRole="Categories" />
           <NavigationProperty Name="ImageSources" Relationship="Self.FK__ImageSour__ItemI__48CFD27E" FromRole="Products" ToRole="ImageSources" />

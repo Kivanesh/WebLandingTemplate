@@ -267,11 +267,13 @@
     <Content Include="Html-adminDashboard\form-validation.html" />
     <Content Include="Html-adminDashboard\images\avatar.jpg" />
     <Content Include="Html-adminDashboard\images\avatar1.jpg" />
+    <Content Include="Html-adminDashboard\images\avatar1.png" />
     <Content Include="Html-adminDashboard\images\avatar2.jpg" />
     <Content Include="Html-adminDashboard\images\avatar3.jpg" />
     <Content Include="Html-adminDashboard\images\avatar4.jpg" />
     <Content Include="Html-adminDashboard\images\avatar5.jpg" />
     <Content Include="Html-adminDashboard\images\avatar6.jpg" />
+    <Content Include="Html-adminDashboard\images\avatar6.png" />
     <Content Include="Html-adminDashboard\images\bg1.jpg" />
     <Content Include="Html-adminDashboard\images\bg2.jpg" />
     <Content Include="Html-adminDashboard\images\bg3.jpg" />

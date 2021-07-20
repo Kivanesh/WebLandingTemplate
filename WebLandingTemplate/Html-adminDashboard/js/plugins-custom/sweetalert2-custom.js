@@ -87,7 +87,8 @@
                     dataType: "json",
                     contentType: 'application/json; charset=utf-8',
                     success: function (data) {
-                        if (data === 'true') {
+                        console.log(data)
+                        if (data) {
                             swal({
                                 title: 'Eliminado!',
                                 text: "El Elemento ha sido Eliminado",

@@ -125,24 +125,24 @@ namespace WebLandingTemplate.Controllers
 
         // POST: ContactMessage/Eliminar/5
         [HttpPost]
-        public bool Eliminar(int id)
+        public ActionResult Eliminar(int id)
         {
             try
             {
-                //return true;
+                bool data;
                 var result = _contacMsgBusiness.DeleteMessage(id);
                 if (result == "Succes")
                 {
-                    return true;
+                    return Json(new { data = true });
                 }
                 else
                 {
-                    return false;
+                    return Json(new { data = false });
                 }
             }
             catch
             {
-                return false;
+                return Json(new { data = false });
             }
         }
 
