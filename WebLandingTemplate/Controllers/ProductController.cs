@@ -132,6 +132,7 @@ namespace WebLandingTemplate.Controllers
         {
 
             ViewBag.dropdownsrc = DataItems(pageSize);
+            ViewBag.typeCategory = DataFilterCategory();
 
             int pageNumber = (page ?? 1);
             var listaVM = new List<ProductVM>();
@@ -145,6 +146,20 @@ namespace WebLandingTemplate.Controllers
             {
                 var listaDto = _productBusiness.GetAllProducts();
                 AutoMapper.Mapper.Map(listaDto, listaVM);
+                if (listaVM != null)
+                {
+                    foreach (var item in listaVM)
+                    {
+                        int count = ViewBag.typeCategory.Items.Count;
+                        for (int i = 0; i < count ; i++)
+                        {
+                            if (item.ProductType == Int32.Parse(ViewBag.typeCategory.Items[i].Value))
+                            {
+                                item.CategoryName = ViewBag.typeCategory.Items[i].Text;
+                            }
+                        }
+                    }
+                }
             }
 
 
