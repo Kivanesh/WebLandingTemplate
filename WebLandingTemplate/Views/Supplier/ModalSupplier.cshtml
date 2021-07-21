@@ -37,16 +37,18 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-8 mb-3">
+                                    <div class="col-md-5 mb-3">
                                         <div class="input-icon-group">
                                             @Html.LabelFor(model => model.Logo, htmlAttributes: new { @class = "control-label col-md-2" })
-                                            <div class="custom-file">
-                                                <input type="file" name="imageUpload" id="file" onchange="return fileValidation()" class="form-control w">
+                                            <div class="input-icon-append">
+                                                <img width="100" height="100" id="imgDisplay" @*style="display:none;"*@ />
+                                                <input type="file" name="imageUpload" id="file" onchange="return fileValidation(1)" >
                                                 @Html.ValidationMessageFor(model => model.Logo, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
 
                                     </div>
+                                    
 
                                 </div><!--row-->
                              
@@ -127,8 +129,8 @@
                                         <div class="input-icon-group">
                                             @Html.LabelFor(model => model.Logo, htmlAttributes: new { @class = "control-label col-md-2" })
                                             <div class="input-icon-append">
-                                                <img width="100" height="100" src="@Url.Action("getImage","Supplier", new { id=Model.ProveedorId})" />
-                                                <input type="file" name="imageLoad" id="file" onchange="return fileValidation()">
+                                                <img width="100" height="100" id="imgDisplay" src="@Url.Action("getImage","Supplier", new { id=Model.ProveedorId})" />
+                                                <input type="file" name="imageLoad" id="file" onchange="return fileValidation(2)">
                                                 @Html.ValidationMessageFor(model => model.Logo, "", new { @class = "text-danger" })
 
                                             </div>
@@ -171,7 +173,7 @@
 
 
 <script type="text/javascript">
-    function fileValidation() {
+    function fileValidation(option) {
         var fileInput = document.getElementById('file');
         var filePath = fileInput.value;
         var allowedExtensions = /(.jpg|.jpeg|.png)$/i;
@@ -179,16 +181,28 @@
             alert('Seleccione solo archivos con extensión .jpeg/.jpg/.png .');
             fileInput.value = '';
             return false;
-        } /*else {
+        } else {
             //Image preview
             if (fileInput.files && fileInput.files[0]) {
                 var reader = new FileReader();
                 reader.onload = function (e) {
-                    document.getElementById('imagePreview').innerHTML = '<img src="' + e.target.result + '" />';
+                    switch (option) {
+                        case 1: //CREAR NUEVO
+                            document.getElementById('imgDisplay').setAttribute("src", e.target.result);
+                            break;
+                        case 2: //EDITAR
+                            document.getElementById('imgDisplay').setAttribute("src", e.target.result);
+                          
+                            break;
+
+                        
+                    }
+                    //document.getElementById('imgDisplay').setAttribute("src",e.target.result);
+                    //document.getElementById('imagePreview').innerHTML = '<img src="' + e.target.result + '" />';  imagePreview
                 };
                 reader.readAsDataURL(fileInput.files[0]);
             }
-        }*/
+        }
     }
     </script>
     <script type="text/javascript">
