@@ -226,17 +226,18 @@
                         required: true,
                         minlength: 1
                     },
-                    Description: {
-                        required: false,
+                    Descripcion: {
+                        required: true,
+                        minlength: 1
                     },
 
                 },
                 messages: {
-                    categoryname: {
+                    Name: {
                         required: 'Ingresa el nombre',
                         minlength: 'El nombre debe contener al menos {0} caracteres'
                     },
-                    Description: {
+                    Descripcion: {
                         required: 'Ingresa la descripción',
                         minlength: 'La descripción debe contener al menos {0} caracteres',
 

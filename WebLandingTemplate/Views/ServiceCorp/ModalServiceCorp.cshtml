@@ -211,12 +211,13 @@
                     minlength: 1
                 },
                 Description: {
-                    required: false,
+                    required: true,
+                    minlength: 1
                 },
 
             },
             messages: {
-                categoryname: {
+                Name: {
                     required: 'Ingresa el nombre',
                     minlength: 'El nombre debe contener al menos {0} caracteres'
                 },
