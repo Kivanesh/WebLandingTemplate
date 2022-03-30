@@ -19,12 +19,15 @@ namespace WebLandingTemplate.Controllers
 
         IEnterpriseInfoBusiness _corpBusiness;
         IMessageInboxBusiness _contacMsgBusiness;
+        IServiceCorpBusiness _serviceCorpBusiness;
+
         //Oop Principle: Depends on the abtraction not on the concrete classes
 
-        public HomeController(EnterpriseInfoBusiness corpBusiness, MessageInboxBusiness contacMsgBusiness)
+        public HomeController(EnterpriseInfoBusiness corpBusiness, MessageInboxBusiness contacMsgBusiness, ServiceCorpBusiness serviceCorpBusiness)
         {
             _corpBusiness = corpBusiness;
             _contacMsgBusiness = contacMsgBusiness;
+            _serviceCorpBusiness = serviceCorpBusiness;
         }
 
         public ActionResult Index()
@@ -53,7 +56,7 @@ namespace WebLandingTemplate.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "BESMI - Nosotros";
             ContactPageVM contactPageVM = new ContactPageVM();
             var itemDto = _corpBusiness.GetEnterpriseInfo();
             var itemVM = new EnterpriseInfoVM();
@@ -131,6 +134,22 @@ namespace WebLandingTemplate.Controllers
             }
             return RedirectToAction("Contact");
         }
+
+
+        public ActionResult Services()
+        {
+            ViewBag.Message = "BESMI - Servicios";
+            ServicePageVM servicePageVM = new ServicePageVM();
+            var itemDto = _serviceCorpBusiness.GetAllService();
+            var itemVM = new List<ServiceCorpVM>();
+            AutoMapper.Mapper.Map(itemDto, itemVM);
+            servicePageVM.allservicecorpVM = itemVM;
+            return View(servicePageVM);
+
+
+        }
+
+
 
 
 

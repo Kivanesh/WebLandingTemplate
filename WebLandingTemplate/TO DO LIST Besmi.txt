@@ -1,0 +1,24 @@
+TO DO LIST:
+
+-- Arreglar Carrousel Images (ids)
+-- Arreglar mosaico tamaño 
+
+--Arreglar lo de las imagenes para poder hacer un get y mostrarlas bien en productos, Servicios y el Home
+	--> Agregar columna nueva EntityName que sea referenciada a las 3 columnas desde ImageSource
+
+- Depurar Codigo : quitar archivos extras htmls , css , etc.
+- Arreglar base de datos , crear una nueva y dejar a punto para nueva implementacion.
+
+-- REVISAR LOS CRUDS DE TODAS LAS CATEGORIAS
+
+--Crear Vista Productos
+--Terminar VIsta Servicios
+
+
+--> ERROR QUE DA AL INSERTAR LAS IMAGENES 
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK__ImageSour__ItemI__1CF15040".
+ The conflict occurred in database "besmicom_aspnet-WebLandingTemplate", table "dbo.Products", column 'ProductId'.
+The statement has been terminated.
+
+
+--->DETALLES

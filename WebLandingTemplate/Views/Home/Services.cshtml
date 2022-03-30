@@ -1,0 +1,284 @@
+﻿@model WebLandingTemplate.Models.FrontVIewModels.ServicePageVM
+@{
+    ViewBag.Title = "Servicios";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Assan 3</title>
+    <!-- Plugins CSS -->
+    <link href="css/plugins/plugins.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="page-titles-img title-space-lg bg-parallax parallax-overlay mb70" data-jarallax='{"speed": 0.2}' style='background-image: url("images/bg8.jpg")'>
+        <div class="container">
+            <div class="row">
+                <div class=" col-md-8 ml-auto mr-auto">
+                    <h1 class='text-uppercase'>We love what we do </h1>
+
+                    <!--                                    <a href='https://www.youtube.com/watch?v=cctFcl5EFYk' class='modal-video btn btn-white-outline btn-lg btn-rounded'>Watch our film</a>
+                    -->
+                </div>
+            </div>
+        </div>
+    </div><!--page title end-->
+    <div class='container mb40 pt30'>
+        <div class='row'>
+            @for (int i = 0; i < Model.allservicecorpVM.Count; i++)
+            {
+                <div class="col-lg-4 mb40">
+                    <div class="media">
+                        <div class="d-flex mr-3">
+                            <i class="icon-hover-1 bg-default ti-image icon-hover-default"></i>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="mt-0 mb10 text-uppercase">   @Html.DisplayFor(Model => Model.allservicecorpVM[i].Name)</h4>
+                            <p>
+                                @Html.DisplayFor(Model => Model.allservicecorpVM[i].Name)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div class="col-lg-4 mb40">
+                <div class="media">
+                    <div class="d-flex mr-3">
+                        <i class="icon-hover-1 bg-default ti-briefcase icon-hover-default"></i>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="mt-0 mb10 text-uppercase">Marketing</h4>
+                        Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb40">
+                <div class="media">
+                    <div class="d-flex mr-3">
+                        <i class="icon-hover-1 bg-default ti-settings icon-hover-default"></i>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="mt-0 mb10 text-uppercase">Development</h4>
+                        Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='row'>
+            <div class="col-lg-4 mb40">
+                <div class="media">
+                    <div class="d-flex mr-3">
+                        <i class="icon-hover-1 bg-default ti-stats-up icon-hover-default"></i>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="mt-0 mb10 text-uppercase">Analytics</h4>
+                        Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb40">
+                <div class="media">
+                    <div class="d-flex mr-3">
+                        <i class="icon-hover-1 bg-default ti-google icon-hover-default"></i>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="mt-0 mb10 text-uppercase">Seo Optimize</h4>
+                        Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb40">
+                <div class="media">
+                    <div class="d-flex mr-3">
+                        <i class="icon-hover-1 bg-default ti-trello icon-hover-default"></i>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="mt-0 mb10 text-uppercase">Branding</h4>
+                        Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class=' pt90 pb70'>
+        <div class='container mb50'>
+            <div class="title-heading1 mb30">
+                <h3>why choose us</h3>
+            </div>
+            <div class="row special-feature">
+                <div class="col-md-3 col-sm-6 margin20">
+                    <div class="s-feature-box text-center">
+                        <div class="mask-top">
+                            <!-- Icon -->
+                            <i class="fa fa-heart-o"></i>
+                            <!-- Title -->
+                            <h4>Made with love</h4>
+                        </div>
+                        <div class="mask-bottom">
+                            <!-- Icon -->
+                            <i class="fa fa-heart-o"></i>
+                            <!-- Title -->
+                            <h4>Made with love</h4>
+                            <!-- Text -->
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec odio ipsum. Suspendisse cursus malesuada facilisis.</p>
+                        </div>
+                    </div>
+
+                </div><!--services col-->
+                <div class="col-md-3 col-sm-6 margin20">
+                    <div class="s-feature-box text-center">
+                        <div class="mask-top">
+                            <!-- Icon -->
+                            <i class="fa fa-laptop"></i>
+                            <!-- Title -->
+                            <h4>Ultra Responsive</h4>
+                        </div>
+                        <div class="mask-bottom">
+                            <!-- Icon -->
+                            <i class="fa fa-laptop"></i>
+                            <!-- Title -->
+                            <h4>Ultra Responsive</h4>
+                            <!-- Text -->
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec odio ipsum. Suspendisse cursus malesuada facilisis.</p>
+                        </div>
+                    </div>
+                </div><!--services col-->
+                <div class="col-md-3 col-sm-6 margin20">
+                    <div class="s-feature-box text-center">
+                        <div class="mask-top">
+                            <!-- Icon -->
+                            <i class="fa fa-code"></i>
+                            <!-- Title -->
+                            <h4>Clean &amp; valid design</h4>
+                        </div>
+                        <div class="mask-bottom">
+                            <!-- Icon -->
+                            <i class="fa fa-code"></i>
+                            <!-- Title -->
+                            <h4>Clean &amp; valid design</h4>
+                            <!-- Text -->
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec odio ipsum. Suspendisse cursus malesuada facilisis.</p>
+                        </div>
+                    </div>
+                </div><!--services col-->
+                <div class="col-md-3 col-sm-6 margin20">
+                    <div class="s-feature-box text-center">
+                        <div class="mask-top">
+                            <!-- Icon -->
+                            <i class="fa fa-cogs"></i>
+                            <!-- Title -->
+                            <h4>Free Support &amp; Updates</h4>
+                        </div>
+                        <div class="mask-bottom">
+                            <!-- Icon -->
+                            <i class="fa fa-cogs"></i>
+                            <!-- Title -->
+                            <h4>Free Support &amp; Updates</h4>
+                            <!-- Text -->
+                            <p>Assan Release the updates time to time. more big updates are coming in future. keep in touch and and enjoy all updates free of cost. </p>
+                        </div>
+                    </div>
+                </div><!--services col-->
+            </div>
+        </div>
+    </div>
+    @*<div class="bg-primary pt60 pb60">
+            <div class="container">
+                <!-- Carousel -->
+                <div class="carousel-testimonial owl-carousel owl-theme carousel-dark">
+
+                    <div class="item">
+                        <div class=" testimonial testimonial-dark">
+                            <div class="row align-items-center">
+                                <div class="col-md-3 ml-md-3">
+                                    <img src="images/customer-1.jpg" alt="" class="img-fluid circle">
+                                </div>
+                                <div class="col-md-7">
+                                    <p class="lead">
+                                        " This is a great theme! I love it and recommend it to anyone wanting to purchase it. "
+                                    </p>
+                                    <h5>John Doe - <span>Assan Customer</span></h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--item-->
+                    <div class="item">
+                        <div class=" testimonial testimonial-dark">
+                            <div class="row align-items-center">
+                                <div class="col-md-3 ml-md-3">
+                                    <img src="images/customer-2.jpg" alt="" class="img-fluid circle">
+                                </div>
+                                <div class="col-md-7">
+                                    <p class="lead">
+                                        " Compared to others this was a very easy to use and adapt template. It didn't break as easy with minor changes. Thanks "
+                                    </p>
+                                    <h5>John Doe - <span>Assan Customer</span></h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--item-->
+                    <div class="item">
+                        <div class=" testimonial testimonial-dark">
+                            <div class="row align-items-center">
+                                <div class="col-md-3 ml-md-3">
+                                    <img src="images/customer-3.jpg" alt="" class="img-fluid circle">
+                                </div>
+                                <div class="col-md-7">
+                                    <p class="lead">
+                                        " Hello,
+                                        your theme gets better and better on every version. Gratulation to this wonderful theme and please keep on working this way (good once)!! "
+                                    </p>
+                                    <h5>John Doe - <span>Assan Customer</span></h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--item-->
+                </div> <!-- /Carousel -->
+            </div>
+        </div><!--/.testimonials-->*@
+    <footer class="footer footer-dark pt50 pb30">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6  ml-auto mr-auto text-center">
+                    <ul class="social-icons list-inline">
+                        <li class="list-inline-item">
+                            <a href="#">
+                                <i class="fa fa-facebook"></i>Facebook
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">
+                                <i class="fa fa-twitter"></i>twitter
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">
+                                <i class="fa fa-instagram"></i>instagram
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">
+                                <i class="fa fa-behance"></i>Behance
+                            </a>
+                        </li>
+                    </ul>
+                    <h4><i class="fa fa-phone"></i> 1800-355-4322</h4>
+                    <h4><i class="fa fa-envelope"></i> support@assan.com</h4>
+                    <p>&copy; Copyright 2018. Assan 3.0</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!--back to top-->
+    <a href="#" class="back-to-top hidden-xs-down" id="back-to-top"><i class="ti-angle-up"></i></a>
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="js/plugins/plugins.js"></script>
+    <script src="js/assan.custom.js"></script>
+</body>
+</html>
